@@ -1,0 +1,35 @@
+---
+title: Jake Ferguson
+about:
+  template: jolla
+  image: static/jf_logo.png
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/ja-fe
+---
+
+Jake (he/him) is a PhD Candidate in Geography and Environmental Management at the University of Waterloo. He's interested in SAR Interferometry, SAR Polarimetry, physics education, and fussing over his website's plotly renders.\
+[To see an image of me, click here](https://www.google.com/search?channel=fs&client=ubuntu&q=the+importance+of+blind+hiring+practices)
+
+---
+
+<div style="text-align: justify"> 
+### Education
+University of Waterloo | Waterloo, CA \
+MSc. Physics, Computational Multiphysics Group | August 2019
+
+University of Waterloo | Waterloo, CA \
+BSc. Physics | April 2017
+
+### Select pubs
+[Polarimetric decomposition of microwave-band freshwater ice SAR data: Review, analysis, and future directions](https://doi.org/10.1016/j.rse.2022.113176)
+</div>
+
+---
+
+#### Recommended Reading
+
+why is this not updating
+
+---

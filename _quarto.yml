@@ -3,17 +3,48 @@ project:
 
 website:
   title: "jf_web"
+  favicon: static/favicon.png
   navbar:
+    search: true
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: home
+      - href: about_jake.qmd
+        text: about
+      - href: about.qmd
+        text: research
+      - text: teaching
+        menu:
+          - about.qmd
+      - text: projects
+        menu:
+          - about.qmd
+    right:
+      - text: "{{< fa brands github color=body-color size=xl title='GitHub Link' >}}"
+        href: https://github.com/ja-fe
+      - text: "{{< ai google-scholar color=body-color size=xl title='Google Scholar Link' >}}"
+        href: https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&hl=en
+      - text: "{{< ai orcid color=body-color size=xl title='OrcID Link' >}} "
+        href: https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&hl=en
+
+  page-footer:
+    left: "<sub>© 2023 Jake Ferguson</sub>"
+    right: "<sub>This website attempts to be [WAI-ARIA](https://en.wikipedia.org/wiki/WAI-ARIA) compliant -- if you find any issues please email me</sub><br><sub>Built using [Quarto](https://quarto.org/); CSS theme modified from [*litera*](https://bootswatch.com/litera/)</sub>"
+
+
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      light: [litera, custom_litera.scss]
+      dark:  [litera, custom_litera.scss, make_it_dark.scss]
+    css: 
+      - styles.css
+      - academicons.css
     toc: true
+    link-external-newwindow: true
+    code-fold: true
+
 
 
 
