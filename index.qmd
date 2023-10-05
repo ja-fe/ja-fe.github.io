@@ -1,162 +1,361 @@
 ---
 title: "jf_web"
+execute:
+    echo: false
+format:
+    html:
+        page-layout: full
+---
+Hi! I am still being built! Check out the incomplete notes below and check back in later -jf
+
+
+## What is Polarization State?
+
+### What is degree of polarization?
+
+In reality, most EMR is not "perfectly polarized" as it was above. EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms:
+
+```{ojs}
+//TODO: This use of html tags to decrease font size to get around label wrapping is bad, find more elegant solution later
+viewof form_m1_1 = Inputs.form(
+    [
+        Inputs.range([1, 30], {label: html`<font size="3.5">Amplitude 1</font>`, step: 1, value: 15}),
+        Inputs.range([1, 100], {label: html`<font size="3.5">Wavelength 1</font>`, step: 1, value: 50})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+amplitudeW1  = form_m1_1[0];
+wavelengthW1 = form_m1_1[1];
+
+viewof form_m1_2 = Inputs.form(
+    [
+        Inputs.range([1, 30], {label: html`<font size="3.5">Amplitude 2</font>`, step: 1, value: 15}),
+        Inputs.range([1, 100], {label: html`<font size="3.5">Wavelength 2</font>`, step: 1, value: 50})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+amplitudeW2  = form_m1_2[0];
+wavelengthW2 = form_m1_2[1];
+
+viewof form_m1_3 = Inputs.form(
+    [
+        Inputs.range([0, 6.2], {label: html`<font size="3.5">Phase Diff</font>`, step: 0.1, value: 0}),
+        Inputs.range([1, 20], {label: html`<font size="3.5">Speed</font>`, step: 1, value: 10})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+phase_diff_m1  = form_m1_3[0];
+speed_m1 = form_m1_3[1];
+
+
+distance = 400;
+NumPoints = 1000;
+```
+
+```{ojs}
+wave1 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance / NumPoints;
+        data.push([j , amplitudeW1 * Math.sin(j * 2*Math.PI / wavelengthW1 + time)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+wave2 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance / NumPoints;
+        data.push([j , amplitudeW2 * Math.sin(j * 2*Math.PI / wavelengthW2 + time + phase_diff_m1)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+waveSum = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance / NumPoints;
+        data.push([j , amplitudeW1 * Math.sin(j * 2*Math.PI / wavelengthW1 + time) + amplitudeW2 * Math.sin(j * 2*Math.PI / wavelengthW2 + time + phase_diff_m1)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+time = {
+  let i = 0;
+  while (true) {
+    i += speed_m1 * 0.01;
+    yield i
+  }
+}
+```
+
+```{ojs}
+r = d3.line()(wave1);
+b = d3.line()(wave2);
+svg`<svg viewBox="0 -32 400 64">
+  <path d="${r}" stroke="red" fill="none" />
+  <path d="${b}" stroke="blue" fill="none" />
+</svg>`
+```
+
+```{ojs}
+p = d3.line()(waveSum);
+svg`<svg viewBox="0 -64 400 130">
+  <path d="${p}" stroke="black" fill="none" />
+</svg>`
+```
+
 ---
 
-## Plotly
+<br />
+But that's just two "pure" waves -- what happens when EMR is the sum of many waves of different frequencies? Try adding more and more waves of different frequencies, uniformly distributed in a small band:
+<br />
 
+```{ojs}
 
-```{python}
-import numpy as np
-import plotly.graph_objects as go
-import plotly.io as pio
-
-#-------------Base parameters
-
-#Define curve parameters
-period    = 50
-n_samples = 100
-sim_duration  = period*10
-amp = 3
-x = np.arange(n_samples)*np.pi/period
-
-#Animation parameters
-frame_duration = 50 #milliseconds?
-
-#Define some groups of parameters here as dictionaries
-#  This greatly clarifies later code
-#  plotly takes arguments which are lists of dicts of lists of dicts... confusing
-def frame_arguments(duration):
-    return {
-        "frame": {"duration": duration},
-        "mode": "immediate",
-        "redraw": True,
-        "fromcurrent": True,
-        "transition": {"duration": duration, "easing": "linear"},
-        "uirevision": True
+viewof form_m2_1 = Inputs.form(
+    [
+        Inputs.range([1, 10], {label: "# of Waves", step: 1, value: 1}),
+        Inputs.range([1, 20], {label: "Speed", step: 1, value: 10})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
     }
+)
+NumWaves_m2 = form_m2_1[0];
+speed_m2    = form_m2_1[1];
 
-#--------------Meat and potatoes
+amplitude_m2 = 6;
+distance_m2 = 400;
+NumPoints_m2 = 1000;
+wavelengths_m2 = [30,29,25,33,36,24,28,35,40,22,37];
+phases_m2 = [0,0,1,0.5,2,3.1,4,4.9,1.3,.8,6];
+```
 
-#Create figure object containing one trace of the desired graph type
-fig = go.Figure(
-        data=[go.Scatter3d(
-            x = [],
-            y = [],
-            z = [],
-            mode = "lines",
-            name = "SineTest")])
-
-
-#Define the layout of that figure (size, axes ranges, etc.)
-fig.update_layout(
-    template = "plotly_white",
-    scene = dict(
-            xaxis=dict(range=[0,2*np.pi], autorange=False),
-            yaxis=dict(range=[-3,3], autorange=False),
-            zaxis=dict(range=[0,2*np.pi], autorange=False)))
-
-#Now customize -- set the background to transparent to pair with theme
-fig.update_layout(plot_bgcolor='rgba(0, 0, 0, 0)',paper_bgcolor='rgba(0, 0, 0, 0)')
-
-
-#Define all frames within the animation
-frames =  [go.Frame(data=[go.Scatter3d(
-                            x=x,
-                            y=amp*np.sin(x+t*np.pi/period),
-                            z=x)],
-                    traces=[0],
-                    name=f"frame_{t}")
-                    for t in range(1, sim_duration)]
-
-#Assign said frames to the figure
-fig.update(frames=frames)
-
-#Define the protocols for updating the figure
-#  Here, a button which causes the figure to loop linearly through the frame
-fig.update_layout(
-    updatemenus = [
-        {
-            "buttons": [
-                {
-                    "label" : "Play",
-                    "method" : "animate", #Affects animation
-                    "args" : [None, frame_arguments(frame_duration)]
-                },
-                {
-                    "label" : "Pause",
-                    "method" : "animate",
-                    #To FutureJake: This is jank you can't just make a pause button by setting the frame duration to ten billion seconds [FIX]
-                    #  To PastJake: Who's going to stop me?
-                    "args" : [None, frame_arguments(1000000000)]
-                }
-            ],
-            #Position/display arguments for the buttons
-            "y" : 0.5,
-            "yanchor" : "bottom",
-            "xanchor" : "center",
-            "type" : "buttons"
-        },
-        {
-            "buttons": [
-                {
-                    "label" : "Lightmode",
-                    "method" : "relayout", #Affects layout attributes
-                    "args" : ["template", pio.templates["plotly_white"]]
-                },
-                {
-                    "label" : "Darkmode",
-                    "method" : "relayout", #Affects layout attributes
-                    "args" : ["template", pio.templates["plotly_dark"]]
-                }
-            ],
-            "y" : 0.4,
-            "yanchor" : "top",
-            "xanchor" : "center",
-            "direction" : "down",
-            "type" : "dropdown"
+```{ojs}
+waveSum_m2 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints_m2; i++) {
+        var y = 0
+        for (var k = 1; k <= NumWaves_m2; k++) {
+            var j = i * distance_m2 / NumPoints_m2;
+            y += amplitude_m2 * Math.sin(j * 2*Math.PI / wavelengths_m2[k] + time_m2 + phases_m2[k])
         }
+        data.push([j,y]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+time_m2 = {
+  let i = 0;
+  while (true) {
+    i += speed_m2 * 0.01;
+    yield i
+  }
+}
+```
+
+```{ojs}
+summed_wave_m2 = d3.line()(waveSum_m2);
+svg`<svg viewBox="0 -50 400 85">
+  <path d="${summed_wave_m2}" stroke="black" fill="none" />
+</svg>`
+```
+
+---
+
+<br />
+The waveform is... complex now, to say the least. It might not even be periodic anymore! But how can we concretely define this notion of "coherence"? Technically the wave *is* well-defined everywhere in space here. Indeed if we knew the underlying ten pure waves, we could know exactly what this ugly wave is doing everywhere in space.
+
+But in reality we don't have the luxury of perfectly measuring the wave at every position for all time. We have to make do with sampling a subset of it. Let's consider a pure state again, where we measure the value of a portion over time and see how much that information constrains the wave's behaviour at another position:
+<br />
+
+```{ojs}
+
+viewof form_m3_1 = Inputs.form(
+    [
+        Inputs.range([5, 50], {label: "Wavelength",    step: 1}),
+        Inputs.range([1, 10], {label: "Speed", step: 1}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+wavelength_m3 = form_m3_1[0];
+speed_m3      = form_m3_1[1]
+
+viewof form_m3_2 = Inputs.form(
+    [
+        Inputs.range([500, 850], {label: "Delay", step: 5, value: 640}),
+        Inputs.button("Toggle Wave")
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+d5x_m3  = form_m3_2[0];
+vtoggle = form_m3_2[1]
+
+
+
+//viewof wavelength_m3    = Inputs.range([5, 50], {label: "Wavelength",    step: 1});
+//viewof speed_m3     = Inputs.range([1, 10], {label: "Speed", step: 1});
+//viewof d5x_m3       = Inputs.range([500, 850], {label: "Delay", step: 5, value: 640});
+//viewof vtoggle      = Inputs.button("Toggle Wave")
+
+d1x_m3 = 100;
+d2x_m3 = 110;
+d3x_m3 = 120;
+d4x_m3 = 130;
+
+observation_time = 400;
+amplitude_m3 = 25;
+
+```
+
+```{ojs}
+wave_m3 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance / NumPoints;
+        data.push([j , amplitude_m3 * Math.sin(j * 2*Math.PI / wavelength_m3 + time_m3)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+d1y_m3 = wave_m3[d1x_m3][1];
+d2y_m3 = wave_m3[d2x_m3][1];
+d3y_m3 = wave_m3[d3x_m3][1];
+d4y_m3 = wave_m3[d4x_m3][1];
+d5y_m3 = wave_m3[d5x_m3][1];
+visible = {
+  if(vtoggle % 2 == 0){return "black"}
+  else{return "white"}
+  }
+
+```
+
+```{ojs}
+time_m3 = {
+  let i = 0;
+  while (true) {
+    i += speed_m3 * 0.01;
+    yield i
+  }
+}
+```
+
+```{ojs}
+out_m3 = d3.line()(wave_m3);
+svg`<svg viewBox="0 -50 400 85">
+  <path d="${out_m3}" stroke=${visible} fill="none" />
+  <circle cx=${d1x_m3 * distance / NumPoints} cy=${d1y_m3} r="2.5" fill="red"/>
+  <circle cx=${d2x_m3 * distance / NumPoints} cy=${d2y_m3} r="2.5" fill="DarkOrange"/>
+  <circle cx=${d3x_m3 * distance / NumPoints} cy=${d3y_m3} r="2.5" fill="DarkOrange"/>
+  <circle cx=${d4x_m3 * distance / NumPoints} cy=${d4y_m3} r="2.5" fill="DarkOrange"/>
+  <circle cx=${d5x_m3 * distance / NumPoints} cy=${d5y_m3} r="2.5" fill="blue"/>
+</svg>`
+```
+
+```{ojs}
+//y(t) for the measured point of the wave (red dot)
+p1_t = {
+    var p1_t = [];
+    for (var t =1; t <= observation_time; t++){
+        var j = d1x_m3 * distance / NumPoints;
+        var k = t / wavelength_m3;
+        p1_t.push([k,amplitude_m3 * Math.sin(j * 2*Math.PI / wavelength_m3 + k)]);
+    }
+    return p1_t;
+}
+```
+
+```{ojs}
+//y(t) for the hypothetical point of the wave (blue dot)
+p2_t = {
+    var p2_t = [];
+    for (var t =1; t <= observation_time; t++){
+        var j = d5x_m3 * distance / NumPoints;
+        var k = t / wavelength_m3;
+        p2_t.push([k,amplitude_m3 * Math.sin(j * 2*Math.PI / wavelength_m3 + k)]);
+    }
+    return p2_t;
+}
+```
+
+```{ojs}
+plot1_m3 = Plot.plot({
+    height: 200,
+    width: width/2,
+    x: {line: true},
+    y: {grid:true},
+    fill: "red",
+    marks: [
+        Plot.line(p1_t, {stroke:"red", strokeWidth:3})
     ]
-)        
-
-#Finally, render the figure
-fig.show()
-
+})
 ```
 
-```{python}
-import plotly.graph_objects as go
-import numpy as np
-
-#Curve parameters
-period    = 50
-n_samples = 100
-sim_time  = period*10
-
-x = np.arange(n_samples)*np.pi/period
-
-fig = go.Figure(go.Scatter(x=x, y=np.sin(x), mode='lines', name='Testing Points'))
-fig.update_layout(title='Animation Test',
-                  title_x=0.5,
-                  width=600, height=600, 
-                  xaxis_title='time', 
-                  yaxis_title='E',
-                  yaxis_range=(-1.5, 1.5),
-                  xaxis_range=(0,2*np.pi),
-                  #defines the play button and animation settings
-                  updatemenus=[dict(buttons = [dict(
-                                               args = [None, {"frame": {"duration": period, 
-                                                                        "redraw": False},
-                                                              "fromcurrent": True, 
-                                                              "transition": {"duration": 0}}],
-                                               label = "Play",
-                                               method = "animate")],
-                                type='buttons',
-                                showactive=False,
-                                xanchor='right',
-                                yanchor='top')])
-                                          
-frames= [go.Frame(data=[go.Scatter(x=x, y=np.sin(x+t*np.pi/period))]) for t in range(1, sim_time)]
-fig.update(frames=frames)
-
-fig.show()
+```{ojs}
+plot2_m3 = Plot.plot({
+    height: 200,
+    width: width/2,
+    x: {line: true},
+    y: {grid:true},
+    stroke: "blue",
+    marks: [
+        Plot.line(p2_t, {stroke:"blue", strokeWidth:3})
+    ]
+})
 ```
+
+```{ojs}
+html`<html>
+ <head>
+ </head>
+ <body>
+    <div class="container" style="display: flex; height: 300px;">
+        <div style="width: 50%;">
+            ${plot1_m3}
+        </div>
+        <div style=" width: 50%;">
+            ${plot2_m3}
+        </div>
+    </div>
+ </body>
+</html>`
+```
+
+
+
+Evidently 

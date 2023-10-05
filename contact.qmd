@@ -1,9 +1,7 @@
 ---
 title: contact
 links:
-  - icon: github
-    text: Github
-    href: https://github.com/ja-fe
+
 ---
 
 text text text
