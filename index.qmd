@@ -8,6 +8,7 @@ format:
 ---
 Hi! I am still being built! Check out the incomplete notes below and check back in later -jf
 
+Everything on this website was built and programmed by me. However, it would not have been possible without the immense body of literature and work made freely available by countless people all over the world. In that spirit, the entire code for this website is freely available [here.](https://github.com/ja-fe)
 
 ## What is Polarization State?
 
@@ -198,8 +199,8 @@ But in reality we don't have the luxury of perfectly measuring the wave at every
 
 viewof form_m3_1 = Inputs.form(
     [
-        Inputs.range([5, 50], {label: "Wavelength",    step: 1}),
-        Inputs.range([1, 10], {label: "Speed", step: 1}),
+        Inputs.range([5, 50], {label: "Wavelength",    step: 1, value: 35}),
+        Inputs.range([1, 20], {label: "Speed", step: 1, value: 10}),
     ],
     {
         template: (inputs) => htl.html`<div style="display: flex; gap: 1em">

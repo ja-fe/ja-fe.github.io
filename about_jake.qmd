@@ -1,15 +1,129 @@
 ---
-title: Jake Ferguson
+title: ""
 about:
   template: jolla
-  image: static/jf_logo.png
   links:
     - icon: github
       text: Github
       href: https://github.com/ja-fe
+execute:
+  error: true
+  echo: false
+  output: true
+html:
+  fig-align: center
 ---
 
-Jake (he/him) is a PhD Candidate in Geography and Environmental Management at the University of Waterloo. He's interested in SAR Interferometry, SAR Polarimetry, physics education, and fussing over his website's plotly renders.\
+```{ojs}
+//Note that this code assumes the x,y positions of each subimage is indices and doesn't not normalize, e.g. if they are coordinates in an arbitrary system
+//The main images and subimages also need to be square to render properly
+
+mx = d3.max(gridData, d=>d.x);
+my = d3.max(gridData, d=>d.y);
+height = 460;
+width  = 300;
+numCellsx = 21;
+numCellsy = 32;
+
+gridData = {
+    var da = [];
+    var c = 0;
+    for (var j = 0; j <= numCellsx; j++) {
+        for (var k = 0; k <= numCellsy; k++) {
+        c+=1;
+        da.push({id:c,x:j,y:k,opa:1});
+    }}
+    return da;
+}
+
+
+
+{
+
+  var hover  = -10;
+  var ref_x  = 0;
+  var ref_y  = 0;
+  var dist   = 0;
+  var stophover = false
+  const svg = d3.select(DOM.svg(width, height));
+
+
+  svg.append("image")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("xlink:href", "static/logo_think.png");
+
+  var node = svg.selectAll("g.node")
+    .data(gridData, d => d.id)
+    
+  var nodeEnter = node.enter()
+    .append("svg:g")
+    .attr("class", "node")
+
+  nodeEnter.append("rect")
+    .attr("id", d => d.id)
+    .attr("x", d => scale_x(d.x))
+    .attr("y", d => scale_y(d.y))
+    .attr("width", width/(mx+1))
+    .attr("height", height/(my+1))
+    .attr("fill", "white")
+    .attr("opacity", function(d){
+      if (d.x > numCellsx/3 && d.x < numCellsx*.75 && d.y > numCellsy/10 && d.y < numCellsy/4.5) {
+        d.opa = 0
+        return 0}
+      else {return 1}
+    })
+    .on("mouseover", function (event, d) {
+      if (!stophover){
+      hover = d.id
+      ref_x = d.x
+      ref_y = d.y
+      d3.selectAll("rect")
+        //.transition()
+        //.delay(function(d,i){return Math.sqrt(Math.abs(d.x - ref_x)**2 + Math.abs(d.y - ref_y)**2);})
+        //.duration(1000)
+        //.attr("opacity",0)
+        .attr("opacity",function(d){
+          if (Math.sqrt(Math.abs(d.x - ref_x)**2 + Math.abs(d.y - ref_y)**2) < 4.1) {
+            d.opa = d.opa*.93
+            return d.opa*.93}
+          else {return d3.select(this).attr("opacity")}
+        })}
+    })
+    .on("click", function (event, d) {
+      stophover = true
+      hover = d.id
+      ref_x = d.x
+      ref_y = d.y
+      d3.selectAll("rect")
+        .transition()
+        .delay(function(d,i){return 100*Math.sqrt(Math.abs(d.x - ref_x)**2 + Math.abs(d.y - ref_y)**2)})
+        .duration(1000)
+        .attr("opacity",function(d){
+          d.opa = 0
+          return 0
+        })
+    });
+
+  return svg.node();
+}
+```
+
+```{ojs}
+scale_x = d3.scaleLinear()
+  .domain([0, mx])
+  .range([0, width * (1-1/(mx+1))])
+```
+
+```{ojs}
+scale_y = d3.scaleLinear()
+  .domain([0, my])
+  .range([0, height * (1-1/(my+1))])
+```
+
+# Jake Ferguson
+
+Jake (he/him) is a PhD Candidate in Geography and Environmental Management at the University of Waterloo. He's interested in SAR Interferometry, SAR Polarimetry, producing open educational resources, and fussing over his website's D3 renders.\
 [To see an image of me, click here](https://www.google.com/search?channel=fs&client=ubuntu&q=the+importance+of+blind+hiring+practices)
 
 ---
@@ -25,11 +139,5 @@ BSc. Physics | April 2017
 ### Select pubs
 [Polarimetric decomposition of microwave-band freshwater ice SAR data: Review, analysis, and future directions](https://doi.org/10.1016/j.rse.2022.113176)
 </div>
-
----
-
-#### Recommended Reading
-
-why is this not updating
 
 ---
