@@ -8,13 +8,11 @@ format:
 ---
 Hi! I am still being built! Check out the incomplete notes below and check back in later -jf
 
-Everything on this website was built and programmed by me. However, it would not have been possible without the immense body of literature and work made freely available by countless people all over the world. In that spirit, the entire code for this website is freely available [here.](https://github.com/ja-fe)
+Everything on this website was built and programmed by me, some of it even in languages I understand! However, it would not have been possible without the immense body of literature and work made freely available by countless people all over the world. In that spirit, the entire code for this website is freely available [here.](https://github.com/ja-fe)
 
-## What is Polarization State?
+## What is Coherence? What is Polarization State?
 
-### What is degree of polarization?
-
-In reality, most EMR is not "perfectly polarized" as it was above. EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms:
+In reality, most EMR is not "perfectly polarized". EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms:
 
 ```{ojs}
 //TODO: This use of html tags to decrease font size to get around label wrapping is bad, find more elegant solution later
@@ -68,7 +66,7 @@ NumPoints = 1000;
 ```
 
 ```{ojs}
-wave1 = {
+wave1_m1 = {
     var data = [];
     for (var i = 1; i <= NumPoints; i++) {
         var j = i * distance / NumPoints;
@@ -79,7 +77,7 @@ wave1 = {
 ```
 
 ```{ojs}
-wave2 = {
+wave2_m1 = {
     var data = [];
     for (var i = 1; i <= NumPoints; i++) {
         var j = i * distance / NumPoints;
@@ -90,7 +88,7 @@ wave2 = {
 ```
 
 ```{ojs}
-waveSum = {
+waveSum_m1 = {
     var data = [];
     for (var i = 1; i <= NumPoints; i++) {
         var j = i * distance / NumPoints;
@@ -111,8 +109,8 @@ time = {
 ```
 
 ```{ojs}
-r = d3.line()(wave1);
-b = d3.line()(wave2);
+r = d3.line()(wave1_m1);
+b = d3.line()(wave2_m1);
 svg`<svg viewBox="0 -32 400 64">
   <path d="${r}" stroke="red" fill="none" />
   <path d="${b}" stroke="blue" fill="none" />
@@ -120,7 +118,7 @@ svg`<svg viewBox="0 -32 400 64">
 ```
 
 ```{ojs}
-p = d3.line()(waveSum);
+p = d3.line()(waveSum_m1);
 svg`<svg viewBox="0 -64 400 130">
   <path d="${p}" stroke="black" fill="none" />
 </svg>`
@@ -129,7 +127,7 @@ svg`<svg viewBox="0 -64 400 130">
 ---
 
 <br />
-But that's just two "pure" waves -- what happens when EMR is the sum of many waves of different frequencies? Try adding more and more waves of different frequencies, uniformly distributed in a small band:
+But that's just two "pure" waves -- what happens when EMR is the sum of many waves of different frequencies? Try adding more and more waves of different frequencies, uniformly distributed in a small range (or band):
 <br />
 
 ```{ojs}
@@ -171,6 +169,22 @@ waveSum_m2 = {
 ```
 
 ```{ojs}
+waves_m2 = {
+    var waves = []
+    for (var i = 1; i <= wavelengths_m2.length; i++) {
+        var data = [];
+        for (var k = 1; k <= NumPoints_m2; k++) {
+            var j = k * distance_m2 / NumPoints_m2;
+            data.push([j , amplitude_m2* Math.sin(j * 2*Math.PI / wavelengths_m2[i] + time_m2 + phases_m2[i]) + amplitude_m2*2.4*(i+2)]);
+        }
+        waves.push(data)
+    }
+    return waves;
+}
+```
+
+
+```{ojs}
 time_m2 = {
   let i = 0;
   while (true) {
@@ -181,9 +195,31 @@ time_m2 = {
 ```
 
 ```{ojs}
+
+colors_m2 = {
+    var colors = []
+    for (var i = 0; i < wavelengths_m2.length; i++){
+        if (i < NumWaves_m2){colors.push("red")}
+        else {colors.push("white")}
+    }
+    return colors
+}
+
 summed_wave_m2 = d3.line()(waveSum_m2);
-svg`<svg viewBox="0 -50 400 85">
+w_m2 = d3.line()(waves_m2[0]);
+svg`<svg viewBox="0 -50 400 250">
   <path d="${summed_wave_m2}" stroke="black" fill="none" />
+  <path d="${d3.line()(waves_m2[0])}" stroke=${colors_m2[0]} fill="none" />
+  <path d="${d3.line()(waves_m2[1])}" stroke=${colors_m2[1]} fill="none" />
+  <path d="${d3.line()(waves_m2[2])}" stroke=${colors_m2[2]} fill="none" />
+  <path d="${d3.line()(waves_m2[3])}" stroke=${colors_m2[3]} fill="none" />
+  <path d="${d3.line()(waves_m2[4])}" stroke=${colors_m2[4]} fill="none" />
+  <path d="${d3.line()(waves_m2[5])}" stroke=${colors_m2[5]} fill="none" />
+  <path d="${d3.line()(waves_m2[6])}" stroke=${colors_m2[6]} fill="none" />
+  <path d="${d3.line()(waves_m2[7])}" stroke=${colors_m2[7]} fill="none" />
+  <path d="${d3.line()(waves_m2[8])}" stroke=${colors_m2[8]} fill="none" />
+  <path d="${d3.line()(waves_m2[9])}" stroke=${colors_m2[9]} fill="none" />
+  <path d="${d3.line()(waves_m2[10])}" stroke=${colors_m2[10]} fill="none" />
 </svg>`
 ```
 
@@ -315,29 +351,38 @@ p2_t = {
 ```
 
 ```{ojs}
-plot1_m3 = Plot.plot({
+plot1_m3 ={
+  var p = Plot.plot({
     height: 200,
     width: width/2,
-    x: {line: true},
-    y: {grid:true},
+    x: {line: true, label: "time", ticks:0, anchor:"bottom", labelAnchor: "center"},
+    y: {label: "amplitude", ticks:0, anchor:"left", labelAnchor:"center"},
     fill: "red",
     marks: [
         Plot.line(p1_t, {stroke:"red", strokeWidth:3})
     ]
-})
+  })
+  p.setAttribute("font-size", 18);
+  return p
+}
+
 ```
 
 ```{ojs}
-plot2_m3 = Plot.plot({
-    height: 200,
-    width: width/2,
-    x: {line: true},
-    y: {grid:true},
-    stroke: "blue",
-    marks: [
-        Plot.line(p2_t, {stroke:"blue", strokeWidth:3})
-    ]
-})
+plot2_m3 = {
+    var p = Plot.plot({
+        height: 200,
+        width: width/2,
+        x: {line: true, label: "time", ticks:0, anchor:"bottom", labelAnchor: "center"},
+        y: {label: "amplitude", ticks:0, anchor:"left", labelAnchor:"center"},
+        stroke: "blue",
+        marks: [
+            Plot.line(p2_t, {stroke:"blue", strokeWidth:3})
+        ]
+    })
+  p.setAttribute("font-size", 18);
+  return p
+}
 ```
 
 ```{ojs}
