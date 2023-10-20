@@ -9,15 +9,14 @@ website:
     search: true
     left:
       - href: index.qmd
-        text: home
+        text: Home
       - href: about_jake.qmd
-        text: about
+        text: About
       - href: about.qmd
-        text: research
-      - text: teaching
-        menu:
-          - about.qmd
-      - text: projects
+        text: Research
+      - text: "Teaching"
+        href: teaching/teaching_landingpage.qmd
+      - text: Projects
         menu:
           - about.qmd
     right:
@@ -27,6 +26,28 @@ website:
         href: https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&hl=en
       - text: "{{< ai orcid color=body-color size=xl title='OrcID Link' >}} "
         href: https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&hl=en
+
+  sidebar:
+    - title: "Teaching"
+      style: "floating"
+      search: true
+      collapse-level: 1
+      contents:
+        - text: Teaching
+          href: teaching/teaching_landingpage.qmd
+        - section: "Wave Coherence and Polarization State"
+          contents:
+            - href: teaching/coherence_and_polarization/cp1.qmd
+            - href: teaching/coherence_and_polarization/cp2.qmd
+            - href: teaching/coherence_and_polarization/cp3.qmd  
+
+    - title: "teaching2"
+      style: "floating"
+      contents:
+        - section: "Wave Coherence and Polarization State"
+          contents:
+            - teaching/coherence_and_polarization.qmd
+
 
   page-footer:
     left: "<sub>© 2023 Jake Ferguson</sub>"
