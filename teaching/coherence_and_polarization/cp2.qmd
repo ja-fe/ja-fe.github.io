@@ -1,0 +1,104 @@
+---
+title: Getting Incoherent
+execute:
+    echo: false
+website:
+    page-navigation: true
+---
+
+<br />
+But that's just two "pure" waves -- what happens when EMR is the sum of many waves of different frequencies? Try adding more and more waves of different frequencies, uniformly distributed in a small range (or band):
+<br />
+
+```{ojs}
+
+viewof form_m2_1 = Inputs.form(
+    [
+        Inputs.range([1, 10], {label: "# of Waves", step: 1, value: 1}),
+        Inputs.range([1, 20], {label: "Speed", step: 1, value: 10})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+NumWaves_m2 = form_m2_1[0];
+speed_m2    = form_m2_1[1];
+
+amplitude_m2 = 6;
+distance_m2 = 400;
+NumPoints_m2 = 1000;
+wavelengths_m2 = [30,29,25,33,36,24,28,35,40,22,37];
+phases_m2 = [0,0,1,0.5,2,3.1,4,4.9,1.3,.8,6];
+```
+
+```{ojs}
+waveSum_m2 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints_m2; i++) {
+        var y = 0
+        for (var k = 1; k <= NumWaves_m2; k++) {
+            var j = i * distance_m2 / NumPoints_m2;
+            y += amplitude_m2 * Math.sin(j * 2*Math.PI / wavelengths_m2[k] + time_m2 + phases_m2[k])
+        }
+        data.push([j,y]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+waves_m2 = {
+    var waves = []
+    for (var i = 1; i <= wavelengths_m2.length; i++) {
+        var data = [];
+        for (var k = 1; k <= NumPoints_m2; k++) {
+            var j = k * distance_m2 / NumPoints_m2;
+            data.push([j , amplitude_m2* Math.sin(j * 2*Math.PI / wavelengths_m2[i] + time_m2 + phases_m2[i]) + amplitude_m2*2.4*(i+2)]);
+        }
+        waves.push(data)
+    }
+    return waves;
+}
+```
+
+
+```{ojs}
+time_m2 = {
+  let i = 0;
+  while (true) {
+    i += speed_m2 * 0.01;
+    yield i
+  }
+}
+```
+
+```{ojs}
+
+colors_m2 = {
+    var colors = []
+    for (var i = 0; i < wavelengths_m2.length; i++){
+        if (i < NumWaves_m2){colors.push("red")}
+        else {colors.push("white")}
+    }
+    return colors
+}
+
+summed_wave_m2 = d3.line()(waveSum_m2);
+w_m2 = d3.line()(waves_m2[0]);
+svg`<svg viewBox="0 -50 400 250">
+  <path d="${summed_wave_m2}" stroke="black" fill="none" />
+  <path d="${d3.line()(waves_m2[0])}" stroke=${colors_m2[0]} fill="none" />
+  <path d="${d3.line()(waves_m2[1])}" stroke=${colors_m2[1]} fill="none" />
+  <path d="${d3.line()(waves_m2[2])}" stroke=${colors_m2[2]} fill="none" />
+  <path d="${d3.line()(waves_m2[3])}" stroke=${colors_m2[3]} fill="none" />
+  <path d="${d3.line()(waves_m2[4])}" stroke=${colors_m2[4]} fill="none" />
+  <path d="${d3.line()(waves_m2[5])}" stroke=${colors_m2[5]} fill="none" />
+  <path d="${d3.line()(waves_m2[6])}" stroke=${colors_m2[6]} fill="none" />
+  <path d="${d3.line()(waves_m2[7])}" stroke=${colors_m2[7]} fill="none" />
+  <path d="${d3.line()(waves_m2[8])}" stroke=${colors_m2[8]} fill="none" />
+  <path d="${d3.line()(waves_m2[9])}" stroke=${colors_m2[9]} fill="none" />
+  <path d="${d3.line()(waves_m2[10])}" stroke=${colors_m2[10]} fill="none" />
+</svg>`
+```

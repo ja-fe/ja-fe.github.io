@@ -1,0 +1,187 @@
+---
+title: Visualizing Coherence
+execute:
+    echo: false
+website:
+    page-navigation: true
+---
+
+<br />
+The waveform is... complex now, to say the least. It might not even be periodic anymore! But how can we concretely define this notion of "coherence"? Technically the wave *is* well-defined everywhere in space here. Indeed if we knew the underlying ten pure waves, we could know exactly what this ugly wave is doing everywhere in space.
+
+But in reality we don't have the luxury of perfectly measuring the wave at every position for all time. We have to make do with sampling a subset of it. Let's consider a pure state again, where we measure the value of a portion over time and see how much that information constrains the wave's behaviour at another position:
+<br />
+
+```{ojs}
+
+viewof form_m3_1 = Inputs.form(
+    [
+        Inputs.range([5, 50], {label: "Wavelength",    step: 1, value: 35}),
+        Inputs.range([1, 20], {label: "Speed", step: 1, value: 10}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+wavelength_m3 = form_m3_1[0];
+speed_m3      = form_m3_1[1]
+
+viewof form_m3_2 = Inputs.form(
+    [
+        Inputs.range([500, 850], {label: "Delay", step: 5, value: 640}),
+        Inputs.button("Toggle Wave")
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+d5x_m3  = form_m3_2[0];
+vtoggle = form_m3_2[1]
+
+
+
+//viewof wavelength_m3    = Inputs.range([5, 50], {label: "Wavelength",    step: 1});
+//viewof speed_m3     = Inputs.range([1, 10], {label: "Speed", step: 1});
+//viewof d5x_m3       = Inputs.range([500, 850], {label: "Delay", step: 5, value: 640});
+//viewof vtoggle      = Inputs.button("Toggle Wave")
+
+d1x_m3 = 100;
+d2x_m3 = 110;
+d3x_m3 = 120;
+d4x_m3 = 130;
+
+observation_time = 400;
+amplitude_m3 = 25;
+
+distance = 400;
+NumPoints = 1000;
+
+```
+
+```{ojs}
+wave_m3 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance / NumPoints;
+        data.push([j , amplitude_m3 * Math.sin(j * 2*Math.PI / wavelength_m3 + time_m3)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+d1y_m3 = wave_m3[d1x_m3][1];
+d2y_m3 = wave_m3[d2x_m3][1];
+d3y_m3 = wave_m3[d3x_m3][1];
+d4y_m3 = wave_m3[d4x_m3][1];
+d5y_m3 = wave_m3[d5x_m3][1];
+visible = {
+  if(vtoggle % 2 == 0){return "black"}
+  else{return "white"}
+  }
+
+```
+
+```{ojs}
+time_m3 = {
+  let i = 0;
+  while (true) {
+    i += speed_m3 * 0.01;
+    yield i
+  }
+}
+```
+
+```{ojs}
+out_m3 = d3.line()(wave_m3);
+svg`<svg viewBox="0 -50 400 85">
+  <path d="${out_m3}" stroke=${visible} fill="none" />
+  <circle cx=${d1x_m3 * distance / NumPoints} cy=${d1y_m3} r="2.5" fill="red"/>
+  <circle cx=${d2x_m3 * distance / NumPoints} cy=${d2y_m3} r="2.5" fill="DarkOrange"/>
+  <circle cx=${d3x_m3 * distance / NumPoints} cy=${d3y_m3} r="2.5" fill="DarkOrange"/>
+  <circle cx=${d4x_m3 * distance / NumPoints} cy=${d4y_m3} r="2.5" fill="DarkOrange"/>
+  <circle cx=${d5x_m3 * distance / NumPoints} cy=${d5y_m3} r="2.5" fill="blue"/>
+</svg>`
+```
+
+```{ojs}
+//y(t) for the measured point of the wave (red dot)
+p1_t = {
+    var p1_t = [];
+    for (var t =1; t <= observation_time; t++){
+        var j = d1x_m3 * distance / NumPoints;
+        var k = t / wavelength_m3;
+        p1_t.push([k,amplitude_m3 * Math.sin(j * 2*Math.PI / wavelength_m3 + k)]);
+    }
+    return p1_t;
+}
+```
+
+```{ojs}
+//y(t) for the hypothetical point of the wave (blue dot)
+p2_t = {
+    var p2_t = [];
+    for (var t =1; t <= observation_time; t++){
+        var j = d5x_m3 * distance / NumPoints;
+        var k = t / wavelength_m3;
+        p2_t.push([k,amplitude_m3 * Math.sin(j * 2*Math.PI / wavelength_m3 + k)]);
+    }
+    return p2_t;
+}
+```
+
+```{ojs}
+plot1_m3 ={
+  var p = Plot.plot({
+    height: 200,
+    width: width/2,
+    x: {line: true, label: "time", ticks:0, anchor:"bottom", labelAnchor: "center"},
+    y: {label: "amplitude", ticks:0, anchor:"left", labelAnchor:"center"},
+    fill: "red",
+    marks: [
+        Plot.line(p1_t, {stroke:"red", strokeWidth:3})
+    ]
+  })
+  p.setAttribute("font-size", 18);
+  return p
+}
+
+```
+
+```{ojs}
+plot2_m3 = {
+    var p = Plot.plot({
+        height: 200,
+        width: width/2,
+        x: {line: true, label: "time", ticks:0, anchor:"bottom", labelAnchor: "center"},
+        y: {label: "amplitude", ticks:0, anchor:"left", labelAnchor:"center"},
+        stroke: "blue",
+        marks: [
+            Plot.line(p2_t, {stroke:"blue", strokeWidth:3})
+        ]
+    })
+  p.setAttribute("font-size", 18);
+  return p
+}
+```
+
+```{ojs}
+html`<html>
+ <head>
+ </head>
+ <body>
+    <div class="container" style="display: flex; height: 300px;">
+        <div style="width: 50%;">
+            ${plot1_m3}
+        </div>
+        <div style=" width: 50%;">
+            ${plot2_m3}
+        </div>
+    </div>
+ </body>
+</html>`
+```

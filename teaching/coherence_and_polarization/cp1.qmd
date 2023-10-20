@@ -1,17 +1,10 @@
 ---
-title: "jf_web"
+title: Sums of Waves
 execute:
     echo: false
-format:
-    html:
-        page-layout: full
 website:
     page-navigation: true
 ---
-Hi! I am still being built! Check out the incomplete notes below and check back in later -jf
-
-Everything on this website was built and programmed by me, some of it even in languages I understand! However, it would not have been possible without the immense body of literature and work made freely available by countless people all over the world. In that spirit, the entire code for this website is freely available [here.](https://github.com/ja-fe)
-
 ## What is Coherence? What is Polarization State?
 
 In reality, most EMR is not "perfectly polarized". EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms: [about](about.qmd)
@@ -126,4 +119,3 @@ svg`<svg viewBox="0 -64 400 130">
 </svg>`
 ```
 
----

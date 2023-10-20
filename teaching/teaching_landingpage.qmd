@@ -1,0 +1,8 @@
+---
+title: Teaching
+execute:
+    echo: false
+---
+
+Are you a students in my class? A colleague? Graduate student desperately searching the web for an explanation of an obscure concept? Here you'll find a selection of teaching resources associated with my classes and workshops.
+
