@@ -5,6 +5,11 @@ execute:
 website:
     page-navigation: true
 ---
+
+Remote sensing involves measuring light's physical properties to determine what type of object it was emitted by or interacted with. Properties like energy and wavelength/frequency are straightforward enough to undertand and represent diagrammatically -- however we often want to observe and explain more unintuitive properties like **coherence** or **polarization state**.
+
+These properties are the basis of powerful techniques such as **radar polarimetry**, but they're notoriously tricky to represent and absorb -- it certainly doesn't help that we need to visualize 4D objects, or that the properties are similar yet distinct, intimately related through statistics! Don't worry though -- here we will walk comfortably from first principles up to a working understanding of **coherence** and **polarization state**. And if you're particularly brave continue on and we'll tie them together under the umbrella of information theory by relating them to *Shannon entropy*.
+
 ## What is Coherence? What is Polarization State?
 
 In reality, most EMR is not "perfectly polarized". EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms: [about](about.qmd)
