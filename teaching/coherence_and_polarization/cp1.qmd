@@ -123,4 +123,3 @@ svg`<svg viewBox="0 -64 400 130">
   <path d="${p}" stroke="black" fill="none" />
 </svg>`
 ```
-

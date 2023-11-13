@@ -39,7 +39,8 @@ website:
           contents:
             - href: teaching/coherence_and_polarization/cp1.qmd
             - href: teaching/coherence_and_polarization/cp2.qmd
-            - href: teaching/coherence_and_polarization/cp3.qmd  
+            - href: teaching/coherence_and_polarization/cp3.qmd
+            - href: teaching/coherence_and_polarization/cp5.qmd
 
     - title: "teaching2"
       style: "floating"
