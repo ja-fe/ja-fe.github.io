@@ -36,8 +36,6 @@ gridData = {
     return da;
 }
 
-
-
 {
 
   var hover  = -10;
