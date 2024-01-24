@@ -355,18 +355,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="46" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>Vcolor <span class="op">=</span> {</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(vtoggle2 <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>){<span class="cf">return</span> <span class="bn">0xff0000</span>}</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>{<span class="cf">return</span> <span class="bn">0xffffff</span>}</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>Hcolor <span class="op">=</span> {</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(vtoggle2 <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>){<span class="cf">return</span> <span class="bn">0x0000ff</span>}</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>{<span class="cf">return</span> <span class="bn">0xffffff</span>}</span>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="46" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>H_color <span class="op">=</span> {<span class="cf">return</span> <span class="bn">0xff0000</span>}</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>V_color <span class="op">=</span> {<span class="cf">return</span> <span class="bn">0x0000ff</span>}</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>S_color <span class="op">=</span> {<span class="cf">return</span> <span class="bn">0x36454f</span>}</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>render_HV <span class="op">=</span> {</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(vtoggle2 <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>){<span class="cf">return</span> <span class="kw">true</span>}</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>{<span class="cf">return</span> <span class="kw">false</span>}</span>
 <span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>Scolor <span class="op">=</span> {</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(vtoggle1 <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>){<span class="cf">return</span> <span class="bn">0xffffff</span>}</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>{<span class="cf">return</span> <span class="bn">0x000000</span>}</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>render_S <span class="op">=</span> {</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(vtoggle1 <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>){<span class="cf">return</span> <span class="kw">false</span>}</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>{<span class="cf">return</span> <span class="kw">true</span>}</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -389,25 +390,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </div>
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb4" data-startfrom="61" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 60;"><span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> renderer <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">WebGLRenderer</span>({<span class="dt">antialias</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> renderer <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">WebGLRenderer</span>({<span class="dt">antialias</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">alpha</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    invalidation<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> renderer<span class="op">.</span><span class="fu">dispose</span>())<span class="op">;</span></span>
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>    renderer<span class="op">.</span><span class="fu">setSize</span>(width<span class="op">,</span> height)<span class="op">;</span></span>
 <span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    renderer<span class="op">.</span><span class="fu">setPixelRatio</span>(devicePixelRatio)<span class="op">;</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> controls <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">OrbitControls</span>(camera<span class="op">,</span> renderer<span class="op">.</span><span class="at">domElement</span>)<span class="op">;</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    controls<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"change"</span><span class="op">,</span> () <span class="kw">=&gt;</span> renderer<span class="op">.</span><span class="fu">render</span>(scene<span class="op">,</span> camera))<span class="op">;</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    invalidation<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> (controls<span class="op">.</span><span class="fu">dispose</span>()<span class="op">,</span> renderer<span class="op">.</span><span class="fu">dispose</span>()))<span class="op">;</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="kw">true</span>) {</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>        renderer<span class="op">.</span><span class="fu">render</span>(scene<span class="op">,</span> camera)<span class="op">;</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        <span class="kw">yield</span> renderer<span class="op">.</span><span class="at">domElement</span><span class="op">;</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    renderer<span class="op">.</span><span class="fu">setClearColor</span>( <span class="bn">0xffffff</span><span class="op">,</span> <span class="dv">0</span> )</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> controls <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">OrbitControls</span>(camera<span class="op">,</span> renderer<span class="op">.</span><span class="at">domElement</span>)<span class="op">;</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    controls<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"change"</span><span class="op">,</span> () <span class="kw">=&gt;</span> renderer<span class="op">.</span><span class="fu">render</span>(scene<span class="op">,</span> camera))<span class="op">;</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    invalidation<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> (controls<span class="op">.</span><span class="fu">dispose</span>()<span class="op">,</span> renderer<span class="op">.</span><span class="fu">dispose</span>()))<span class="op">;</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="kw">true</span>) {</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        renderer<span class="op">.</span><span class="fu">render</span>(scene<span class="op">,</span> camera)<span class="op">;</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>        <span class="kw">yield</span> renderer<span class="op">.</span><span class="at">domElement</span><span class="op">;</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
@@ -418,14 +434,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="79" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 78;"><span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>scene <span class="op">=</span> {</span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Scene</span>()<span class="op">;</span></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="at">background</span> <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Color</span>(<span class="bn">0xffffff</span>)<span class="op">;</span></span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(line1)<span class="op">;</span></span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(line2)<span class="op">;</span></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="fu">add</span>(line3)<span class="op">;</span></span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> scene<span class="op">;</span></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="80" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 79;"><span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>scene <span class="op">=</span> {</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Scene</span>()<span class="op">;</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>  scene<span class="op">.</span><span class="at">background</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (render_HV <span class="op">==</span> <span class="kw">true</span>){</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>    scene<span class="op">.</span><span class="fu">add</span>(line1)<span class="op">;</span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    scene<span class="op">.</span><span class="fu">add</span>(line2)<span class="op">;</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (render_S <span class="op">==</span> <span class="kw">true</span>){</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>    scene<span class="op">.</span><span class="fu">add</span>(line3)</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> scene<span class="op">;</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
@@ -436,48 +456,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="90" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 89;"><span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>line1 <span class="op">=</span> {</span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineBasicMaterial</span>( { <span class="dt">color</span><span class="op">:</span> Vcolor  } )<span class="op">;</span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> points <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> y<span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_V<span class="op">;</span> j<span class="op">++</span>){</span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>            y <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_V) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_v[j] <span class="op">+</span> phases[j])</span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>        points<span class="op">.</span><span class="fu">push</span>( <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Vector3</span>( i<span class="op">-</span>NumPoints<span class="op">/</span><span class="dv">2</span><span class="op">,</span> y<span class="op">,</span> <span class="dv">0</span>) )<span class="op">;</span></span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>    }</span>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="96" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>line1 <span class="op">=</span> {</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineMaterial</span>({</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>        <span class="dt">color</span><span class="op">:</span> V_color<span class="op">,</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>        <span class="dt">linewidth</span><span class="op">:</span><span class="dv">3</span><span class="op">,</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
 <span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">BufferGeometry</span>()<span class="op">.</span><span class="fu">setFromPoints</span>( points )<span class="op">;</span></span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> line <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Line</span>( geometry<span class="op">,</span> material )<span class="op">;</span></span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line<span class="op">;</span></span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>    material<span class="op">.</span><span class="at">resolution</span><span class="op">.</span><span class="fu">set</span>(width<span class="op">,</span> height)<span class="op">;</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> points <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> y<span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_V<span class="op">;</span> j<span class="op">++</span>){</span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>            y <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_V) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_v[j] <span class="op">+</span> phases[j])</span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>        points<span class="op">.</span><span class="fu">push</span>(i<span class="op">-</span>NumPoints<span class="op">/</span><span class="dv">2</span><span class="op">,</span> y<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineGeometry</span>()<span class="op">.</span><span class="fu">setPositions</span>( points )<span class="op">;</span></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> line <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Line2</span>( geometry<span class="op">,</span> material )<span class="op">;</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line<span class="op">;</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>line2 <span class="op">=</span> {</span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineMaterial</span>({</span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>        <span class="dt">color</span><span class="op">:</span> H_color<span class="op">,</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>        <span class="dt">linewidth</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>    material<span class="op">.</span><span class="at">resolution</span><span class="op">.</span><span class="fu">set</span>(width<span class="op">,</span> height)<span class="op">;</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> points <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> x<span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_H<span class="op">;</span> j<span class="op">++</span>){</span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_H) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_h[j] <span class="op">+</span> phases[j])</span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>        points<span class="op">.</span><span class="fu">push</span>(i<span class="op">-</span>NumPoints<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> x)<span class="op">;</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineGeometry</span>()<span class="op">.</span><span class="fu">setPositions</span>( points )<span class="op">;</span></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> line <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Line2</span>( geometry<span class="op">,</span> material )<span class="op">;</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line<span class="op">;</span></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>line3 <span class="op">=</span> {</span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineMaterial</span>({</span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>        <span class="dt">color</span><span class="op">:</span> S_color<span class="op">,</span></span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a>        <span class="dt">linewidth</span><span class="op">:</span><span class="dv">3</span><span class="op">,</span></span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a>    material<span class="op">.</span><span class="at">resolution</span><span class="op">.</span><span class="fu">set</span>(width<span class="op">,</span> height)<span class="op">;</span></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> points <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_H<span class="op">;</span> j<span class="op">++</span>){</span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_H) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_h[j] <span class="op">+</span> phases[j])</span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> k<span class="op">=</span><span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> num_waves_V<span class="op">;</span> k<span class="op">++</span>){</span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>            y <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_V) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_v[k] <span class="op">+</span> phases[k])</span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a>        points<span class="op">.</span><span class="fu">push</span>(i<span class="op">-</span>NumPoints<span class="op">/</span><span class="dv">2</span><span class="op">,</span> y<span class="op">,</span> x)<span class="op">;</span></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineGeometry</span>()<span class="op">.</span><span class="fu">setPositions</span>( points )<span class="op">;</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> line <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Line2</span>( geometry<span class="op">,</span> material )<span class="op">;</span></span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line<span class="op">;</span></span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-6" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-3" data-nodetype="declaration">
+
+</div>
 </div>
 </div>
 </div>
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="109" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 108;"><span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>line2 <span class="op">=</span> {</span>
-<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineBasicMaterial</span>( { <span class="dt">color</span><span class="op">:</span> Hcolor  } )<span class="op">;</span></span>
-<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> points <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> x<span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_H<span class="op">;</span> j<span class="op">++</span>){</span>
-<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_H) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_h[j] <span class="op">+</span> phases[j])</span>
-<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>        points<span class="op">.</span><span class="fu">push</span>( <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Vector3</span>( i<span class="op">-</span>NumPoints<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> x) )<span class="op">;</span></span>
-<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">BufferGeometry</span>()<span class="op">.</span><span class="fu">setFromPoints</span>( points )<span class="op">;</span></span>
-<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> line <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Line</span>( geometry<span class="op">,</span> material )<span class="op">;</span></span>
-<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line<span class="op">;</span></span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="168" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 167;"><span id="cb7-168"><a href="#cb7-168" aria-hidden="true" tabindex="-1"></a>camera <span class="op">=</span> {</span>
+<span id="cb7-169"><a href="#cb7-169" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> camera <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">PerspectiveCamera</span>( <span class="dv">45</span><span class="op">,</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerWidth</span> <span class="op">/</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerHeight</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">500</span> )<span class="op">;</span></span>
+<span id="cb7-170"><a href="#cb7-170" aria-hidden="true" tabindex="-1"></a>    camera<span class="op">.</span><span class="at">position</span><span class="op">.</span><span class="fu">set</span>( <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span> )<span class="op">;</span></span>
+<span id="cb7-171"><a href="#cb7-171" aria-hidden="true" tabindex="-1"></a>    camera<span class="op">.</span><span class="fu">lookAt</span>( <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span> )<span class="op">;</span></span>
+<span id="cb7-172"><a href="#cb7-172" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> camera<span class="op">;</span></span>
+<span id="cb7-173"><a href="#cb7-173" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
@@ -488,128 +568,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="128" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>line3 <span class="op">=</span> {</span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineBasicMaterial</span>( { <span class="dt">color</span><span class="op">:</span> Scolor } )<span class="op">;</span></span>
-<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> points <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_H<span class="op">;</span> j<span class="op">++</span>){</span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_H) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_h[j] <span class="op">+</span> phases[j])</span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> k<span class="op">=</span><span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> num_waves_V<span class="op">;</span> k<span class="op">++</span>){</span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>            y <span class="op">+=</span> (<span class="dv">10</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_V) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_v[k] <span class="op">+</span> phases[k])</span>
-<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>        points<span class="op">.</span><span class="fu">push</span>( <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Vector3</span>( i<span class="op">-</span>NumPoints<span class="op">/</span><span class="dv">2</span><span class="op">,</span> y<span class="op">,</span> x) )<span class="op">;</span></span>
-<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> geometry <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">BufferGeometry</span>()<span class="op">.</span><span class="fu">setFromPoints</span>( points )<span class="op">;</span></span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> line <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Line</span>( geometry<span class="op">,</span> material )<span class="op">;</span></span>
-<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> line<span class="op">;</span></span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<details class="hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="151" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 150;"><span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>camera <span class="op">=</span> {</span>
-<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> camera <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">PerspectiveCamera</span>( <span class="dv">45</span><span class="op">,</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerWidth</span> <span class="op">/</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerHeight</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">500</span> )<span class="op">;</span></span>
-<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>    camera<span class="op">.</span><span class="at">position</span><span class="op">.</span><span class="fu">set</span>( <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">100</span> )<span class="op">;</span></span>
-<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a>    camera<span class="op">.</span><span class="fu">lookAt</span>( <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span> )<span class="op">;</span></span>
-<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> camera<span class="op">;</span></span>
-<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-9" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<details class="hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="161" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 160;"><span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">600</span><span class="op">;</span></span>
-<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a>NumPoints <span class="op">=</span> <span class="dv">200</span><span class="op">;</span></span>
-<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>NumPoints_ellipse <span class="op">=</span> <span class="dv">200</span><span class="op">;</span></span>
-<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a>peturbv <span class="op">=</span> [<span class="dv">0</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">5</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">3</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,-</span><span class="dv">5</span><span class="op">,-</span><span class="dv">6</span><span class="op">,</span><span class="dv">4</span>]</span>
-<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a>wavelengths_v <span class="op">=</span> {</span>
-<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>){</span>
-<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>(<span class="dv">10</span><span class="op">+</span>peturbv[i]<span class="op">*.</span><span class="dv">2</span>)</span>
-<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>peturbh <span class="op">=</span> [<span class="dv">0</span><span class="op">,-</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">,-</span><span class="dv">4</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">6</span><span class="op">,</span><span class="dv">5</span><span class="op">,-</span><span class="dv">5</span><span class="op">,-</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</span>
-<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>wavelengths_h <span class="op">=</span> {</span>
-<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>){</span>
-<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>(<span class="dv">10</span><span class="op">+</span>peturbh[i]<span class="op">*.</span><span class="dv">2</span>)</span>
-<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>phases <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="fl">0.5</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="fl">3.1</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="fl">4.9</span><span class="op">,</span><span class="fl">1.3</span><span class="op">,.</span><span class="dv">8</span><span class="op">,</span><span class="dv">6</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="178" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 177;"><span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">600</span><span class="op">;</span></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a>NumPoints <span class="op">=</span> <span class="dv">200</span><span class="op">;</span></span>
+<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a>NumPoints_ellipse <span class="op">=</span> <span class="dv">200</span><span class="op">;</span></span>
+<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a>peturbv <span class="op">=</span> [<span class="dv">0</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">5</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">3</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,-</span><span class="dv">5</span><span class="op">,-</span><span class="dv">6</span><span class="op">,</span><span class="dv">4</span>]</span>
+<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a>wavelengths_v <span class="op">=</span> {</span>
+<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>){</span>
+<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>(<span class="dv">10</span><span class="op">+</span>peturbv[i]<span class="op">*.</span><span class="dv">2</span>)</span>
+<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a>peturbh <span class="op">=</span> [<span class="dv">0</span><span class="op">,-</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">,-</span><span class="dv">4</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">6</span><span class="op">,</span><span class="dv">5</span><span class="op">,-</span><span class="dv">5</span><span class="op">,-</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</span>
+<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a>wavelengths_h <span class="op">=</span> {</span>
+<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>){</span>
+<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>(<span class="dv">10</span><span class="op">+</span>peturbh[i]<span class="op">*.</span><span class="dv">2</span>)</span>
+<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>phases <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="fl">0.5</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="fl">3.1</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="fl">4.9</span><span class="op">,</span><span class="fl">1.3</span><span class="op">,.</span><span class="dv">8</span><span class="op">,</span><span class="dv">6</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-1" data-nodetype="declaration">
+<div id="ojs-cell-8-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-2" data-nodetype="declaration">
+<div id="ojs-cell-8-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-3" data-nodetype="declaration">
+<div id="ojs-cell-8-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-4" data-nodetype="declaration">
+<div id="ojs-cell-8-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-5" data-nodetype="declaration">
+<div id="ojs-cell-8-5" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-6" data-nodetype="declaration">
+<div id="ojs-cell-8-6" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-7" data-nodetype="declaration">
+<div id="ojs-cell-8-7" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-10-8" data-nodetype="declaration">
+<div id="ojs-cell-8-8" data-nodetype="declaration">
 
 </div>
 </div>
@@ -618,32 +652,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="186" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 185;"><span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> {</span>
-<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
-<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="fl">0.2</span><span class="op">;</span></span>
-<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>    <span class="kw">yield</span> i</span>
-<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="204" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 203;"><span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a>version<span class="op">=</span><span class="vs">`0.130.0`</span><span class="op">;</span></span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a>THREE <span class="op">=</span> {</span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> THREE <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">THREE</span> <span class="op">=</span> <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/build/three.min.js`</span>)<span class="op">;</span></span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/examples/js/controls/OrbitControls.js`</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/examples/js/lines/LineSegments2.js`</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/examples/js/lines/LineSegmentsGeometry.js`</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/examples/js/lines/Line2.js`</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/examples/js/lines/LineGeometry.js`</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="vs">`three@</span><span class="sc">${</span>version<span class="sc">}</span><span class="vs">/examples/js/lines/LineMaterial.js`</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> THREE<span class="op">;</span></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-11" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-9-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="cell">
-<details class="hidden">
-<summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="196" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 195;"><span id="cb12-196"><a href="#cb12-196" aria-hidden="true" tabindex="-1"></a>THREE <span class="op">=</span> {</span>
-<span id="cb12-197"><a href="#cb12-197" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> THREE <span class="op">=</span> <span class="bu">window</span><span class="op">.</span><span class="at">THREE</span> <span class="op">=</span> <span class="cf">await</span> <span class="pp">require</span>(<span class="st">"three@0.130.0/build/three.min.js"</span>)<span class="op">;</span></span>
-<span id="cb12-198"><a href="#cb12-198" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> <span class="pp">require</span>(<span class="st">"three@0.130.0/examples/js/controls/OrbitControls.js"</span>)<span class="op">.</span><span class="fu">catch</span>(() <span class="kw">=&gt;</span> {})<span class="op">;</span></span>
-<span id="cb12-199"><a href="#cb12-199" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> THREE<span class="op">;</span></span>
-<span id="cb12-200"><a href="#cb12-200" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-12" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
 
+</div>
 </div>
 </div>
 </div>
@@ -651,24 +684,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="206" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 205;"><span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>ellipse_points <span class="op">=</span> {</span>
-<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_H<span class="op">;</span> j<span class="op">++</span>){</span>
-<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> (<span class="dv">5</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_H) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_h[j] <span class="op">+</span> phases[j])</span>
-<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb13-213"><a href="#cb13-213" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb13-214"><a href="#cb13-214" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> k<span class="op">=</span><span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> num_waves_V<span class="op">;</span> k<span class="op">++</span>){</span>
-<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a>            y <span class="op">+=</span> (<span class="dv">5</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_V)  <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_v[k] <span class="op">+</span> phases[k])</span>
-<span id="cb13-216"><a href="#cb13-216" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb13-217"><a href="#cb13-217" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([<span class="op">-</span>x<span class="op">,-</span>y])<span class="op">;</span></span>
-<span id="cb13-218"><a href="#cb13-218" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb13-219"><a href="#cb13-219" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb13-220"><a href="#cb13-220" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="220" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 219;"><span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>ellipse_points <span class="op">=</span> {</span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> j<span class="op">=</span><span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> num_waves_H<span class="op">;</span> j<span class="op">++</span>){</span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> (<span class="dv">5</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_H) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_h[j] <span class="op">+</span> phases[j])</span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> y <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="kw">var</span> k<span class="op">=</span><span class="dv">0</span><span class="op">;</span> k <span class="op">&lt;</span> num_waves_V<span class="op">;</span> k<span class="op">++</span>){</span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a>            y <span class="op">+=</span> (<span class="dv">5</span> <span class="op">+</span> <span class="dv">10</span><span class="op">/</span>num_waves_V)  <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(i<span class="op">/</span>wavelengths_v[k] <span class="op">+</span> phases[k])</span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([<span class="op">-</span>x<span class="op">,-</span>y])<span class="op">;</span></span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-13" data-nodetype="declaration">
+<div id="ojs-cell-10" data-nodetype="declaration">
 
 </div>
 </div>
@@ -676,21 +709,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="225" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 224;"><span id="cb14-225"><a href="#cb14-225" aria-hidden="true" tabindex="-1"></a>ellipse <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(ellipse_points)<span class="op">;</span></span>
-<span id="cb14-226"><a href="#cb14-226" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="-50 -50 100 100"&gt;</span></span>
-<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>ellipse<span class="sc">}</span><span class="vs">" stroke="black" fill="none" /&gt;</span></span>
-<span id="cb14-228"><a href="#cb14-228" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/svg&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="239" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 238;"><span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a>ellipse <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(ellipse_points)<span class="op">;</span></span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="-50 -50 100 100"&gt;</span></span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>ellipse<span class="sc">}</span><span class="vs">" stroke="gray" fill="none" /&gt;</span></span>
+<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/svg&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-14-1" data-nodetype="declaration">
+<div id="ojs-cell-11-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-14-2" data-nodetype="expression">
+<div id="ojs-cell-11-2" data-nodetype="expression">
 
 </div>
 </div>
@@ -702,7 +735,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\nviewof form1 = Inputs.form(\n    [\n        Inputs.range([1, 10], {label: \"# of Waves in V\",    step: 1, value: 1}),\n        Inputs.range([1, 10], {label: \"# of Waves in H\", step: 1, value: 1}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\nnum_waves_V = form1[0];\nnum_waves_H = form1[1];\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof form3 = Inputs.form(\n    [\n        Inputs.button(\"Toggle Sum\"),\n        Inputs.button(\"Toggle H and V\")\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nvtoggle1    = form3[0];\nvtoggle2    = form3[1];\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"Vcolor = {\n    if(vtoggle2 % 2 == 0){return 0xff0000}\n        else{return 0xffffff}\n}\nHcolor = {\n    if(vtoggle2 % 2 == 0){return 0x0000ff}\n        else{return 0xffffff}\n}\nScolor = {\n    if(vtoggle1 % 2 == 0){return 0xffffff}\n        else{return 0x000000}\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"{\n    const renderer = new THREE.WebGLRenderer({antialias: true});\n    invalidation.then(() => renderer.dispose());\n    renderer.setSize(width, height);\n    renderer.setPixelRatio(devicePixelRatio);\n    \n    const controls = new THREE.OrbitControls(camera, renderer.domElement);\n    controls.addEventListener(\"change\", () => renderer.render(scene, camera));\n    invalidation.then(() => (controls.dispose(), renderer.dispose()));\n    \n    while (true) {\n        renderer.render(scene, camera);\n        yield renderer.domElement;\n    }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"scene = {\n  const scene = new THREE.Scene();\n  scene.background = new THREE.Color(0xffffff);\n  scene.add(line1);\n  scene.add(line2);\n  scene.add(line3);\n  return scene;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"line1 = {\n    const material = new THREE.LineBasicMaterial( { color: Vcolor  } );\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var y= 0;\n        for (var j=0; j < num_waves_V; j++){\n            y += (10 + 10/num_waves_V) * Math.sin(i/wavelengths_v[j] + phases[j])\n        }\n        points.push( new THREE.Vector3( i-NumPoints/2, y, 0) );\n    }\n\n    const geometry = new THREE.BufferGeometry().setFromPoints( points );\n    const line = new THREE.Line( geometry, material );\n    return line;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"line2 = {\n    const material = new THREE.LineBasicMaterial( { color: Hcolor  } );\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var x= 0;\n        for (var j=0; j < num_waves_H; j++){\n            x += (10 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])\n        }\n        points.push( new THREE.Vector3( i-NumPoints/2, 0, x) );\n    }\n\n    const geometry = new THREE.BufferGeometry().setFromPoints( points );\n    const line = new THREE.Line( geometry, material );\n    return line;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"line3 = {\n    const material = new THREE.LineBasicMaterial( { color: Scolor } );\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var x = 0;\n        for (var j=0; j < num_waves_H; j++){\n            x += (10 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])\n        }\n        var y = 0;\n        for (var k=0; k < num_waves_V; k++){\n            y += (10 + 10/num_waves_V) * Math.sin(i/wavelengths_v[k] + phases[k])\n        }\n        points.push( new THREE.Vector3( i-NumPoints/2, y, x) );\n    }\n\n    const geometry = new THREE.BufferGeometry().setFromPoints( points );\n    const line = new THREE.Line( geometry, material );\n    return line;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"camera = {\n    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );\n    camera.position.set( 100, 100, 100 );\n    camera.lookAt( 0, 0, 0 );\n    return camera;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"height = 600;\nNumPoints = 200;\nNumPoints_ellipse = 200;\n\npeturbv = [0,-1,5,-2,-3,2,3,-5,-6,4]\nwavelengths_v = {\n    var data = [];\n    for (var i=0; i<10; i++){\n        data.push(10+peturbv[i]*.2)\n    }\n    return data;\n}\n\npeturbh = [0,-3,1,-4,-1,6,5,-5,-2,3]\nwavelengths_h = {\n    var data = [];\n    for (var i=0; i<10; i++){\n        data.push(10+peturbh[i]*.2)\n    }\n    return data;\n}\n\nphases = [0,0,1,0.5,2,3.1,4,4.9,1.3,.8,6];\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"time = {\n  let i = 0;\n  while (true) {\n    i += 0.2;\n    yield i\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"THREE = {\n    const THREE = window.THREE = await require(\"three@0.130.0/build/three.min.js\");\n    await require(\"three@0.130.0/examples/js/controls/OrbitControls.js\").catch(() => {});\n    return THREE;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"ellipse_points = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var x = 0;\n        for (var j=0; j < num_waves_H; j++){\n            x += (5 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])\n        }\n        var y = 0;\n        for (var k=0; k < num_waves_V; k++){\n            y += (5 + 10/num_waves_V)  * Math.sin(i/wavelengths_v[k] + phases[k])\n        }\n        data.push([-x,-y]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-14","inline":false,"source":"ellipse = d3.line()(ellipse_points);\nsvg`<svg viewBox=\"-50 -50 100 100\">\n  <path d=\"${ellipse}\" stroke=\"black\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpretQuiet","source":"shinyInput('form1')"},{"methodName":"interpretQuiet","source":"shinyInput('form3')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\nviewof form1 = Inputs.form(\n    [\n        Inputs.range([1, 10], {label: \"# of Waves in V\",    step: 1, value: 1}),\n        Inputs.range([1, 10], {label: \"# of Waves in H\", step: 1, value: 1}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\nnum_waves_V = form1[0];\nnum_waves_H = form1[1];\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof form3 = Inputs.form(\n    [\n        Inputs.button(\"Toggle Sum\"),\n        Inputs.button(\"Toggle H and V\")\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nvtoggle1    = form3[0];\nvtoggle2    = form3[1];\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"H_color = {return 0xff0000}\nV_color = {return 0x0000ff}\nS_color = {return 0x36454f}\n\nrender_HV = {\n    if(vtoggle2 % 2 == 0){return true}\n        else{return false}\n}\n\nrender_S = {\n    if(vtoggle1 % 2 == 0){return false}\n        else{return true}\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"{\n    const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});\n    invalidation.then(() => renderer.dispose());\n    renderer.setSize(width, height);\n    renderer.setPixelRatio(devicePixelRatio);\n    renderer.setClearColor( 0xffffff, 0 )\n    \n    const controls = new THREE.OrbitControls(camera, renderer.domElement);\n    controls.addEventListener(\"change\", () => renderer.render(scene, camera));\n    invalidation.then(() => (controls.dispose(), renderer.dispose()));\n    \n    while (true) {\n        renderer.render(scene, camera);\n        yield renderer.domElement;\n    }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"scene = {\n  const scene = new THREE.Scene();\n  scene.background = null;\n  if (render_HV == true){\n    scene.add(line1);\n    scene.add(line2);\n  };\n  if (render_S == true){\n    scene.add(line3)\n  };\n  return scene;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"line1 = {\n    const material = new THREE.LineMaterial({\n        color: V_color,\n        linewidth:3,\n    });\n\n    material.resolution.set(width, height);\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var y= 0;\n        for (var j=0; j < num_waves_V; j++){\n            y += (10 + 10/num_waves_V) * Math.sin(i/wavelengths_v[j] + phases[j])\n        }\n        points.push(i-NumPoints/2, y, 0);\n    }\n\n    const geometry = new THREE.LineGeometry().setPositions( points );\n    const line = new THREE.Line2( geometry, material );\n    return line;\n}\n\nline2 = {\n    const material = new THREE.LineMaterial({\n        color: H_color,\n        linewidth: 3,\n    });\n\n    material.resolution.set(width, height);\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var x= 0;\n        for (var j=0; j < num_waves_H; j++){\n            x += (10 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])\n        }\n        points.push(i-NumPoints/2, 0, x);\n    }\n\n    const geometry = new THREE.LineGeometry().setPositions( points );\n    const line = new THREE.Line2( geometry, material );\n    return line;\n}\n\n\nline3 = {\n    const material = new THREE.LineMaterial({\n        color: S_color,\n        linewidth:3,\n    });\n\n    material.resolution.set(width, height);\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var x = 0;\n        for (var j=0; j < num_waves_H; j++){\n            x += (10 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])\n        }\n        var y = 0;\n        for (var k=0; k < num_waves_V; k++){\n            y += (10 + 10/num_waves_V) * Math.sin(i/wavelengths_v[k] + phases[k])\n        }\n        points.push(i-NumPoints/2, y, x);\n    }\n\n    const geometry = new THREE.LineGeometry().setPositions( points );\n    const line = new THREE.Line2( geometry, material );\n    return line;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"camera = {\n    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );\n    camera.position.set( 100, 100, 100 );\n    camera.lookAt( 0, 0, 0 );\n    return camera;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"height = 600;\nNumPoints = 200;\nNumPoints_ellipse = 200;\n\npeturbv = [0,-1,5,-2,-3,2,3,-5,-6,4]\nwavelengths_v = {\n    var data = [];\n    for (var i=0; i<10; i++){\n        data.push(10+peturbv[i]*.2)\n    }\n    return data;\n}\n\npeturbh = [0,-3,1,-4,-1,6,5,-5,-2,3]\nwavelengths_h = {\n    var data = [];\n    for (var i=0; i<10; i++){\n        data.push(10+peturbh[i]*.2)\n    }\n    return data;\n}\n\nphases = [0,0,1,0.5,2,3.1,4,4.9,1.3,.8,6];\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"version=`0.130.0`;\nTHREE = {\n    const THREE = window.THREE = await require(`three@${version}/build/three.min.js`);\n    await require(`three@${version}/examples/js/controls/OrbitControls.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineSegments2.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineSegmentsGeometry.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/Line2.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineGeometry.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineMaterial.js`).catch(() => {});\n\n    return THREE;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"ellipse_points = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var x = 0;\n        for (var j=0; j < num_waves_H; j++){\n            x += (5 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])\n        }\n        var y = 0;\n        for (var k=0; k < num_waves_V; k++){\n            y += (5 + 10/num_waves_V)  * Math.sin(i/wavelengths_v[k] + phases[k])\n        }\n        data.push([-x,-y]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"ellipse = d3.line()(ellipse_points);\nsvg`<svg viewBox=\"-50 -50 100 100\">\n  <path d=\"${ellipse}\" stroke=\"gray\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpretQuiet","source":"shinyInput('form1')"},{"methodName":"interpretQuiet","source":"shinyInput('form3')"}]}
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
