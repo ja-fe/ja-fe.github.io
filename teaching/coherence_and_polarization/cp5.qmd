@@ -1,0 +1,245 @@
+---
+title: Polarization State (General)
+execute:
+    echo: false
+website:
+    page-navigation: true
+---
+
+In reality however a wave is rarely ever perfectly of mono-frequency. Let's see what happens when we substitute each of the original mono-frequency V and H waves with waves formed of multiple random nearby frequencies.
+
+```{ojs}
+
+viewof form1 = Inputs.form(
+    [
+        Inputs.range([1, 10], {label: "# of Waves in V",    step: 1, value: 1}),
+        Inputs.range([1, 10], {label: "# of Waves in H", step: 1, value: 1}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+num_waves_V = form1[0];
+num_waves_H = form1[1];
+```
+
+```{ojs}
+viewof form3 = Inputs.form(
+    [
+        Inputs.button("Toggle Sum"),
+        Inputs.button("Toggle H and V")
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+vtoggle1    = form3[0];
+vtoggle2    = form3[1];
+```
+
+```{ojs}
+H_color = {return 0xff0000}
+V_color = {return 0x0000ff}
+S_color = {return 0x36454f}
+
+render_HV = {
+    if(vtoggle2 % 2 == 0){return true}
+        else{return false}
+}
+
+render_S = {
+    if(vtoggle1 % 2 == 0){return false}
+        else{return true}
+}
+```
+
+```{ojs}
+{
+    const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+    invalidation.then(() => renderer.dispose());
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(devicePixelRatio);
+    renderer.setClearColor( 0xffffff, 0 )
+    
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.addEventListener("change", () => renderer.render(scene, camera));
+    invalidation.then(() => (controls.dispose(), renderer.dispose()));
+    
+    while (true) {
+        renderer.render(scene, camera);
+        yield renderer.domElement;
+    }
+}
+```
+
+```{ojs}
+scene = {
+  const scene = new THREE.Scene();
+  scene.background = null;
+  if (render_HV == true){
+    scene.add(line1);
+    scene.add(line2);
+  };
+  if (render_S == true){
+    scene.add(line3)
+  };
+  return scene;
+}
+```
+
+```{ojs}
+line1 = {
+    const material = new THREE.LineMaterial({
+        color: V_color,
+        linewidth:3,
+    });
+
+    material.resolution.set(width, height);
+
+    const points = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var y= 0;
+        for (var j=0; j < num_waves_V; j++){
+            y += (10 + 10/num_waves_V) * Math.sin(i/wavelengths_v[j] + phases[j])
+        }
+        points.push(i-NumPoints/2, y, 0);
+    }
+
+    const geometry = new THREE.LineGeometry().setPositions( points );
+    const line = new THREE.Line2( geometry, material );
+    return line;
+}
+
+line2 = {
+    const material = new THREE.LineMaterial({
+        color: H_color,
+        linewidth: 3,
+    });
+
+    material.resolution.set(width, height);
+
+    const points = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var x= 0;
+        for (var j=0; j < num_waves_H; j++){
+            x += (10 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])
+        }
+        points.push(i-NumPoints/2, 0, x);
+    }
+
+    const geometry = new THREE.LineGeometry().setPositions( points );
+    const line = new THREE.Line2( geometry, material );
+    return line;
+}
+
+
+line3 = {
+    const material = new THREE.LineMaterial({
+        color: S_color,
+        linewidth:3,
+    });
+
+    material.resolution.set(width, height);
+
+    const points = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var x = 0;
+        for (var j=0; j < num_waves_H; j++){
+            x += (10 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])
+        }
+        var y = 0;
+        for (var k=0; k < num_waves_V; k++){
+            y += (10 + 10/num_waves_V) * Math.sin(i/wavelengths_v[k] + phases[k])
+        }
+        points.push(i-NumPoints/2, y, x);
+    }
+
+    const geometry = new THREE.LineGeometry().setPositions( points );
+    const line = new THREE.Line2( geometry, material );
+    return line;
+}
+```
+
+```{ojs}
+camera = {
+    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    camera.position.set( 100, 100, 100 );
+    camera.lookAt( 0, 0, 0 );
+    return camera;
+}
+```
+
+```{ojs}
+height = 600;
+NumPoints = 200;
+NumPoints_ellipse = 200;
+
+peturbv = [0,-1,5,-2,-3,2,3,-5,-6,4]
+wavelengths_v = {
+    var data = [];
+    for (var i=0; i<10; i++){
+        data.push(10+peturbv[i]*.2)
+    }
+    return data;
+}
+
+peturbh = [0,-3,1,-4,-1,6,5,-5,-2,3]
+wavelengths_h = {
+    var data = [];
+    for (var i=0; i<10; i++){
+        data.push(10+peturbh[i]*.2)
+    }
+    return data;
+}
+
+phases = [0,0,1,0.5,2,3.1,4,4.9,1.3,.8,6];
+```
+
+```{ojs}
+version=`0.130.0`;
+THREE = {
+    const THREE = window.THREE = await require(`three@${version}/build/three.min.js`);
+    await require(`three@${version}/examples/js/controls/OrbitControls.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineSegments2.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineSegmentsGeometry.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/Line2.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineGeometry.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineMaterial.js`).catch(() => {});
+
+    return THREE;
+}
+```
+
+---
+
+```{ojs}
+ellipse_points = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var x = 0;
+        for (var j=0; j < num_waves_H; j++){
+            x += (5 + 10/num_waves_H) * Math.sin(i/wavelengths_h[j] + phases[j])
+        }
+        var y = 0;
+        for (var k=0; k < num_waves_V; k++){
+            y += (5 + 10/num_waves_V)  * Math.sin(i/wavelengths_v[k] + phases[k])
+        }
+        data.push([-x,-y]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+ellipse = d3.line()(ellipse_points);
+svg`<svg viewBox="-50 -50 100 100">
+  <path d="${ellipse}" stroke="gray" fill="none" />
+</svg>`
+```
+
+Our earlier notion of wave coherence in 2D has moved into 3D adding a fourth polarization parameter: the *degree of polarization*. DOP is a measure of the degree of correlation between the wave's geometric oscillations in time. We can then describe a polarization state in terms of some "average" pure state (3 parameters) which is deviated from by an amount commensurate to the degree of polarization (1 parameter). Although we might expect there to be infinitely many distinct curves with the same corresponding pure state and degree of polarization, in practice the distinction is unimportant as those states share the same physical properties in the aggregate. This gives fits nicely with experimentally-obtained descriptions of polarization such as the Stokes parameters.

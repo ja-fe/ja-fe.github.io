@@ -1,0 +1,216 @@
+---
+title: Polarization State (Pure)
+execute:
+    echo: false
+website:
+    page-navigation: true
+---
+
+Use the sliders below to explore polarization state as expressed in a linear basis (e.g. V/H)
+
+```{ojs}
+
+viewof form1 = Inputs.form(
+    [
+        Inputs.range([0, 20], {label: "Amplitude 1",    step: 1, value: 10}),
+        Inputs.range([0, 20], {label: "Amplitude 2", step: 1, value: 10}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+amplitude_1 = form1[0];
+amplitude_2 = form1[1];
+```
+
+```{ojs}
+viewof form2 = Inputs.form(
+    [
+        Inputs.range([0, 6.2], {label: "Phase Diff", step: 0.1, value: 0})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+phase_diff  = form2[0];
+```
+
+```{ojs}
+viewof form3 = Inputs.form(
+    [
+        Inputs.button("Toggle Sum"),
+        Inputs.button("Toggle H and V")
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+vtoggle1    = form3[0];
+vtoggle2    = form3[1];
+```
+
+```{ojs}
+l1_color = {return 0xff0000}
+l2_color = {return 0x0000ff}
+l3_color = {return 0x36454f}
+
+render_l1l2 = {
+    if(vtoggle2 % 2 == 0){return true}
+        else{return false}
+}
+
+render_l3 = {
+    if(vtoggle1 % 2 == 0){return false}
+        else{return true}
+}
+```
+
+```{ojs}
+{
+    const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+    invalidation.then(() => renderer.dispose());
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(devicePixelRatio);
+    renderer.setClearColor( 0xffffff, 0 )
+    
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.addEventListener("change", () => renderer.render(scene, camera));
+    invalidation.then(() => (controls.dispose(), renderer.dispose()));
+    
+    while (true) {
+        renderer.render(scene, camera);
+        yield renderer.domElement;
+    }
+}
+```
+
+```{ojs}
+scene = {
+  const scene = new THREE.Scene();
+  scene.background = null;
+  if (render_l1l2 == true){
+    scene.add(line1);
+    scene.add(line2);
+  };
+  if (render_l3 == true){
+    scene.add(line3)
+  };
+  return scene;
+}
+```
+
+```{ojs}
+line1 = {
+    const material = new THREE.LineMaterial({
+        color: l1_color,
+        linewidth: 3,
+    });
+
+    material.resolution.set(width, height);
+
+    const points = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        points.push( i-NumPoints/2, 0, 2*amplitude_1*Math.sin(i/10) );
+    }
+
+    const geometry = new THREE.LineGeometry().setPositions( points );
+    const line = new THREE.Line2( geometry, material );
+    return line;
+}
+
+line2 = {
+    const material = new THREE.LineMaterial({
+        color: l2_color,
+        linewidth: 3,
+    });
+
+    material.resolution.set(width, height);
+
+    const points = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        points.push( i-NumPoints/2, 2*amplitude_2*Math.sin(i/10 + phase_diff), 0);
+    }
+
+    const geometry = new THREE.LineGeometry().setPositions( points );
+    const line = new THREE.Line2( geometry, material );
+    return line;
+}
+
+line3 = {
+    const material = new THREE.LineMaterial({
+        color: l3_color,
+        linewidth: 3,
+    });
+
+    material.resolution.set(width, height);
+
+    const points = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        points.push(i-NumPoints/2, 2*amplitude_2*Math.sin(i/10 + phase_diff), 2*amplitude_1*Math.sin(i/10));
+    }
+
+    const geometry = new THREE.LineGeometry().setPositions( points );
+    const line = new THREE.Line2( geometry, material );
+    return line;
+}
+```
+
+```{ojs}
+camera = {
+    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    camera.position.set( 100, 100, 100 );
+    camera.lookAt( 0, 0, 0 );
+    return camera;
+}
+```
+
+```{ojs}
+height = 600;
+NumPoints = 200;
+NumPoints_ellipse = 200;
+```
+
+```{ojs}
+version=`0.130.0`;
+THREE = {
+    const THREE = window.THREE = await require(`three@${version}/build/three.min.js`);
+    await require(`three@${version}/examples/js/controls/OrbitControls.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineSegments2.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineSegmentsGeometry.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/Line2.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineGeometry.js`).catch(() => {});
+    await require(`three@${version}/examples/js/lines/LineMaterial.js`).catch(() => {});
+
+    return THREE;
+}
+```
+
+---
+
+Looking at this mono-frequency wave head-on, we can see that the electric field vector traces out an ellipse. Each combination of power in the V, power in the H and phase difference corresponds to a unique ellipse. Thus when we think about all the ways a pure wave could be polarization-wise, we can use two equivalent classes of description. Describe the basis waves (Power in the V, power in the H, and their phase difference) or the polarization ellipse (e.g. length of major axis, length of minor axis, angle of orientation).
+
+```{ojs}
+ellipse_points = {
+    var data = [];
+    for (var i = 1; i<=NumPoints_ellipse;i++){
+        data.push([2*amplitude_1*Math.sin(i/10), 2*amplitude_2*Math.sin(i/10 + phase_diff)])
+    }
+    return data;
+}
+```
+
+```{ojs}
+ellipse = d3.line()(ellipse_points);
+svg`<svg viewBox="-50 -50 100 100">
+  <path d="${ellipse}" stroke="gray" fill="none" />
+</svg>`
+```
+
