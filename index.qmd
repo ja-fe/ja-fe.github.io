@@ -12,89 +12,281 @@ Hi! I am still being built! Check out the incomplete notes below and check back 
 
 Everything on this website was built and programmed by me, some of it even in languages I understand! However, it would not have been possible without the immense body of literature and work made freely available by countless people all over the world. In that spirit, the entire code for this website is freely available [here.](https://github.com/ja-fe)
 
-## What is Coherence? What is Polarization State?
+## Speckle as a wave interference phenomenon
 
-In reality, most EMR is not "perfectly polarized". EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms: [about](about.qmd)
+Let's look an illustrative real-world manifestation of this conceptual framework. SAR images are subject to *speckle*, a type of image distortion or noise which affects pixels in a stochastic, multiplicative way. Why does this occur?
+
+Consider that the returned wave associated with a given pixel likely isn't the result of a single interation with a single pointwise object. If multiple reflectors (or similarly, a continuous reflector) lie within the pixel, then the returned wave is the sum of multiple individual waves.
+
+Let's imagine we have a pixel with two identical point reflectors lying within it. How does the returned wave change as a function of where those reflectors are located? **Move the blue and red targets in the pixel below:**
+
+::: {layout-ncol=2}
+```{ojs}
+chart = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    // define a bounding rectangle
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", height - 2*stroke_width)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 0)
+
+    // define data used for circles
+    const circles = d3.range(2).map(i => ({
+        x: (i+2) * width / 5,
+        y: (i+1) * height / 3,
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", radius)
+            .attr("fill", d => d3.schemeCategory10[d.index * 3])
+            .attr("id", function(d,i) {return i})
+            .call(drag)
+
+    return svg.node();
+}
+```
 
 ```{ojs}
-//TODO: This use of html tags to decrease font size to get around label wrapping is bad, find more elegant solution later
-viewof form_m1_1 = Inputs.form(
-    [
-        Inputs.range([1, 30], {label: html`<font size="3.5">Amplitude 1</font>`, step: 1, value: 15}),
-        Inputs.range([1, 100], {label: html`<font size="3.5">Wavelength 1</font>`, step: 1, value: 50})
-    ],
-    {
-        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
-        ${inputs}
-        </div>`
+chart2 = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    //define a function to take the canvas position of the leftside chart to the
+    //  corresponding region in the second chart
+    //  it's messy because I solved the system by hand and didn't simplify, RIP
+    //  to future Jake if I ever have to un-hardcode the object position values
+    function lineartransform(xposition){
+        return (2*height/5 - radius)/(5/7*width -2*radius-2)*xposition + width/7 + 2/5*height + radius/2 - (2*height/5 - radius)*(width/7+radius+1)/(5/7*width-2*radius-2)
     }
-)
-amplitudeW1  = form_m1_1[0];
-wavelengthW1 = form_m1_1[1];
 
-viewof form_m1_2 = Inputs.form(
-    [
-        Inputs.range([1, 30], {label: html`<font size="3.5">Amplitude 2</font>`, step: 1, value: 15}),
-        Inputs.range([1, 100], {label: html`<font size="3.5">Wavelength 2</font>`, step: 1, value: 50})
-    ],
-    {
-        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
-        ${inputs}
-        </div>`
+    // define a earth curvature line
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", height - 2*stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", stroke_width/2)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 0)
+
+    // define lines going from the target to the satellites (first, so they appear under them)
+    svg.append("line")
+        .attr("x1", width/7 + 3*height/20)
+        .attr("x2", lineartransform(x1))
+        .attr("y1", 3*height/20)
+        .attr("y2", height - 2*stroke_width)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "blue")
+
+    svg.append("line")
+        .attr("x1", width/7 + 3*height/20)
+        .attr("x2", lineartransform(x2))
+        .attr("y1", 3*height/20)
+        .attr("y2", height - 2*stroke_width)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "red")
+
+
+    // define a rectangle representing the satellite
+    svg.append("rect")
+        .attr("x", width/7 + height/10)
+        .attr("y", height/10)
+        .attr("width", height/10)
+        .attr("height", height/10)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", .50)
+    
+    // define notches indicating the bounds of the pixel
+    svg.append("line")
+        .attr("x1", width/7 + 2*height/5)
+        .attr("x2", width/7 + 2*height/5)
+        .attr("y1", height - 2*stroke_width)
+        .attr("y2", height - 2*stroke_width - height/20)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "black")
+
+    svg.append("line")
+        .attr("x1", width/7 + 4*height/5)
+        .attr("x2", width/7 + 4*height/5)
+        .attr("y1", height - 2*stroke_width)
+        .attr("y2", height - 2*stroke_width - height/20)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "black")
+
+    // define data used for circles
+    const circles = d3.range(2).map(i => ({
+        x: (i+2) * width / 5,
+        y: (i+1) * height / 3,
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", function(d,i) {
+                if (i == 0) {return lineartransform(x1)}
+                else {return lineartransform(x2)}
+            })
+            .attr("cy", height - 2*stroke_width)
+            .attr("r", radius/2)
+            .attr("fill", d => d3.schemeCategory10[d.index * 3])
+            .attr("id", function(d,i) {return i})
+
+    // add text
+    svg.append("text")
+        .attr("x", width/7)
+        .attr("y", .94*height)
+        .style("font-size", "28px")
+        .text("side view")
+
+    svg.append("text")
+        .attr("x", width/2)
+        .attr("y", .15*height)
+        .style("font-size", "24px")
+        .style("font-style", "italic")
+        .text("*wildly not to scale")
+
+    return svg.node();
+}
+```
+:::
+
+
+```{ojs}
+formatted_d1 = (0.5*distance_travelled_w1).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+formatted_d2 = (0.5*distance_travelled_w2).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+```
+
+<p style="text-align: center;">
+    Distance from target one to the satellite: ${formatted_d1}m\
+    Distance from target two to the satellite: ${formatted_d2}m
+</p>
+
+
+```{ojs}
+// defines how circles change appearance and position in response to cursor drag
+drag = {
+
+    // move the circles to cursor position when dragging is active
+    function dragged(event, d){
+        var newx = event.x;
+        if (newx < xbounds[0]) newx = xbounds[0];
+        if (newx > xbounds[1]) newx = xbounds[1];
+        var newy = event.y;
+        if (newy < ybounds[0]) newy = ybounds[0];
+        if (newy > ybounds[1]) newy = ybounds[1];
+        
+        if (d3.select(this).attr('id') == "0") {
+            mutable x1 = newx;
+            mutable y1 = newy;
+        }
+        if (d3.select(this).attr('id') == "1") {
+            mutable x2 = newx;
+            mutable y2 = newy;
+        }
+        
+        d3.select(this).raise().attr("cx", d.x = newx).attr("cy", d.y = newy);
     }
-)
 
-amplitudeW2  = form_m1_2[0];
-wavelengthW2 = form_m1_2[1];
+    // map the d3 drag event functionality to these custom functions
+    return d3.drag()
+        .on("drag", dragged)
+}
+```
 
-viewof form_m1_3 = Inputs.form(
-    [
-        Inputs.range([0, 6.2], {label: html`<font size="3.5">Phase Diff</font>`, step: 0.1, value: 0}),
-        Inputs.range([1, 20], {label: html`<font size="3.5">Speed</font>`, step: 1, value: 10})
-    ],
-    {
-        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
-        ${inputs}
-        </div>`
-    }
-)
+```{ojs}
+// mutables
+mutable x1= 2*width/5;
+mutable y1= height/3;
+mutable x2= 3*width/5;
+mutable y2= 2*height/3;
+```
 
-phase_diff_m1  = form_m1_3[0];
-speed_m1 = form_m1_3[1];
+```{ojs}
+// display variables
+stroke_width = 7;
+width = 700;
+height = 500 + 2*stroke_width;
+radius = 25;
+
+// derived display variables
+xbounds = [width/7 + radius + 1, 6*width/7 - radius - 1]
+ybounds = [ radius + 1  + stroke_width, height - radius - 1 - stroke_width]
+```
 
 
-distance = 400;
+
+
+```{ojs}
+//--------------------------------------------------------
+// WAVEFORM RENDERS
+//--------------------------------------------------------
+
+
+// wave variables
+distance = 4;
 NumPoints = 1000;
+wavelength = .5;
+amplitude = 15;
+speed = 10;
+
+// display variables
+xscale_factor = 100;
+
+// satellite geometry variables
+sat_x = -100000;
+sat_y = 100000;
+sat_z = 600000;
+pixel_width = 3;
+
+// derived variables
+distance_travelled_w1 = 2*Math.sqrt(sat_z**2 + (x1/width*pixel_width - sat_x)**2 + (y1/width*pixel_width - sat_y)**2);
+distance_travelled_w2 = 2*Math.sqrt(sat_z**2 + (x2/width*pixel_width - sat_x)**2 + (y2/width*pixel_width - sat_y)**2);
+phase_w1 = distance_travelled_w1 / wavelength *2 *Math.PI;
+phase_w2 = distance_travelled_w2 / wavelength *2 *Math.PI;
+
 ```
 
 ```{ojs}
-wave1_m1 = {
+wave1 = {
     var data = [];
     for (var i = 1; i <= NumPoints; i++) {
         var j = i * distance / NumPoints;
-        data.push([j , amplitudeW1 * Math.sin(j * 2*Math.PI / wavelengthW1 + time)]);
+        data.push([j*xscale_factor, amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w2)]);
     }
     return data;
 }
 ```
 
 ```{ojs}
-wave2_m1 = {
+wave2 = {
     var data = [];
     for (var i = 1; i <= NumPoints; i++) {
         var j = i * distance / NumPoints;
-        data.push([j , amplitudeW2 * Math.sin(j * 2*Math.PI / wavelengthW2 + time + phase_diff_m1)]);
+        data.push([j*xscale_factor , amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w1)]);
     }
     return data;
 }
 ```
 
 ```{ojs}
-waveSum_m1 = {
+waveSum = {
     var data = [];
     for (var i = 1; i <= NumPoints; i++) {
         var j = i * distance / NumPoints;
-        data.push([j , amplitudeW1 * Math.sin(j * 2*Math.PI / wavelengthW1 + time) + amplitudeW2 * Math.sin(j * 2*Math.PI / wavelengthW2 + time + phase_diff_m1)]);
+        data.push([j*xscale_factor , amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w1) + amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w2)]);
     }
     return data;
 }
@@ -104,15 +296,15 @@ waveSum_m1 = {
 time = {
   let i = 0;
   while (true) {
-    i += speed_m1 * 0.01;
+    i += speed * 0.01;
     yield i
   }
 }
 ```
 
 ```{ojs}
-r = d3.line()(wave1_m1);
-b = d3.line()(wave2_m1);
+r = d3.line()(wave1);
+b = d3.line()(wave2);
 svg`<svg viewBox="0 -32 400 64">
   <path d="${r}" stroke="red" fill="none" />
   <path d="${b}" stroke="blue" fill="none" />
@@ -120,10 +312,17 @@ svg`<svg viewBox="0 -32 400 64">
 ```
 
 ```{ojs}
-p = d3.line()(waveSum_m1);
+p = d3.line()(waveSum);
 svg`<svg viewBox="0 -64 400 130">
   <path d="${p}" stroke="black" fill="none" />
 </svg>`
 ```
 
+```{ojs}
+d3 = require("d3@7")
+```
+
+Here we've considered a SAR satellite 600km above Earth, emitting 50cm wavelength radiation with a pixel resolution of 3m.
+
+The distance from each target to the satellite affects where in their cycle each wave is re-intercepted, and thus the difference determines whether those returned waves interfere constructively or deconstructively. Thus a random distribution of targets creates a random difference in distance to the satellite, creating a random level of interference in each pixel. This means the intensity of each pixel is randomly (though not necessarily uniformly) multiplied by a value from 0 (perfect deconstructive interference) to 1 (perfect constructive interference). This is the origin of speckle, and reason why it manifests as multiplicative noise (as opposed to additive).  
 ---

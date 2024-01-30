@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-coherence-what-is-polarization-state" id="toc-what-is-coherence-what-is-polarization-state" class="nav-link active" data-scroll-target="#what-is-coherence-what-is-polarization-state">What is Coherence? What is Polarization State?</a></li>
+  <li><a href="#speckle-as-a-wave-interference-phenomenon" id="toc-speckle-as-a-wave-interference-phenomenon" class="nav-link active" data-scroll-target="#speckle-as-a-wave-interference-phenomenon">Speckle as a wave interference phenomenon</a></li>
   </ul>
 </nav>
     </div>
@@ -208,149 +208,161 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Hi! I am still being built! Check out the incomplete notes below and check back in later -jf</p>
 <p>Everything on this website was built and programmed by me, some of it even in languages I understand! However, it would not have been possible without the immense body of literature and work made freely available by countless people all over the world. In that spirit, the entire code for this website is freely available <a href="https://github.com/ja-fe">here.</a></p>
-<section id="what-is-coherence-what-is-polarization-state" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-coherence-what-is-polarization-state">What is Coherence? What is Polarization State?</h2>
-<p>In reality, most EMR is not “perfectly polarized”. EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms: <a href="./about.html">about</a></p>
-<div class="cell">
+<section id="speckle-as-a-wave-interference-phenomenon" class="level2">
+<h2 class="anchored" data-anchor-id="speckle-as-a-wave-interference-phenomenon">Speckle as a wave interference phenomenon</h2>
+<p>Let’s look an illustrative real-world manifestation of this conceptual framework. SAR images are subject to <em>speckle</em>, a type of image distortion or noise which affects pixels in a stochastic, multiplicative way. Why does this occur?</p>
+<p>Consider that the returned wave associated with a given pixel likely isn’t the result of a single interation with a single pointwise object. If multiple reflectors (or similarly, a continuous reflector) lie within the pixel, then the returned wave is the sum of multiple individual waves.</p>
+<p>Let’s imagine we have a pixel with two identical point reflectors lying within it. How does the returned wave change as a function of where those reflectors are located? <strong>Move the blue and red targets in the pixel below:</strong></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="21" data-source-offset="-122"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>viewof form_m1_1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;font size="3.5"&gt;Amplitude 1&lt;/font&gt;`</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">15</span>})<span class="op">,</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;font size="3.5"&gt;Wavelength 1&lt;/font&gt;`</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">template</span><span class="op">:</span> (inputs) <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; gap: 1em"&gt;</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>inputs<span class="sc">}</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;`</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>amplitudeW1  <span class="op">=</span> form_m1_1[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>wavelengthW1 <span class="op">=</span> form_m1_1[<span class="dv">1</span>]<span class="op">;</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>viewof form_m1_2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;font size="3.5"&gt;Amplitude 2&lt;/font&gt;`</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">15</span>})<span class="op">,</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;font size="3.5"&gt;Wavelength 2&lt;/font&gt;`</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">50</span>})</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="dt">template</span><span class="op">:</span> (inputs) <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; gap: 1em"&gt;</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>inputs<span class="sc">}</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;`</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>amplitudeW2  <span class="op">=</span> form_m1_2[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>wavelengthW2 <span class="op">=</span> form_m1_2[<span class="dv">1</span>]<span class="op">;</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>viewof form_m1_3 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">6.2</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;font size="3.5"&gt;Phase Diff&lt;/font&gt;`</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span>})<span class="op">,</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;font size="3.5"&gt;Speed&lt;/font&gt;`</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>})</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="dt">template</span><span class="op">:</span> (inputs) <span class="kw">=&gt;</span> htl<span class="op">.</span><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; gap: 1em"&gt;</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>inputs<span class="sc">}</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;`</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>phase_diff_m1  <span class="op">=</span> form_m1_3[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>speed_m1 <span class="op">=</span> form_m1_3[<span class="dv">1</span>]<span class="op">;</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>distance <span class="op">=</span> <span class="dv">400</span><span class="op">;</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>NumPoints <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="24" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> {</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width<span class="op">,</span> height])</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define a bounding rectangle</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">5</span><span class="op">*</span>width<span class="op">/</span><span class="dv">7</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define data used for circles</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> circles <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">2</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> ({</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> (i<span class="op">+</span><span class="dv">2</span>) <span class="op">*</span> width <span class="op">/</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> (i<span class="op">+</span><span class="dv">1</span>) <span class="op">*</span> height <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="dt">index</span><span class="op">:</span> i<span class="op">,</span> </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define circles as graphic objects</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">data</span>(circles)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">join</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> radius)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d3<span class="op">.</span><span class="at">schemeCategory10</span>[d<span class="op">.</span><span class="at">index</span> <span class="op">*</span> <span class="dv">3</span>])</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i) {<span class="cf">return</span> i})</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">call</span>(drag)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
+<div id="ojs-cell-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-4" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-6" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-7" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-9" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-10" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-11" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="70" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 69;"><span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>wave1_m1 <span class="op">=</span> {</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> j <span class="op">=</span> i <span class="op">*</span> distance <span class="op">/</span> NumPoints<span class="op">;</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([j <span class="op">,</span> amplitudeW1 <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelengthW1 <span class="op">+</span> time)])<span class="op">;</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="60" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 59;"><span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>chart2 <span class="op">=</span> {</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width<span class="op">,</span> height])</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="co">//define a function to take the canvas position of the leftside chart to the</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    <span class="co">//  corresponding region in the second chart</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    <span class="co">//  it's messy because I solved the system by hand and didn't simplify, RIP</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="co">//  to future Jake if I ever have to un-hardcode the object position values</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">lineartransform</span>(xposition){</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="dv">2</span><span class="op">*</span>height<span class="op">/</span><span class="dv">5</span> <span class="op">-</span> radius)<span class="op">/</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">7</span><span class="op">*</span>width <span class="op">-</span><span class="dv">2</span><span class="op">*</span>radius<span class="op">-</span><span class="dv">2</span>)<span class="op">*</span>xposition <span class="op">+</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">2</span><span class="op">/</span><span class="dv">5</span><span class="op">*</span>height <span class="op">+</span> radius<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> (<span class="dv">2</span><span class="op">*</span>height<span class="op">/</span><span class="dv">5</span> <span class="op">-</span> radius)<span class="op">*</span>(width<span class="op">/</span><span class="dv">7</span><span class="op">+</span>radius<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">7</span><span class="op">*</span>width<span class="op">-</span><span class="dv">2</span><span class="op">*</span>radius<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define a earth curvature line</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span>)</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">5</span><span class="op">*</span>width<span class="op">/</span><span class="dv">7</span>)</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> stroke_width<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define lines going from the target to the satellites (first, so they appear under them)</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>height<span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">lineartransform</span>(x1))</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">3</span><span class="op">*</span>height<span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"blue"</span>)</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>height<span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">lineartransform</span>(x2))</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">3</span><span class="op">*</span>height<span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define a rectangle representing the satellite</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> height<span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height<span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="op">.</span><span class="dv">50</span>)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define notches indicating the bounds of the pixel</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>height<span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>height<span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width <span class="op">-</span> height<span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>height<span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>height<span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width <span class="op">-</span> height<span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> stroke_width)</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define data used for circles</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> circles <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">2</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> ({</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> (i<span class="op">+</span><span class="dv">2</span>) <span class="op">*</span> width <span class="op">/</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> (i<span class="op">+</span><span class="dv">1</span>) <span class="op">*</span> height <span class="op">/</span> <span class="dv">3</span><span class="op">,</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>        <span class="dt">index</span><span class="op">:</span> i<span class="op">,</span> </span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define circles as graphic objects</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">data</span>(circles)</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">join</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i) {</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> (i <span class="op">==</span> <span class="dv">0</span>) {<span class="cf">return</span> <span class="fu">lineartransform</span>(x1)}</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span> {<span class="cf">return</span> <span class="fu">lineartransform</span>(x2)}</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> height <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>stroke_width)</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> radius<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d3<span class="op">.</span><span class="at">schemeCategory10</span>[d<span class="op">.</span><span class="at">index</span> <span class="op">*</span> <span class="dv">3</span>])</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i) {<span class="cf">return</span> i})</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>    <span class="co">// add text</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">7</span>)</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="op">.</span><span class="dv">94</span><span class="op">*</span>height)</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"28px"</span>)</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">text</span>(<span class="st">"side view"</span>)</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>    svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> width<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="op">.</span><span class="dv">15</span><span class="op">*</span>height)</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"24px"</span>)</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-style"</span><span class="op">,</span> <span class="st">"italic"</span>)</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">text</span>(<span class="st">"*wildly not to scale"</span>)</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
@@ -358,35 +370,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="81" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 80;"><span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>wave2_m1 <span class="op">=</span> {</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> j <span class="op">=</span> i <span class="op">*</span> distance <span class="op">/</span> NumPoints<span class="op">;</span></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([j <span class="op">,</span> amplitudeW2 <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelengthW2 <span class="op">+</span> time <span class="op">+</span> phase_diff_m1)])<span class="op">;</span></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="168" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 167;"><span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>formatted_d1 <span class="op">=</span> (<span class="fl">0.5</span><span class="op">*</span>distance_travelled_w1)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\B(?</span><span class="ss">&lt;!</span><span class="sc">\.\d*)(?</span><span class="ss">=</span><span class="sc">(\d{3})+(?</span><span class="ss">!</span><span class="sc">\d))</span><span class="ss">/g</span><span class="op">,</span> <span class="st">","</span>)<span class="op">;</span></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>formatted_d2 <span class="op">=</span> (<span class="fl">0.5</span><span class="op">*</span>distance_travelled_w2)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\B(?</span><span class="ss">&lt;!</span><span class="sc">\.\d*)(?</span><span class="ss">=</span><span class="sc">(\d{3})+(?</span><span class="ss">!</span><span class="sc">\d))</span><span class="ss">/g</span><span class="op">,</span> <span class="st">","</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-3" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p style="text-align: center;">
+Distance from target one to the satellite: <span><span id="ojs-element-id-1"></span>m</span><br>
+Distance from target two to the satellite: <span><span id="ojs-element-id-2"></span>m</span>
+</p>
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="92" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>waveSum_m1 <span class="op">=</span> {</span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> j <span class="op">=</span> i <span class="op">*</span> distance <span class="op">/</span> NumPoints<span class="op">;</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([j <span class="op">,</span> amplitudeW1 <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelengthW1 <span class="op">+</span> time) <span class="op">+</span> amplitudeW2 <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelengthW2 <span class="op">+</span> time <span class="op">+</span> phase_diff_m1)])<span class="op">;</span></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="178" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 177;"><span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="co">// defines how circles change appearance and position in response to cursor drag</span></span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>drag <span class="op">=</span> {</span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a>    <span class="co">// move the circles to cursor position when dragging is active</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span> <span class="fu">dragged</span>(<span class="bu">event</span><span class="op">,</span> d){</span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> newx <span class="op">=</span> <span class="bu">event</span><span class="op">.</span><span class="at">x</span><span class="op">;</span></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (newx <span class="op">&lt;</span> xbounds[<span class="dv">0</span>]) newx <span class="op">=</span> xbounds[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (newx <span class="op">&gt;</span> xbounds[<span class="dv">1</span>]) newx <span class="op">=</span> xbounds[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> newy <span class="op">=</span> <span class="bu">event</span><span class="op">.</span><span class="at">y</span><span class="op">;</span></span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (newy <span class="op">&lt;</span> ybounds[<span class="dv">0</span>]) newy <span class="op">=</span> ybounds[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (newy <span class="op">&gt;</span> ybounds[<span class="dv">1</span>]) newy <span class="op">=</span> ybounds[<span class="dv">1</span>]<span class="op">;</span></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">'id'</span>) <span class="op">==</span> <span class="st">"0"</span>) {</span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a>            mutable x1 <span class="op">=</span> newx<span class="op">;</span></span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a>            mutable y1 <span class="op">=</span> newy<span class="op">;</span></span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">'id'</span>) <span class="op">==</span> <span class="st">"1"</span>) {</span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a>            mutable x2 <span class="op">=</span> newx<span class="op">;</span></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a>            mutable y2 <span class="op">=</span> newy<span class="op">;</span></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a>        d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">raise</span>()<span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d<span class="op">.</span><span class="at">x</span> <span class="op">=</span> newx)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d<span class="op">.</span><span class="at">y</span> <span class="op">=</span> newy)<span class="op">;</span></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>    <span class="co">// map the d3 drag event functionality to these custom functions</span></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> d3<span class="op">.</span><span class="fu">drag</span>()</span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">on</span>(<span class="st">"drag"</span><span class="op">,</span> dragged)</span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
@@ -397,29 +438,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="103" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 102;"><span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> {</span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> speed_m1 <span class="op">*</span> <span class="fl">0.01</span><span class="op">;</span></span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>    <span class="kw">yield</span> i</span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="211" data-source-offset="-12"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 210;"><span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>mutable x1<span class="op">=</span> <span class="dv">2</span><span class="op">*</span>width<span class="op">/</span><span class="dv">5</span><span class="op">;</span></span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>mutable y1<span class="op">=</span> height<span class="op">/</span><span class="dv">3</span><span class="op">;</span></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>mutable x2<span class="op">=</span> <span class="dv">3</span><span class="op">*</span>width<span class="op">/</span><span class="dv">5</span><span class="op">;</span></span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a>mutable y2<span class="op">=</span> <span class="dv">2</span><span class="op">*</span>height<span class="op">/</span><span class="dv">3</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-5" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-4" data-nodetype="declaration">
+
+</div>
 </div>
 </div>
 </div>
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="114" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 113;"><span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wave1_m1)<span class="op">;</span></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wave2_m1)<span class="op">;</span></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="0 -32 400 64"&gt;</span></span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>r<span class="sc">}</span><span class="vs">" stroke="red" fill="none" /&gt;</span></span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">" stroke="blue" fill="none" /&gt;</span></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/svg&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="219" data-source-offset="-21"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 218;"><span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>stroke_width <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">700</span><span class="op">;</span></span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">500</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>stroke_width<span class="op">;</span></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a><span class="co">// derived display variables</span></span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>xbounds <span class="op">=</span> [width<span class="op">/</span><span class="dv">7</span> <span class="op">+</span> radius <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">6</span><span class="op">*</span>width<span class="op">/</span><span class="dv">7</span> <span class="op">-</span> radius <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a>ybounds <span class="op">=</span> [ radius <span class="op">+</span> <span class="dv">1</span>  <span class="op">+</span> stroke_width<span class="op">,</span> height <span class="op">-</span> radius <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> stroke_width]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -437,7 +500,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-6-3" data-nodetype="expression">
+<div id="ojs-cell-6-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-6" data-nodetype="declaration">
 
 </div>
 </div>
@@ -446,10 +530,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="123" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 122;"><span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(waveSum_m1)<span class="op">;</span></span>
-<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="0 -64 400 130"&gt;</span></span>
-<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>p<span class="sc">}</span><span class="vs">" stroke="black" fill="none" /&gt;</span></span>
-<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/svg&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="239" data-source-offset="-158"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 238;"><span id="cb7-239"><a href="#cb7-239" aria-hidden="true" tabindex="-1"></a>distance <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb7-240"><a href="#cb7-240" aria-hidden="true" tabindex="-1"></a>NumPoints <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb7-241"><a href="#cb7-241" aria-hidden="true" tabindex="-1"></a>wavelength <span class="op">=</span> <span class="op">.</span><span class="dv">5</span><span class="op">;</span></span>
+<span id="cb7-242"><a href="#cb7-242" aria-hidden="true" tabindex="-1"></a>amplitude <span class="op">=</span> <span class="dv">15</span><span class="op">;</span></span>
+<span id="cb7-243"><a href="#cb7-243" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb7-244"><a href="#cb7-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-245"><a href="#cb7-245" aria-hidden="true" tabindex="-1"></a><span class="co">// display variables</span></span>
+<span id="cb7-246"><a href="#cb7-246" aria-hidden="true" tabindex="-1"></a>xscale_factor <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb7-247"><a href="#cb7-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-248"><a href="#cb7-248" aria-hidden="true" tabindex="-1"></a><span class="co">// satellite geometry variables</span></span>
+<span id="cb7-249"><a href="#cb7-249" aria-hidden="true" tabindex="-1"></a>sat_x <span class="op">=</span> <span class="op">-</span><span class="dv">100000</span><span class="op">;</span></span>
+<span id="cb7-250"><a href="#cb7-250" aria-hidden="true" tabindex="-1"></a>sat_y <span class="op">=</span> <span class="dv">100000</span><span class="op">;</span></span>
+<span id="cb7-251"><a href="#cb7-251" aria-hidden="true" tabindex="-1"></a>sat_z <span class="op">=</span> <span class="dv">600000</span><span class="op">;</span></span>
+<span id="cb7-252"><a href="#cb7-252" aria-hidden="true" tabindex="-1"></a>pixel_width <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb7-253"><a href="#cb7-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-254"><a href="#cb7-254" aria-hidden="true" tabindex="-1"></a><span class="co">// derived variables</span></span>
+<span id="cb7-255"><a href="#cb7-255" aria-hidden="true" tabindex="-1"></a>distance_travelled_w1 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(sat_z<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (x1<span class="op">/</span>width<span class="op">*</span>pixel_width <span class="op">-</span> sat_x)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y1<span class="op">/</span>width<span class="op">*</span>pixel_width <span class="op">-</span> sat_y)<span class="op">**</span><span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb7-256"><a href="#cb7-256" aria-hidden="true" tabindex="-1"></a>distance_travelled_w2 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(sat_z<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (x2<span class="op">/</span>width<span class="op">*</span>pixel_width <span class="op">-</span> sat_x)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y2<span class="op">/</span>width<span class="op">*</span>pixel_width <span class="op">-</span> sat_y)<span class="op">**</span><span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb7-257"><a href="#cb7-257" aria-hidden="true" tabindex="-1"></a>phase_w1 <span class="op">=</span> distance_travelled_w1 <span class="op">/</span> wavelength <span class="op">*</span><span class="dv">2</span> <span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">;</span></span>
+<span id="cb7-258"><a href="#cb7-258" aria-hidden="true" tabindex="-1"></a>phase_w2 <span class="op">=</span> distance_travelled_w2 <span class="op">/</span> wavelength <span class="op">*</span><span class="dv">2</span> <span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -460,20 +560,251 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-7-2" data-nodetype="expression">
+<div id="ojs-cell-7-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-7-14" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 </div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="262" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 261;"><span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a>wave1 <span class="op">=</span> {</span>
+<span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> j <span class="op">=</span> i <span class="op">*</span> distance <span class="op">/</span> NumPoints<span class="op">;</span></span>
+<span id="cb8-266"><a href="#cb8-266" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([j<span class="op">*</span>xscale_factor<span class="op">,</span> amplitude <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelength <span class="op">+</span> time <span class="op">+</span> phase_w2)])<span class="op">;</span></span>
+<span id="cb8-267"><a href="#cb8-267" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb8-268"><a href="#cb8-268" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb8-269"><a href="#cb8-269" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="273" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 272;"><span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>wave2 <span class="op">=</span> {</span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> j <span class="op">=</span> i <span class="op">*</span> distance <span class="op">/</span> NumPoints<span class="op">;</span></span>
+<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([j<span class="op">*</span>xscale_factor <span class="op">,</span> amplitude <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelength <span class="op">+</span> time <span class="op">+</span> phase_w1)])<span class="op">;</span></span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="284" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 283;"><span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a>waveSum <span class="op">=</span> {</span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> NumPoints<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a>        <span class="kw">var</span> j <span class="op">=</span> i <span class="op">*</span> distance <span class="op">/</span> NumPoints<span class="op">;</span></span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="fu">push</span>([j<span class="op">*</span>xscale_factor <span class="op">,</span> amplitude <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelength <span class="op">+</span> time <span class="op">+</span> phase_w1) <span class="op">+</span> amplitude <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(j <span class="op">*</span> <span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> wavelength <span class="op">+</span> time <span class="op">+</span> phase_w2)])<span class="op">;</span></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="295" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 294;"><span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> {</span>
+<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (<span class="kw">true</span>) {</span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> speed <span class="op">*</span> <span class="fl">0.01</span><span class="op">;</span></span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a>    <span class="kw">yield</span> i</span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="306" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 305;"><span id="cb12-306"><a href="#cb12-306" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wave1)<span class="op">;</span></span>
+<span id="cb12-307"><a href="#cb12-307" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wave2)<span class="op">;</span></span>
+<span id="cb12-308"><a href="#cb12-308" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="0 -32 400 64"&gt;</span></span>
+<span id="cb12-309"><a href="#cb12-309" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>r<span class="sc">}</span><span class="vs">" stroke="red" fill="none" /&gt;</span></span>
+<span id="cb12-310"><a href="#cb12-310" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>b<span class="sc">}</span><span class="vs">" stroke="blue" fill="none" /&gt;</span></span>
+<span id="cb12-311"><a href="#cb12-311" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/svg&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="315" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 314;"><span id="cb13-315"><a href="#cb13-315" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(waveSum)<span class="op">;</span></span>
+<span id="cb13-316"><a href="#cb13-316" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="0 -64 400 130"&gt;</span></span>
+<span id="cb13-317"><a href="#cb13-317" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;path d="</span><span class="sc">${</span>p<span class="sc">}</span><span class="vs">" stroke="black" fill="none" /&gt;</span></span>
+<span id="cb13-318"><a href="#cb13-318" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/svg&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="321" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 320;"><span id="cb14-321"><a href="#cb14-321" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>Here we’ve considered a SAR satellite 600km above Earth, emitting 50cm wavelength radiation with a pixel resolution of 3m.</p>
+<p>The distance from each target to the satellite affects where in their cycle each wave is re-intercepted, and thus the difference determines whether those returned waves interfere constructively or deconstructively. Thus a random distribution of targets creates a random difference in distance to the satellite, creating a random level of interference in each pixel. This means the intensity of each pixel is randomly (though not necessarily uniformly) multiplied by a value from 0 (perfect deconstructive interference) to 1 (perfect constructive interference). This is the origin of speckle, and reason why it manifests as multiplicative noise (as opposed to additive).</p>
 <hr>
 
 
+<script type="ojs-module-contents">
+{"contents":[
+  {"methodName":"interpret","inline":"true","source":"htl.html`<span>${formatted_d1}</span>`", "cellName":"ojs-element-id-1"}
+,
+  {"methodName":"interpret","inline":"true","source":"htl.html`<span>${formatted_d2}</span>`", "cellName":"ojs-element-id-2"}
+]}
+</script>
 </section>
 
 </main> <!-- /main -->
+
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"//TODO: This use of html tags to decrease font size to get around label wrapping is bad, find more elegant solution later\nviewof form_m1_1 = Inputs.form(\n    [\n        Inputs.range([1, 30], {label: html`<font size=\"3.5\">Amplitude 1</font>`, step: 1, value: 15}),\n        Inputs.range([1, 100], {label: html`<font size=\"3.5\">Wavelength 1</font>`, step: 1, value: 50})\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\namplitudeW1  = form_m1_1[0];\nwavelengthW1 = form_m1_1[1];\n\nviewof form_m1_2 = Inputs.form(\n    [\n        Inputs.range([1, 30], {label: html`<font size=\"3.5\">Amplitude 2</font>`, step: 1, value: 15}),\n        Inputs.range([1, 100], {label: html`<font size=\"3.5\">Wavelength 2</font>`, step: 1, value: 50})\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\namplitudeW2  = form_m1_2[0];\nwavelengthW2 = form_m1_2[1];\n\nviewof form_m1_3 = Inputs.form(\n    [\n        Inputs.range([0, 6.2], {label: html`<font size=\"3.5\">Phase Diff</font>`, step: 0.1, value: 0}),\n        Inputs.range([1, 20], {label: html`<font size=\"3.5\">Speed</font>`, step: 1, value: 10})\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nphase_diff_m1  = form_m1_3[0];\nspeed_m1 = form_m1_3[1];\n\n\ndistance = 400;\nNumPoints = 1000;\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"wave1_m1 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var j = i * distance / NumPoints;\n        data.push([j , amplitudeW1 * Math.sin(j * 2*Math.PI / wavelengthW1 + time)]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"wave2_m1 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var j = i * distance / NumPoints;\n        data.push([j , amplitudeW2 * Math.sin(j * 2*Math.PI / wavelengthW2 + time + phase_diff_m1)]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"waveSum_m1 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var j = i * distance / NumPoints;\n        data.push([j , amplitudeW1 * Math.sin(j * 2*Math.PI / wavelengthW1 + time) + amplitudeW2 * Math.sin(j * 2*Math.PI / wavelengthW2 + time + phase_diff_m1)]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"time = {\n  let i = 0;\n  while (true) {\n    i += speed_m1 * 0.01;\n    yield i\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"r = d3.line()(wave1_m1);\nb = d3.line()(wave2_m1);\nsvg`<svg viewBox=\"0 -32 400 64\">\n  <path d=\"${r}\" stroke=\"red\" fill=\"none\" />\n  <path d=\"${b}\" stroke=\"blue\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"p = d3.line()(waveSum_m1);\nsvg`<svg viewBox=\"0 -64 400 130\">\n  <path d=\"${p}\" stroke=\"black\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpretQuiet","source":"shinyInput('form_m1_1')"},{"methodName":"interpretQuiet","source":"shinyInput('form_m1_2')"},{"methodName":"interpretQuiet","source":"shinyInput('form_m1_3')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"chart = {\n    const svg = d3.create(\"svg\").attr(\"viewBox\", [0, 0, width, height])\n\n    // define a bounding rectangle\n    svg.append(\"rect\")\n        .attr(\"x\", width/7)\n        .attr(\"y\", stroke_width)\n        .attr(\"width\", 5*width/7)\n        .attr(\"height\", height - 2*stroke_width)\n        .attr(\"stroke\", \"black\")\n        .attr(\"stroke-width\", stroke_width)\n        .attr(\"fill-opacity\", 0)\n\n    // define data used for circles\n    const circles = d3.range(2).map(i => ({\n        x: (i+2) * width / 5,\n        y: (i+1) * height / 3,\n        index: i, \n    }));\n\n    // define circles as graphic objects\n    svg.selectAll(\"circle\")\n        .data(circles)\n        .join(\"circle\")\n            .attr(\"cx\", d => d.x)\n            .attr(\"cy\", d => d.y)\n            .attr(\"r\", radius)\n            .attr(\"fill\", d => d3.schemeCategory10[d.index * 3])\n            .attr(\"id\", function(d,i) {return i})\n            .call(drag)\n\n    return svg.node();\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"chart2 = {\n    const svg = d3.create(\"svg\").attr(\"viewBox\", [0, 0, width, height])\n\n    //define a function to take the canvas position of the leftside chart to the\n    //  corresponding region in the second chart\n    //  it's messy because I solved the system by hand and didn't simplify, RIP\n    //  to future Jake if I ever have to un-hardcode the object position values\n    function lineartransform(xposition){\n        return (2*height/5 - radius)/(5/7*width -2*radius-2)*xposition + width/7 + 2/5*height + radius/2 - (2*height/5 - radius)*(width/7+radius+1)/(5/7*width-2*radius-2)\n    }\n\n    // define a earth curvature line\n    svg.append(\"rect\")\n        .attr(\"x\", width/7)\n        .attr(\"y\", height - 2*stroke_width)\n        .attr(\"width\", 5*width/7)\n        .attr(\"height\", stroke_width/2)\n        .attr(\"stroke\", \"black\")\n        .attr(\"stroke-width\", stroke_width)\n        .attr(\"fill-opacity\", 0)\n\n    // define lines going from the target to the satellites (first, so they appear under them)\n    svg.append(\"line\")\n        .attr(\"x1\", width/7 + 3*height/20)\n        .attr(\"x2\", lineartransform(x1))\n        .attr(\"y1\", 3*height/20)\n        .attr(\"y2\", height - 2*stroke_width)\n        .style(\"stroke-width\", stroke_width)\n        .style(\"stroke\", \"blue\")\n\n    svg.append(\"line\")\n        .attr(\"x1\", width/7 + 3*height/20)\n        .attr(\"x2\", lineartransform(x2))\n        .attr(\"y1\", 3*height/20)\n        .attr(\"y2\", height - 2*stroke_width)\n        .style(\"stroke-width\", stroke_width)\n        .style(\"stroke\", \"red\")\n\n\n    // define a rectangle representing the satellite\n    svg.append(\"rect\")\n        .attr(\"x\", width/7 + height/10)\n        .attr(\"y\", height/10)\n        .attr(\"width\", height/10)\n        .attr(\"height\", height/10)\n        .attr(\"stroke\", \"black\")\n        .attr(\"stroke-width\", stroke_width)\n        .attr(\"fill-opacity\", .50)\n    \n    // define notches indicating the bounds of the pixel\n    svg.append(\"line\")\n        .attr(\"x1\", width/7 + 2*height/5)\n        .attr(\"x2\", width/7 + 2*height/5)\n        .attr(\"y1\", height - 2*stroke_width)\n        .attr(\"y2\", height - 2*stroke_width - height/20)\n        .style(\"stroke-width\", stroke_width)\n        .style(\"stroke\", \"black\")\n\n    svg.append(\"line\")\n        .attr(\"x1\", width/7 + 4*height/5)\n        .attr(\"x2\", width/7 + 4*height/5)\n        .attr(\"y1\", height - 2*stroke_width)\n        .attr(\"y2\", height - 2*stroke_width - height/20)\n        .style(\"stroke-width\", stroke_width)\n        .style(\"stroke\", \"black\")\n\n    // define data used for circles\n    const circles = d3.range(2).map(i => ({\n        x: (i+2) * width / 5,\n        y: (i+1) * height / 3,\n        index: i, \n    }));\n\n    // define circles as graphic objects\n    svg.selectAll(\"circle\")\n        .data(circles)\n        .join(\"circle\")\n            .attr(\"cx\", function(d,i) {\n                if (i == 0) {return lineartransform(x1)}\n                else {return lineartransform(x2)}\n            })\n            .attr(\"cy\", height - 2*stroke_width)\n            .attr(\"r\", radius/2)\n            .attr(\"fill\", d => d3.schemeCategory10[d.index * 3])\n            .attr(\"id\", function(d,i) {return i})\n\n    // add text\n    svg.append(\"text\")\n        .attr(\"x\", width/7)\n        .attr(\"y\", .94*height)\n        .style(\"font-size\", \"28px\")\n        .text(\"side view\")\n\n    svg.append(\"text\")\n        .attr(\"x\", width/2)\n        .attr(\"y\", .15*height)\n        .style(\"font-size\", \"24px\")\n        .style(\"font-style\", \"italic\")\n        .text(\"*wildly not to scale\")\n\n    return svg.node();\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"formatted_d1 = (0.5*distance_travelled_w1).toFixed(2).replace(/\\B(?<!\\.\\d*)(?=(\\d{3})+(?!\\d))/g, \",\");\nformatted_d2 = (0.5*distance_travelled_w2).toFixed(2).replace(/\\B(?<!\\.\\d*)(?=(\\d{3})+(?!\\d))/g, \",\");\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"// defines how circles change appearance and position in response to cursor drag\ndrag = {\n\n    // move the circles to cursor position when dragging is active\n    function dragged(event, d){\n        var newx = event.x;\n        if (newx < xbounds[0]) newx = xbounds[0];\n        if (newx > xbounds[1]) newx = xbounds[1];\n        var newy = event.y;\n        if (newy < ybounds[0]) newy = ybounds[0];\n        if (newy > ybounds[1]) newy = ybounds[1];\n        \n        if (d3.select(this).attr('id') == \"0\") {\n            mutable x1 = newx;\n            mutable y1 = newy;\n        }\n        if (d3.select(this).attr('id') == \"1\") {\n            mutable x2 = newx;\n            mutable y2 = newy;\n        }\n        \n        d3.select(this).raise().attr(\"cx\", d.x = newx).attr(\"cy\", d.y = newy);\n    }\n\n    // map the d3 drag event functionality to these custom functions\n    return d3.drag()\n        .on(\"drag\", dragged)\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"// mutables\nmutable x1= 2*width/5;\nmutable y1= height/3;\nmutable x2= 3*width/5;\nmutable y2= 2*height/3;\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"// display variables\nstroke_width = 7;\nwidth = 700;\nheight = 500 + 2*stroke_width;\nradius = 25;\n\n// derived display variables\nxbounds = [width/7 + radius + 1, 6*width/7 - radius - 1]\nybounds = [ radius + 1  + stroke_width, height - radius - 1 - stroke_width]\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"//--------------------------------------------------------\n// WAVEFORM RENDERS\n//--------------------------------------------------------\n\n\n// wave variables\ndistance = 4;\nNumPoints = 1000;\nwavelength = .5;\namplitude = 15;\nspeed = 10;\n\n// display variables\nxscale_factor = 100;\n\n// satellite geometry variables\nsat_x = -100000;\nsat_y = 100000;\nsat_z = 600000;\npixel_width = 3;\n\n// derived variables\ndistance_travelled_w1 = 2*Math.sqrt(sat_z**2 + (x1/width*pixel_width - sat_x)**2 + (y1/width*pixel_width - sat_y)**2);\ndistance_travelled_w2 = 2*Math.sqrt(sat_z**2 + (x2/width*pixel_width - sat_x)**2 + (y2/width*pixel_width - sat_y)**2);\nphase_w1 = distance_travelled_w1 / wavelength *2 *Math.PI;\nphase_w2 = distance_travelled_w2 / wavelength *2 *Math.PI;\n\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"wave1 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var j = i * distance / NumPoints;\n        data.push([j*xscale_factor, amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w2)]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"wave2 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var j = i * distance / NumPoints;\n        data.push([j*xscale_factor , amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w1)]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"waveSum = {\n    var data = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        var j = i * distance / NumPoints;\n        data.push([j*xscale_factor , amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w1) + amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w2)]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"time = {\n  let i = 0;\n  while (true) {\n    i += speed * 0.01;\n    yield i\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"r = d3.line()(wave1);\nb = d3.line()(wave2);\nsvg`<svg viewBox=\"0 -32 400 64\">\n  <path d=\"${r}\" stroke=\"red\" fill=\"none\" />\n  <path d=\"${b}\" stroke=\"blue\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"p = d3.line()(waveSum);\nsvg`<svg viewBox=\"0 -64 400 130\">\n  <path d=\"${p}\" stroke=\"black\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpret","cellName":"ojs-cell-14","inline":false,"source":"d3 = require(\"d3@7\")\n"}]}
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
