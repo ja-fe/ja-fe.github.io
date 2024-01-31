@@ -12,7 +12,7 @@ These properties are the basis of powerful techniques such as **radar polarimetr
 
 ## What is Coherence? What is Polarization State?
 
-In reality, most EMR is not "perfectly polarized". EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms: [about](about.qmd)
+In reality, most EMR is not "perfectly polarized". EMR can often be viewed as sums of waves with different frequencies. Try adding two different waves together to make strange new waveforms: 
 
 ```{ojs}
 //TODO: This use of html tags to decrease font size to get around label wrapping is bad, find more elegant solution later

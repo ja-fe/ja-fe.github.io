@@ -16,9 +16,6 @@ website:
         text: Research
       - text: "Teaching"
         href: teaching/teaching_landingpage.qmd
-      - text: Projects
-        menu:
-          - about.qmd
     right:
       - text: "{{< fa brands github color=body-color size=xl title='GitHub Link' >}}"
         href: https://github.com/ja-fe

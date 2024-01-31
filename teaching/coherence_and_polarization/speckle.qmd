@@ -10,7 +10,7 @@ Let's look an illustrative real-world manifestation of this conceptual framework
 
 Consider that the returned wave associated with a given pixel likely isn't the result of a single interation with a single pointwise object. If multiple reflectors (or similarly, a continuous reflector) lie within the pixel, then the returned wave is the sum of multiple individual waves.
 
-Let's imagine we have a pixel with two identical point reflectors lying within it. How does the returned wave change as a function of where those reflectors are located? Move the blue and red targets in the pixel below:
+Let's imagine we have a pixel with two identical point reflectors lying within it. How does the returned wave change as a function of where those reflectors are located? **Move the blue and red targets in the pixel below:**
 
 ::: {layout-ncol=2}
 ```{ojs}
@@ -25,7 +25,7 @@ chart = {
         .attr("height", height - 2*stroke_width)
         .attr("stroke", "black")
         .attr("stroke-width", stroke_width)
-        .attr("fill-opacity", 0)
+        .attr("fill-opacity", 0.087124976) //This is a hard-coded value based on the prescribed physical parameters. It's hardcoded because it's easier than dealing with the resulting reactive dependencies since this cell should never be run again
 
     // define data used for circles
     const circles = d3.range(2).map(i => ({
@@ -190,6 +190,14 @@ drag = {
         }
         
         d3.select(this).raise().attr("cx", d.x = newx).attr("cy", d.y = newy);
+
+        var dt1 = 2*Math.sqrt(sat_z**2 + (mutable x1/width*pixel_width - sat_x)**2 + (mutable y1/width*pixel_width - sat_y)**2);
+        var dt2 = 2*Math.sqrt(sat_z**2 + (mutable x2/width*pixel_width - sat_x)**2 + (mutable y2/width*pixel_width - sat_y)**2);
+        var p1  =  dt1 / wavelength *2 *Math.PI;
+        var p2  =  dt2 / wavelength *2 *Math.PI;
+
+        d3.select("rect").attr("fill-opacity", 1-Math.abs(Math.cos((p1-p2)/2)));
+        //d3.select("text").text(1-Math.abs(Math.cos((p1-p2)/2))).style("fill","darkOrange");
     }
 
     // map the d3 drag event functionality to these custom functions
@@ -212,7 +220,8 @@ stroke_width = 7;
 width = 700;
 height = 500 + 2*stroke_width;
 radius = 25;
-
+```
+```{ojs}
 // derived display variables
 xbounds = [width/7 + radius + 1, 6*width/7 - radius - 1]
 ybounds = [ radius + 1  + stroke_width, height - radius - 1 - stroke_width]
@@ -233,22 +242,30 @@ NumPoints = 1000;
 wavelength = .5;
 amplitude = 15;
 speed = 10;
+```
 
+```{ojs}
 // display variables
 xscale_factor = 100;
+```
 
+```{ojs}
 // satellite geometry variables
 sat_x = -100000;
 sat_y = 100000;
 sat_z = 600000;
 pixel_width = 3;
+```
 
+```{ojs}
 // derived variables
 distance_travelled_w1 = 2*Math.sqrt(sat_z**2 + (x1/width*pixel_width - sat_x)**2 + (y1/width*pixel_width - sat_y)**2);
 distance_travelled_w2 = 2*Math.sqrt(sat_z**2 + (x2/width*pixel_width - sat_x)**2 + (y2/width*pixel_width - sat_y)**2);
+```
+
+```{ojs}
 phase_w1 = distance_travelled_w1 / wavelength *2 *Math.PI;
 phase_w2 = distance_travelled_w2 / wavelength *2 *Math.PI;
-
 ```
 
 ```{ojs}
@@ -313,5 +330,7 @@ svg`<svg viewBox="0 -64 400 130">
 ```{ojs}
 d3 = require("d3@7")
 ```
+
+Here we've considered a SAR satellite 600km above Earth, emitting 50cm wavelength radiation with a pixel resolution of 3m.
 
 The distance from each target to the satellite affects where in their cycle each wave is re-intercepted, and thus the difference determines whether those returned waves interfere constructively or deconstructively. Thus a random distribution of targets creates a random difference in distance to the satellite, creating a random level of interference in each pixel. This means the intensity of each pixel is randomly (though not necessarily uniformly) multiplied by a value from 0 (perfect deconstructive interference) to 1 (perfect constructive interference). This is the origin of speckle, and reason why it manifests as multiplicative noise (as opposed to additive).  
