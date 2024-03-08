@@ -5,6 +5,7 @@ project:
 website:
   title: "jf_web"
   favicon: static/favicon.png
+  description: Jake E. Ferguson, PhD Candidate at UWaterloo Geography and Environmental Management
   navbar:
     search: true
     left:
