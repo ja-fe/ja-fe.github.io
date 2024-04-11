@@ -333,4 +333,295 @@ d3 = require("d3@7")
 
 Here we've considered a SAR satellite 600km above Earth, emitting 50cm wavelength radiation with a pixel resolution of 3m.
 
-The distance from each target to the satellite affects where in their cycle each wave is re-intercepted, and thus the difference determines whether those returned waves interfere constructively or deconstructively. Thus a random distribution of targets creates a random difference in distance to the satellite, creating a random level of interference in each pixel. This means the intensity of each pixel is randomly (though not necessarily uniformly) multiplied by a value from 0 (perfect deconstructive interference) to 1 (perfect constructive interference). This is the origin of speckle, and reason why it manifests as multiplicative noise (as opposed to additive).  
+The distance from each target to the satellite affects where in their cycle each wave is re-intercepted, and thus the difference determines whether those returned waves interfere constructively or deconstructively. Thus a random distribution of targets creates a random difference in distance to the satellite, creating a random level of interference in each pixel. This means the intensity of each pixel is randomly (though not necessarily uniformly) multiplied by a value from 0 (perfect deconstructive interference) to 1 (perfect constructive interference). This is the origin of speckle, and reason why it manifests as multiplicative noise (as opposed to additive).
+
+Let's now consider two pixels: one with more, stronger scatterers and one with fewer, weaker scatterers -- perhaps pixel one belongs to some dense shrubland, while the other is a freshly plowed field. The distribution of scatterers is likely quite random -- what happens to the brightness of these pixels under different configurations?
+
+```{ojs}
+//static parameters
+targetnum_1 = 10;
+targetnum_2 = 10;
+max_radius_p1 = 35;
+min_radius_p1 = 25;
+max_radius_p2 = 20;
+min_radius_p2 = 15;
+
+radii_p1 = {
+    var data = [];
+        for (var i = 1; i <= targetnum_1; i++) {
+            data.push(Math.random()*(max_radius_p1-min_radius_p1) + min_radius_p1);
+        }
+    return data;
+}
+
+radii_p2 = {
+    var data = [];
+        for (var i = 1; i <= targetnum_2; i++) {
+            data.push(Math.random()*(max_radius_p2-min_radius_p2) + min_radius_p2);
+        }
+    return data;
+}
+```
+
+```{ojs}
+viewof reroll_toggle = Inputs.form(
+    [
+        Inputs.button("Redistribute Targets"),
+        Inputs.button("Auto Redistribute Targets"),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    })
+
+vtoggle1    = reroll_toggle[0];
+auto_toggle = reroll_toggle[1];
+```
+
+
+```{ojs}
+time_auto = {
+  let i = 0;
+  while (auto_toggle%2==1) {
+    i += 1;
+    yield i
+  }
+}
+```
+
+```{ojs}
+pixel1_positions = {
+    var dummy  = vtoggle1;
+    var dummy2 = time_auto;
+    var data = [];
+        for (var i = 1; i <= targetnum_1; i++) {
+            var x = Math.random()*(5*width/7 - 2*max_radius_p1) + max_radius_p1 + width/7;
+            var y = Math.random()*(height - 2*max_radius_p1) + max_radius_p1;
+            data.push([x,y]);
+        }
+    return data
+}
+
+pixel2_positions = {
+    var dummy  = vtoggle1;
+    var dummy2 = time_auto;
+    var data = [];
+        for (var i = 1; i <= targetnum_2; i++) {
+            var x = Math.random()*(5*width/7 - 2*max_radius_p1) + max_radius_p1 + width/7;
+            var y = Math.random()*(height - 2*max_radius_p1) + max_radius_p1;
+            data.push([x,y]);
+        }
+    return data
+}
+```
+
+::: {layout-ncol=2}
+```{ojs}
+//two pixels with targets in them
+
+chart3 = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    // define a bounding rectangle
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", height - 2*stroke_width)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 1-amplitude_p1/200)
+
+    // define data used for circles
+    const circles = d3.range(targetnum_1).map(i => ({
+        x: pixel1_positions[i][0],
+        y: pixel1_positions[i][1],
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", function(d,i) {return radii_p1[i]})
+            .attr("stroke", "black")
+            .attr("stroke-width", 4)
+            .attr("fill", d => d3.schemeCategory10[0])
+            .attr("id", function(d,i) {return i})
+
+    return svg.node();
+}
+```
+
+```{ojs}
+chart4 = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    // define a bounding rectangle
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", height - 2*stroke_width)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 1-amplitude_p2/200)
+
+    // define data used for circles
+    const circles = d3.range(targetnum_2).map(i => ({
+        x: pixel2_positions[i][0],
+        y: pixel2_positions[i][1],
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", function(d,i) {return radii_p2[i]})
+            .attr("stroke", "black")
+            .attr("stroke-width", 4)
+            .attr("fill", d => d3.schemeCategory10[0])
+            .attr("id", function(d,i) {return i})
+
+    return svg.node();
+}
+```
+:::
+
+```{ojs}
+Plot.plot({
+    round: true,
+    color: {legend: true},
+    x: {label: "Brightness"},
+    y: {label: "Frequency"},
+    marks: [
+        Plot.rectY(brightnesses, Plot.binX({y2: "count"}, {x: "x", fill: "p", mixBlendMode: "multiply"})),
+        Plot.ruleY([0])
+        ]
+})
+```
+
+```{ojs}
+//compute the brightness of each pixel
+amplitude_p1 = {
+
+    var dummy = vtoggle1;
+    
+    var amplitude_naught = radii_p1[0];
+
+    var dt_naught =
+        2*Math.sqrt(
+            sat_z**2
+            + (pixel1_positions[0][0]/width*pixel_width - sat_x)**2
+            + (pixel1_positions[0][1]/width*pixel_width - sat_y)**2
+        );
+    
+    var phase_naught =
+        dt_naught / wavelength *2 *Math.PI;
+    
+    //successively add the waves, determining the new phases and amplitudes
+    for (var i = 1; i <= targetnum_1-1; i++) {
+        //compute the phase of the next subwave
+        var dt_next =
+            2*Math.sqrt(
+                sat_z**2
+                + (pixel1_positions[i][0]/width*pixel_width - sat_x)**2
+                + (pixel1_positions[i][1]/width*pixel_width - sat_y)**2
+        );
+
+        var phase_next = 
+            dt_next / wavelength *2 *Math.PI;
+        
+        //compute the amplitude of the new sum
+        var new_amplitude =
+            Math.sqrt(
+                amplitude_naught**2
+                + radii_p1[i]**2
+                + 2*amplitude_naught*radii_p1[i]*Math.cos(phase_next-phase_naught)
+            );
+
+        //compute the phase of the new sum
+        var new_phase =
+            Math.atan(
+                (amplitude_naught*Math.sin(phase_naught) + radii_p1[i]*Math.sin(phase_next))
+                /(amplitude_naught*Math.cos(phase_naught) + radii_p1[i]*Math.cos(phase_next))
+            )
+
+        amplitude_naught = new_amplitude;
+        phase_naught = new_phase;
+
+    }
+    return amplitude_naught
+}
+
+amplitude_p2 = {
+
+    var dummy = vtoggle1;
+    
+    var amplitude_naught = radii_p2[0];
+
+    var dt_naught =
+        2*Math.sqrt(
+            sat_z**2
+            + (pixel2_positions[0][0]/width*pixel_width - sat_x)**2
+            + (pixel2_positions[0][1]/width*pixel_width - sat_y)**2
+        );
+    
+    var phase_naught =
+        dt_naught / wavelength *2 *Math.PI;
+    
+    //successively add the waves, determining the new phases and amplitudes
+    for (var i = 1; i <= targetnum_1-1; i++) {
+        //compute the phase of the next subwave
+        var dt_next =
+            2*Math.sqrt(
+                sat_z**2
+                + (pixel2_positions[i][0]/width*pixel_width - sat_x)**2
+                + (pixel2_positions[i][1]/width*pixel_width - sat_y)**2
+        );
+
+        var phase_next = 
+            dt_next / wavelength *2 *Math.PI;
+        
+        //compute the amplitude of the new sum
+        var new_amplitude =
+            Math.sqrt(
+                amplitude_naught**2
+                + radii_p2[i]**2
+                + 2*amplitude_naught*radii_p2[i]*Math.cos(phase_next-phase_naught)
+            );
+
+        //compute the phase of the new sum
+        var new_phase =
+            Math.atan(
+                (amplitude_naught*Math.sin(phase_naught) + radii_p2[i]*Math.sin(phase_next))
+                /(amplitude_naught*Math.cos(phase_naught) + radii_p2[i]*Math.cos(phase_next))
+            )
+
+        amplitude_naught = new_amplitude;
+        phase_naught = new_phase;
+
+    }
+    return amplitude_naught
+}
+
+{
+mutable brightnesses.push({x: amplitude_p1, p: "Pixel 1"});
+mutable brightnesses.push({x: amplitude_p2, p: "Pixel 2"});
+mutable brightnesses = mutable brightnesses;
+}
+```
+
+```{ojs}
+//histogram to be populated with the brightness values of the two pixels
+mutable brightnesses = [];
+```
+
+Clicking through a few dozen random configurations of each pixel, we can see in the developing histogram of their brightnesses that while the pixel with more strongly reflecting targets is on average brighter, there are many times when the pixel with weaker targets actually gives a higher return. This is due to the random level of interference we've called *speckle*. We can exploit the fact that the average value remains higher to identify likely high-return areas in *speckle filtering*. As an aside, notice that the distributions of brightness appear relatively Gaussian -- this is a lovely invocation of the Central Limit Theorem.
+
