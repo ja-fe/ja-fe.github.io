@@ -1,0 +1,877 @@
+---
+title: Interactive Simulations in Physics Education
+execute:
+    echo: false
+website:
+    page-navigation: 
+bibliography: CUT_paper_references.bib
+csl: vancouver.csl
+---
+
+This document was written to fulfill the research paper component of the University of Waterloo's Certificate in University Teaching program. It is not peer-reviewed or published in a formal journal.
+
+
+## Abstract
+
+The use of interactive media including simulations, games, and responsive graphics in post-secondary education has increased commensurately with the proliferation of computing technology. Simulations can improve student engagement and facilitate discovery; interactive media can be especially useful in physics education, where concepts commonly have no obvious human-recognizable visual representation and often rely heavily on geometric analogy. Many authors in the last two decades have developed interactive simulations to teach concepts in fields such as electromagnetism and kinematics; large open educational resource (OER) collections of these media such as the University of Colorado's Physics Education Technology (PhET) or the MyPhysicsLab project exist in an evolving educational ecosystem alongside commercial alternatives such as Pearson's long-standing Mastering Physics courseware series and newer subscription-based libraries. While many authors have formally investigated the efficacy of these learning tools on student motivation and achievement, as well as developed data-based design principles, research investigating how best to incorporate these tools in course design is itself actively evolving. This paper reviews the former two items in the context of physics education, while casting a more critical eye to the latter and exploring the implementation of simulations in an undergraduate course.
+
+## Introduction and Background
+
+#### Interactive Media in Education, Taxonomy
+
+Interactive media in education takes many forms, from simple navigable video clips and polling instruments to intricate webpages and simulations. All these tools seek to actively incorporate input from learners and react accordingly to demonstrate particular concepts or direct learning processes. This paper considers *simulations* or *sims*; sims are electronic representations of phenomena. Learners may alter key parameters of a sim, which then faithfully demonstrates the resulting dynamics or representation of the phenomenon. We may contrast a sim with an interactive webpage or application: whereas a webpage may display content or material based on learner input, even in a sophisticated manner such as through identifying a learner's current interest or ability, a sim provides a *responsive, representative environment* in which exploration and experimentation can occur. 
+
+#### Interactive Media in Education, Chronology
+##### <span style="color:#5452ba">or: For $4200 CAD, I can get you 512kb RAM and a simulated cannonball</span>
+
+Formal academic interest in the efficacy and proper implementation of interactive media in higher education has existed as long as the technology itself: see e.g. reviews by Miller [1987] [@miller1987simulations], De Jong and Van Joolingen [1998] @de1998scientific, or Rutten et al. [2012] @rutten2012learning, which examine individual studies beginning in the early 1970s. Early authors were often attracted to computer simulations by the hope that they would better engender problem solving and inquiry skills (see e.g. [@rivers1987computer;@breuer1990cognitive]), as simulations offered students the ability to perform experiments both on phenomena which they normally couldn't meaningfully control or perform experiments faster, cheaper, or more safely than in conventional laboratory settings.
+
+While individual early studies often showed ostensibly significant positive influences on student concept retention [@eylon1996computer], hypothesis-forming [@de1991learning], and attitude [@geban1992effects], meta analyses (attempting to synthesize these results into a cohesive pedagogical approach as computing technology became more widespread starting in the mid-1980s) found large variation in their efficacies. This was commonly attributed to the lack of consideration for how new technology was being incorporated into broader course design, with authors criticizing poor connection between simulations and lecture learning goals [@miller1987simulations], simulations not being intentionally designed to facilitate hypothesis forming and data interpretation [@de1998scientific], and instructor passivity during simulation activities [@rutten2012learning]. We can ourselves readily find 20th century studies with no or negative results, e.g. [@steinberg2000computers].
+
+An illustrative example can be found in a trio of early meta analyses published by Kulik, Kulik, and Bangert-Drowns examining the effectiveness of computer-based education in elementary [@kulik1985effectiveness], secondary [@bangert1985effectiveness], and post-secondary [@kulik1986effectiveness] settings. While the pre-university analyses found strong differences in efficacy based on the implementation of computer elements, these differences atrophied by the time learners entered university. The authors conjectured that this was due to the improved self-regulation capacity of older students, with the entertainment and structuring benefits of computer-assisted learning becoming less valuable. When we compare these initial results to more recent meta analyses which do show efficacy in post-secondary contexts (which are the beneficiaries of decades of research on integrating these tools into teaching theory), (e.g. [@smetana2012computer]), we might argue that these tools do not intrinsically improve learning in higher education. While useful, these tools remain strongly reliant on their intentional integration into existing pedagogical strategies.
+
+In the last twenty years research has studied the design and implementation of simulations for class contexts more thoroughly. As personal computing devices have become ubiquitous and capable, literature has explored connections with other developing pedagogical paradigms such as flipped-classroom learning (e.g. [@falode2023improving; @wu2021incorporating]) and game-based learning (e.g. [@martens2008game;@whitton2007motivation;@pellas2020systematic]).
+
+#### A quick case for interactive media in physics
+##### <span style="color:#5452ba">or: The Board is Not Enough</span>
+
+Although interactive media has been widely adopted by other fields including chemistry [^1], biology[^2], and, appropriately enough, computer science[^3], we confine ourselves to considering its use in physics education. We can establish both the general merits of these tools in higher education, while noting the unique appeal it offers to physics educators. Many authors have critiqued or measured the ineffectiveness of conventional lectures for developing hypothesis-forming and intuition skills in physics undergraduates, see e.g. [@hussain2011physics;@laws1991calculus;@thornton1996using]. Indeed in examining the literature, we might see the development of sims for physics education as a particular manifestation of broader trends towards inquiry- and active-learning based pedagogies.
+
+[^1]: See, e.g. [@moore2014phet] 
+[^2]: See, e.g. [@akpan2001issues]
+[^3]: See, e.g. [@gibson2013evaluation]
+
+Sims offer a representative environment which allows for learner-directed exploration of the phenomenon at hand; much contemporary literature examines sims through the lens of discovery/inquiry learning [@bruner1961act,@banchi2008many]. Sims encourage students to form hypotheses and interrogate phenomena, instead of having an understanding recited to them. This flexibility allows students to form their own internal models for the concepts, and can have positive effects on engagement and interest [@rutten2012learning].
+
+###### Representation
+Many physical disciplines are subject to issues of representation and the actual medium-based (as opposed to interactivity-, entertainment-, or inquiry-based) limitations of instructional elements. Student understanding of physical concepts is complicated by the fact that many relevant phenomena are largely if not entirely imperceptible to humans, or in the case of quantum phenomena, not directly observable at all. Several authors have tied this to the importance of model-building in physics education, arguing that being able to manipulate and switch between active representations improves learner's ability to conceptualize difficult concepts e.g. [@adams2008study1]! Consider that if we subscribe to an analogy-centric view of explaining phenomena (a common enough perspective in contemporary physics literature, see e.g. reviews [@coll2005role;@glynn2012teaching] and studies [@podolefsky2007analogical;@didics2015analysis;@jonane2015using]), we find ourselves in the awkward position of having to create coherent references between an invisible process and some visible surrogate. Even having arrived at some representation which we find satisfying, we remain constrained by the medium used to actually... constitute it. By way of an example, consider we are tasked with introducing the polarization state of electromagnetic radiation to students using the representation of transverse waves. In a conventional classroom setting with access to chalk and board, we might invoke the following diagrams[^10]:
+
+[^10]: Likely with less neat handiwork!
+
+::: {layout-ncol=2}
+
+```{ojs}
+
+//Define the wave parameters
+m1_wavelength = 50;
+m1_NumPoints  = 100;
+m1_distance   = 200; //Number of pixels width?
+m1_amplitude  = 15;
+m1_height     = 100;
+
+//Define the wave x,y values
+m1_wave = {
+    var data = [];
+    for (var i = 1; i <= m1_NumPoints; i++) {
+        var j = i * m1_distance / m1_NumPoints;
+        data.push([j , m1_amplitude * Math.sin(j * 2*Math.PI / m1_wavelength)]);
+    }
+    return data;
+}
+
+m1_xaxis = {
+    var data = [];
+    for (var i = 0; i <= 1; i++) {
+        var j = i * m1_distance;
+        data.push([j,0])
+    }
+    return data;
+}
+
+m1_yaxis = {
+    var data = [];
+    for (var i = 0; i <= 1; i++) {
+        var j = i * m1_height - m1_height/2;
+        data.push([25,j])
+    }
+    return data;
+}
+
+m1_line  = d3.line()(m1_wave);
+m1_xaxis_line = d3.line()(m1_xaxis);
+m1_yaxis_line = d3.line()(m1_yaxis);
+svg`<svg viewBox="0 -32 200 64">
+  <path d="${m1_xaxis_line}" stroke="black" fill="none" />
+  <path d="${m1_yaxis_line}" stroke="black" fill="none" />
+  <path d="${m1_line}" stroke="red" fill="none" />
+  <text x=30 y=-20 font-size=".4em"> t=0 </text>
+  <text x=19 y=-27 font-size=".4em"> y </text>
+  <text x=2 y=-2  font-size=".4em"> x </text>
+</svg>`
+```
+
+```{ojs}
+//Same wave as above but forward in time
+
+//Define the wave x,y values
+m2_wave = {
+    var data = [];
+    for (var i = 1; i <= m1_NumPoints; i++) {
+        var j = i * m1_distance / m1_NumPoints;
+        data.push([j , m1_amplitude * Math.sin(j * 2*Math.PI / m1_wavelength - Math.PI/3)]);
+    }
+    return data;
+}
+
+m2_line = d3.line()(m2_wave);
+svg`<svg viewBox="0 -32 200 64">
+  <path d="${m1_xaxis_line}" stroke="black" fill="none" />
+  <path d="${m1_yaxis_line}" stroke="black" fill="none" />
+  <path d="${m2_line}" stroke="red" fill="none" />
+  <text x=30 y=-20 font-size=".4em"> t=10s </text>
+  <text x=19 y=-27 font-size=".4em"> y </text>
+  <text x=2  y=6   font-size=".4em"> x </text>
+</svg>`
+```
+
+:::
+
+Explaining that the magnetic component is pointing "into the board" and thus not visible. Stuck describing a 4D phenomenon (3 space + time) in a 2D medium (2 space and static), we rely on paired projections into the space to illustrate the dynamics. Even developing an enviable ability to draw in accurate 3D perspective, we would find ourselves a dimension short. Instead using a 4D medium (3 space and animated), we might invoke [the following diagram](//teaching/coherence_and_polarization/polarization_state_pure.qmd) (linked to decrease load on this page).
+
+###### Interactivity
+
+But an ostensible improvement in representation still remains 'flat' until we put it into action: we need also consider the value of interactivity. In the prior diagram, we are given the freedom to drag and select a perspective of our choosing, to speed to the phenomenon up and down[^4]. Critically however, we can alter the constituent red and blue base states to see the effect on the output grey state. This allows learners to construct their own nascent understanding of the geometry of polarization, beyond being simply told through 2D diagrams that these states exist under certain conditions. This is a basic instance of learning a complex topic through interrogation, investigation, inquiry, discovery, or whatever near-synonym suits you best -- sims allow learners to observe and prod phenomena themselves.
+
+[^4]: While this may seem like a somewhat trivial improvement, anyone who has dealt with interpreting more advanced wave properties like polarization state may see the value added here
+
+###### Efficiency and physics for the non-physicist
+
+Not every student who needs to understand a given phenomenon has the luxury of spending a course (or even multiple courses) learning the requisite material to engage with it from a first principles perspective. As an example, polarimetric analysis of RADAR data is becoming an increasingly important method in the remote sensing of climate systems. However it is unreasonable to require environmental studies students to take an electromagnetism course and a Fourier analysis course simply to engage with one class of practical methods[^5]. Once concrete learning goals have been identified, sims can allow students to investigate precisely the aspects of a phenomenon that is relevant, skipping unnecessary formalism. Moreover sims can offer a more engaging, less intimidating environment to students unsure of their ability [@kirschner2006minimal]. Sims can also allow students to develop a nascent familiarity in less time than simple recitation [@rutten2012learning].
+
+[^5]: Albeit extremely cool and interesting methods, studied by extremely cool and interesting, yet modest and well-adjusted, people who are fun at parties
+
+---
+
+Ultimately the appeal of sims then becomes the ability to personally investigate well thought out representations of physical phenomena, rather than rely on either alienatingly dense theoretical descriptions or high-level but disjointed characterizations.
+
+
+#### The Limitations and Pitfalls of implementing sims
+##### <span style="color:#5452ba"> or: OK, but let's walk back that excitement</span>
+
+Rutten et al.'s broad 2012 review of sim implementation concluded that while significant effort has been placed on studying their design, far less research considers sim development as a holistic part of course development, taking into account curriculum goals, overall lesson structure, and the role of the instructor during simulation activities @rutten2012learning. Early meta analysis of computer simulation studies found that students struggle with creating hypotheses and designing new experiments when these activities are not intentionally supported in the instruction design @de1998scientific; these results mirror similar conclusions from studies on physical experimentation, see e.g. studies on inquiry- vs. verification-based laboratory design [@ural2016effect;@suits2004assessing;@myers2003inquiry]. Since the emergence of these technologies in the late 1980s authors have argued that new media offers little or no intrinsic benefit to teaching and must be implemented with intention as a single tool in a broader pedagogical paradigm; see e.g. Salomon's critique @salomon1998technology, Dillenbourg's criticism and suggested methods of computer-integrated learning @dillenbourg2008integrating, or the conclusions of Schittek et al.'s meta analysis in the context of medical instruction @schittek2001computer.
+
+This can perhaps be seen as an extension of the short-sighted tendency of educators to view instruction as the direct transfer of understanding to students authors have identified, see e.g. Wieman's critique of conventional lecture-based instruction @wieman2007not. Indeed in my own attempt to fold IM into my lectures, I was quickly enamored by the potential to finally come up with representations of phenomena which did justice to my own internal model, unrestricted by conventional media. Yet this obscures the *point* of teaching: to be of service to learners, to help them achieve their learning development and goals. The entire point of these tools remains to encourage students to form their *own* models, and to see the interchangeability and relative merits of ostensibly "competing" models. My own experience and the literature at large remind us to be careful and intentional when creating these tools, to ensure they exist to serve a specific purpose within the broader course design and that these tools don't usurp our overall pedagogical strategy for a course.
+
+## Implementation Principles
+
+So how do we use sims effectively? We can identify common methods of in-class sim use, which may be comingled in a given implementation.
+
+**Instructor-Lead**
+
+Instructor-lead uses of sims are straightforward extensions of conventional lectures with an obvious eye towards allowing more active learning. In basic implementations the sim may simply be a visual aid depicting the phenomena being discussed, with the instructor manipulating the parameters and demonstrating outcomes as those concepts arise in the lecture script. Obviously however the instructor is free to merely act as a 'gatekeeper' for the sim, and supply the class with goals or hypotheses to achieved or tested. Typical methods of active discussion (e.g. paired students, small groups, discussion circles, anonymous submission, clickers) can then be used to encourage participation and elicit responses. Studies of student responses to sims commonly find that while sims are effective at conveying concept knowledge, this then leads students to more complex questions that requires the aid of a subject matter expert [@rieber2008games;@adams2008study1]. Illustrative examples can be found in [@moore2014phet;@perkins2006phet;@thornton1996using]. 
+
+
+**Guided Inquiry**
+
+In guided inquiry, students are invited to explore a sim freely while pursuing a set of questions or outcomes to generate. Students may be asked to explain how the phenomena in question is dependent upon a particular parameter (e.g. [@moore2014phet;@batuyong2018exploring]) or to seek a combination of inputs which produce a particular result (e.g. [@perkins2006phet]). This is in obvious parallel to conventional laboratory design, and sims can be used outside of lecture in an analogous manner. However the convenience and responsiveness of simulations make them well-suited to guided inquiry within the classroom as well. After providing initial background instructors may ask students to actively investigate course concepts. When doing so, it is important to consider:
+
+**1** - Care must be taken to provide instructions which are specific enough to align purposefully with learning goals, but are not so specific as to constrain student's investigation of the simulated environment. Being overly prescriptive limits student's ability to form their own goals and hypotheses [@moore2014phet].
+
+**2** - Instructions and goals should be few and intentional, directly aligned with that lecture's learning goals. Providing too many goals may limit student's absorption of content and limit the amount of time available for thorough investigation [@moore2014phet].
+
+**3** - Peer-to-peer instruction and discussion are useful to inquiry. Guided inquiry tasks with sims can be approached in small groups, and easily folded into existing strategies such as think-pair-share.
+
+Specific examples of guided inquiry with sims in-class can be found in, e.g. [@moore2014phet;@batuyong2018exploring;@moore2013interactive;@ogegbo2022teaching].
+
+**Free or Open Inquiry**
+
+The absence of guides is free inquiry, where students explore a simulated environment without externally-provided instruction or motivation. This method can be dangerous: it lacks inherent connection to learning goals, risks alienating or overwhelming students who feel intimidated by the content, and ultimately relies entirely on the sim design itself. In the related context of game-based learning, many authors have empirically shown the importance of ensuring the design guides learners to activities which are explicitly linked to desired cognitive processes [^6]. Guidance may help decrease cognitive load, induce reflection which learners may otherwise eschew, and decrease frustration or feelings of inability [@kirschner2006minimal;@adams2008study1]. In their analysis of physics sim design, Adams et al. noted that "exploration is not always productive" and suggested identifying and pruning any such avenues not aligned with primary learning goals [@adams2008study1][^7]. However some authors suggest free inquiry can be a useful way to have learners already capably familiar with other inquiry methods develop hypothesis-building and experimental design skills [@banchi2008many;@zion2012moving]. In these cases regular discussion either in groups or with instructors is likely critical to encourage reflection and contextualize knowledge gained. Free inquiry must be carefully implemented: while free inquiry is sometimes romanticized as simulating what it is to "do real science", taken to the extreme it may result in a deleterious condition known as "graduate studies".
+
+[^6]: See table 38.2 in Handbook of Research on Educational Communications and Technology [@tobias2014game]
+[^7]: Consider for example the principle of *error tolerance* in universal design
+
+Thinking of sims as tools for conducting investigation, we can see these categories map well onto inquiry-based pedagogy classifications, see e.g. the *Confirmation/Structured/Guided/Open* inquiry hierarchy of [@banchi2008many] or the *Confirmation/Structure/Guided/Open/Authentic* hierarchy of [@buck2008characterizing]. Ultimately, we must ask ourselves: is our use of sims supporting or usurping the learning goals? Are the desired learning processes actually being induced in students?
+
+## Design Principles
+
+Sims not developed intentionally as part of a broader collection or educational resource project often reflect the designer's own perspective (or technical ability...). But what principles should guide us, if we want to add such a tool to our teaching?
+
+**Encouraging Exploration**
+
+As discussed earlier, countless authors have examined and extolled the importance of exploration or discovery learning in physics education, see e.g. [@gibson2013evaluation:@smetana2012computer;@rutten2012learning]. Sims then need to be designed from the start to facilitate exploration and interrogation of the phenomena at hand. This puts an emphasis on interactivity and generality: sims should allow students to manipulate all relevant parameters easily and concoct any combination they deem worth observing. Sims can also be designed, or supplemented with written material, to create puzzles or leading inquiries for the student to fixate upon and solve [@adams2008study1]. As we look at the following design principles, we will see how they support exploration.
+
+**Credibility and Realism**
+
+If the goal is to get students to engage in active exploration, we need to construct sims that students think are worthwhile. The validity of the sim and its clear connection to student's experience is then key: in a study of student's responses to a quantum mechanics sim, learners were observed to take the activity less seriously and spend less time with it when instructors showed it produced erroneous results for a specific parameter combination [@adams2008study1]. Evidently exploration becomes more frustrating when you can't be confident that the representation is accurate. Similarly if the representation is not relevant, what's the point? Students respond more enthusiastically to sims with representations of familiar, every-day objects and attempt to recreate responses they already expect in order to 'test' sims [@adams2008study2]. Sims must be accurate and comprehensive (to their scope).
+
+**Fun!**[^8]
+
+<span style="color:#5452ba">"Users were disappointed that the temperature could reach thousands of degrees and the box remained intact, so we added a feature where the lid flies off under extreme conditions. Now users are more satisfied."</span> [@adams2008study2]
+
+Exploration is more captivating when it's, well, enjoyable. Students spend more time with and are more likely to engage deeply with sims they find at least somewhat enjoyable [@rieber2008games]. Students are aware of how much learning they need to do to be successful in a competitive system: perhaps adding a little fun helps students feel more at-ease and be less self-critical. Fun can be a distraction however, essentially offering a different objective than actually interrogating the phenomenon. Care needs to be taken to remove sim elements that are "too fun" while not engendering any desired learning processes.
+
+[^8]: ʸᶦᵖᵖᵉᵉ !
+
+**Student Interview and Input**
+
+While following overarching pedagogical principles provides a reliable framework for creating useful tools, it is important to actively solicit student thoughts on each simulation. This provides empirical evidence about whether desired learning processes are occurring: in their study of sim design effects on student learning and attitude, PhET team researchers used multiple rounds of interview and redesign for 52 sims assessed by 89 non-science students, finding that:
+
+<span style="color:#5452ba">"*These interviews always reveal interface weaknesses, resolve interface questions that were not agreed upon by the team, **and often reveal pedagogically undesirable (and occasionally unexpected desirable) features** and subtle programming bugs.*"</span> [@adams2008study1] [*emphasis mine*]
+
+Although the need to actually empirically investigate the effectiveness of a sim is obvious enough, the process of doing so requires much care and effort. First it is critical that the sampled students accurately represent the target population, whether in considering students of different educational backgrounds and previous academic performance or ensuring that a representative minimum of students belonging to marginalized groups are included. Moreover students should have little to no prior exposure to the particular material. The method of interview needs to monitor both the learning outcomes *and* processes. Thus authors have commonly observed students as they interact with the sim for the first time: think-aloud transcriptions [@adams2008study1] and directed questioning [@cook2013comparative] are commonly used to probe student's thoughts.
+
+Beyond this student input is particularly important in the context of universal design and ensuring equitable outcomes for learners. In their study of physics sim design, Adams et al. found that efficacy varied substantially with [@adams2008study1]:
+
+<span style="color:#5452ba">**1** - Student familiarity with the material</span>
+
+<span style="color:#5452ba">**2** - Student familiarity with the style of sim</span>
+
+<span style="color:#5452ba">**3** - Student's own expectations of their understanding</span>
+
+<span style="color:#5452ba">**4** - Student's perception of the sim as connected to their experience of the real world</span>
+
+
+Students became intimidated, self-conscious, or frustrated when simulations were too difficult to use. This then emphasizes intuitiveness and flexibility in sim design, to accommodate learners with different prior exposure to the material or user experience used. In their companion paper on UI design, Adams et al. identified click-and-drag, checkbox, slider, and grabbable interfaces as being most commonly understood, and the use of minimalism and intentional visual cues to prevent learners from feeling overwhelmed or lost [@adams2008study2]. Moreover *consistency* in design and representation between sims was critical to make them intuitive and relate concepts between them.
+
+Interestingly students who had previously taken a course on a given topic were more likely to simply use sims as visual aids for their own explanations when not actively directed, then become self-conscious, self-critical, and switch from mastery orientation to performance orientation when faced with difficulty remembering concepts. This underscores our main point: students need to be engaged in *active exploration* for sims to be effective, and their response to and use of sims guided by the instructor.
+
+## Reflections on my own implementations
+
+It's straightforward enough, if time-consuming, to consult the literature. But seeing as the lesson learned has been that experimentation is key to learning, it would seem we need to design and introduce some sims ourselves to appreciate what works and what doesn't. I wrote several simulations for my teaching of GEOG 371 - Advanced Remote Sensing in Fall 2023. GEOG 371 is an excellent test course to implement physics sims in -- while it deals intimately with satellite-based instruments and the nature of electromagnetic radiation, it is ultimately concerned with practical applications to climate monitoring. Students are typically enrolled in environmental majors such as geomatics, geography/environmental management, and resources/sustainability and have relatively nascent physics training. Despite this they are expected to form a nontrivial understanding of notoriously confusing topics such as *polarization state*, *phase*, and various atmospheric light-matter interactions such as Rayleigh scatter.
+
+I sought to use sims to help teach three concepts which are typically not well understood by students in the course: 
+
+<span style="color:#5452ba">**1** - How waves sum (necessary to understand constructive and deconstructive interference)</span>
+
+<span style="color:#5452ba">**2** - Basic polarization states (necessary to understand RADAR imaging)</span>
+
+<span style="color:#5452ba">**3** - How speckle arises (necessary to interpret RADAR images)</span>
+
+
+The goal here is to efficiently get students to acquire an elementary intuitive understanding of these topics, and engage them in topics that students are often intimidated by. These sims differed in form and implementation while staying generally consistent with the principles outlined above: consistent representation, minimalism and reduced cognitive load, intuitive controls, fully general and bug-free. The simulations were used in-lecture using a guided approach: after outlining the basic theory in conventional lecture, I demonstrated the basic functionality of the sims to the class. Students were then given a short amount of time (1-2 minutes) to familiarize themselves with the sims individually, before pairing up with a partner to investigate a set of questions. After paired experimentation students were asked to voluntarily share their findings with the class; this process is analogous to and adapted from traditional think-pair-share activities[@kaddoura2013think].
+
+Intuitively I understood the appeal of the following design choices:
+
+<span style="color:#5452ba">**1** - Minimalism and clarity of design to decrease cognitive load</span>
+
+<span style="color:#5452ba">**2** - Consistency of representation to prevent confusion and make connections between sims</span>
+
+<span style="color:#5452ba">**3** - Intuitive, fun[^9] controls over programmatically simpler options</span>
+
+
+[^9]: and haaaaard to program...
+
+The sum of waves sim took [this form](//teaching/coherence_and_polarization/sums_of_waves.qmd) (linked to decrease load on this page). The polarization state sim took [this form](//teaching/coherence_and_polarization/polarization_state_pure.qmd).
+
+The speckle sim took the following form:
+
+::: {layout-ncol=2}
+```{ojs}
+chart = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    // define a bounding rectangle
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", height - 2*stroke_width)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 0.087124976) //This is a hard-coded value based on the prescribed physical parameters. It's hardcoded because it's easier than dealing with the resulting reactive dependencies since this cell should never be run again
+
+    // define data used for circles
+    const circles = d3.range(2).map(i => ({
+        x: (i+2) * width / 5,
+        y: (i+1) * height / 3,
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", radius)
+            .attr("fill", d => d3.schemeCategory10[d.index * 3])
+            .attr("id", function(d,i) {return i})
+            .call(drag)
+
+    return svg.node();
+}
+```
+
+```{ojs}
+chart2 = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    //define a function to take the canvas position of the leftside chart to the
+    //  corresponding region in the second chart
+    //  it's messy because I solved the system by hand and didn't simplify, RIP
+    //  to future Jake if I ever have to un-hardcode the object position values
+    function lineartransform(xposition){
+        return (2*height/5 - radius)/(5/7*width -2*radius-2)*xposition + width/7 + 2/5*height + radius/2 - (2*height/5 - radius)*(width/7+radius+1)/(5/7*width-2*radius-2)
+    }
+
+    // define a earth curvature line
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", height - 2*stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", stroke_width/2)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 0)
+
+    // define lines going from the target to the satellites (first, so they appear under them)
+    svg.append("line")
+        .attr("x1", width/7 + 3*height/20)
+        .attr("x2", lineartransform(x1))
+        .attr("y1", 3*height/20)
+        .attr("y2", height - 2*stroke_width)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "blue")
+
+    svg.append("line")
+        .attr("x1", width/7 + 3*height/20)
+        .attr("x2", lineartransform(x2))
+        .attr("y1", 3*height/20)
+        .attr("y2", height - 2*stroke_width)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "red")
+
+
+    // define a rectangle representing the satellite
+    svg.append("rect")
+        .attr("x", width/7 + height/10)
+        .attr("y", height/10)
+        .attr("width", height/10)
+        .attr("height", height/10)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", .50)
+    
+    // define notches indicating the bounds of the pixel
+    svg.append("line")
+        .attr("x1", width/7 + 2*height/5)
+        .attr("x2", width/7 + 2*height/5)
+        .attr("y1", height - 2*stroke_width)
+        .attr("y2", height - 2*stroke_width - height/20)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "black")
+
+    svg.append("line")
+        .attr("x1", width/7 + 4*height/5)
+        .attr("x2", width/7 + 4*height/5)
+        .attr("y1", height - 2*stroke_width)
+        .attr("y2", height - 2*stroke_width - height/20)
+        .style("stroke-width", stroke_width)
+        .style("stroke", "black")
+
+    // define data used for circles
+    const circles = d3.range(2).map(i => ({
+        x: (i+2) * width / 5,
+        y: (i+1) * height / 3,
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", function(d,i) {
+                if (i == 0) {return lineartransform(x1)}
+                else {return lineartransform(x2)}
+            })
+            .attr("cy", height - 2*stroke_width)
+            .attr("r", radius/2)
+            .attr("fill", d => d3.schemeCategory10[d.index * 3])
+            .attr("id", function(d,i) {return i})
+
+    // add text
+    svg.append("text")
+        .attr("x", width/7)
+        .attr("y", .94*height)
+        .style("font-size", "28px")
+        .text("side view")
+
+    svg.append("text")
+        .attr("x", width/2)
+        .attr("y", .15*height)
+        .style("font-size", "24px")
+        .style("font-style", "italic")
+        .text("*wildly not to scale")
+
+    return svg.node();
+}
+```
+:::
+
+```{ojs}
+formatted_d1 = (0.5*distance_travelled_w1).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+formatted_d2 = (0.5*distance_travelled_w2).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+```
+
+<p style="text-align: center;">
+    Distance from target one to the satellite: ${formatted_d1}m\
+    Distance from target two to the satellite: ${formatted_d2}m
+</p>
+
+
+```{ojs}
+// defines how circles change appearance and position in response to cursor drag
+drag = {
+
+    // move the circles to cursor position when dragging is active
+    function dragged(event, d){
+        var newx = event.x;
+        if (newx < xbounds[0]) newx = xbounds[0];
+        if (newx > xbounds[1]) newx = xbounds[1];
+        var newy = event.y;
+        if (newy < ybounds[0]) newy = ybounds[0];
+        if (newy > ybounds[1]) newy = ybounds[1];
+        
+        if (d3.select(this).attr('id') == "0") {
+            mutable x1 = newx;
+            mutable y1 = newy;
+        }
+        if (d3.select(this).attr('id') == "1") {
+            mutable x2 = newx;
+            mutable y2 = newy;
+        }
+        
+        d3.select(this).raise().attr("cx", d.x = newx).attr("cy", d.y = newy);
+
+        var dt1 = 2*Math.sqrt(sat_z**2 + (mutable x1/width*pixel_width - sat_x)**2 + (mutable y1/width*pixel_width - sat_y)**2);
+        var dt2 = 2*Math.sqrt(sat_z**2 + (mutable x2/width*pixel_width - sat_x)**2 + (mutable y2/width*pixel_width - sat_y)**2);
+        var p1  =  dt1 / wavelength *2 *Math.PI;
+        var p2  =  dt2 / wavelength *2 *Math.PI;
+
+        d3.select("rect").attr("fill-opacity", 1-Math.abs(Math.cos((p1-p2)/2)));
+        //d3.select("text").text(1-Math.abs(Math.cos((p1-p2)/2))).style("fill","darkOrange");
+    }
+
+    // map the d3 drag event functionality to these custom functions
+    return d3.drag()
+        .on("drag", dragged)
+}
+```
+
+```{ojs}
+// mutables
+mutable x1= 2*width/5;
+mutable y1= height/3;
+mutable x2= 3*width/5;
+mutable y2= 2*height/3;
+```
+
+```{ojs}
+// display variables
+stroke_width = 7;
+width = 700;
+height = 500 + 2*stroke_width;
+radius = 25;
+```
+
+```{ojs}
+// derived display variables
+xbounds = [width/7 + radius + 1, 6*width/7 - radius - 1]
+ybounds = [ radius + 1  + stroke_width, height - radius - 1 - stroke_width]
+```
+
+```{ojs}
+//--------------------------------------------------------
+// WAVEFORM RENDERS
+//--------------------------------------------------------
+
+
+// wave variables
+distance_sp = 4;
+NumPoints = 1000;
+wavelength = .5;
+amplitude = 15;
+speed = 10;
+```
+
+```{ojs}
+// display variables
+xscale_factor = 100;
+```
+
+```{ojs}
+// satellite geometry variables
+sat_x = -100000;
+sat_y = 100000;
+sat_z = 600000;
+pixel_width = 3;
+```
+
+```{ojs}
+// derived variables
+distance_travelled_w1 = 2*Math.sqrt(sat_z**2 + (x1/width*pixel_width - sat_x)**2 + (y1/width*pixel_width - sat_y)**2);
+distance_travelled_w2 = 2*Math.sqrt(sat_z**2 + (x2/width*pixel_width - sat_x)**2 + (y2/width*pixel_width - sat_y)**2);
+```
+
+```{ojs}
+phase_w1 = distance_travelled_w1 / wavelength *2 *Math.PI;
+phase_w2 = distance_travelled_w2 / wavelength *2 *Math.PI;
+```
+
+```{ojs}
+wave1 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance_sp / NumPoints;
+        data.push([j*xscale_factor, amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w2)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+wave2 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance_sp / NumPoints;
+        data.push([j*xscale_factor , amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w1)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+waveSum = {
+    var data = [];
+    for (var i = 1; i <= NumPoints; i++) {
+        var j = i * distance_sp / NumPoints;
+        data.push([j*xscale_factor , amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w1) + amplitude * Math.sin(j * 2*Math.PI / wavelength + time + phase_w2)]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+r_sp = d3.line()(wave1);
+b_sp = d3.line()(wave2);
+svg`<svg viewBox="0 -32 400 64">
+  <path d="${r_sp}" stroke="red" fill="none" />
+  <path d="${b_sp}" stroke="blue" fill="none" />
+</svg>`
+```
+
+```{ojs}
+p_sp = d3.line()(waveSum);
+svg`<svg viewBox="0 -64 400 130">
+  <path d="${p_sp}" stroke="black" fill="none" />
+</svg>`
+```
+
+```{ojs}
+d3 = require("d3@7")
+```
+
+It depicts a RADAR satellite 600km above the Earth, showing how the relative placement of reflectors in a scene can cause the returned waves to constructively or deconstructively interfere on return, making the pixel bright or dark. A detailed explanation can be found [here](//teaching/coherence_and_polarization/speckle.qmd) but is not necessary for this discussion. The partner section below extends the concept to the statistical level, generating the output of many random configurations.
+
+```{ojs}
+//static parameters
+targetnum_1 = 10;
+targetnum_2 = 10;
+max_radius_p1 = 35;
+min_radius_p1 = 25;
+max_radius_p2 = 20;
+min_radius_p2 = 15;
+
+radii_p1 = {
+    var data = [];
+        for (var i = 1; i <= targetnum_1; i++) {
+            data.push(Math.random()*(max_radius_p1-min_radius_p1) + min_radius_p1);
+        }
+    return data;
+}
+
+radii_p2 = {
+    var data = [];
+        for (var i = 1; i <= targetnum_2; i++) {
+            data.push(Math.random()*(max_radius_p2-min_radius_p2) + min_radius_p2);
+        }
+    return data;
+}
+```
+
+```{ojs}
+viewof reroll_toggle = Inputs.form(
+    [
+        Inputs.button("Redistribute Targets"),
+        Inputs.button("Auto Redistribute Targets"),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    })
+
+vtoggle1    = reroll_toggle[0];
+auto_toggle = reroll_toggle[1];
+```
+
+```{ojs}
+time_auto = {
+  let i = 0;
+  while (auto_toggle%2==1) {
+    i += 1;
+    yield i
+  }
+}
+```
+
+```{ojs}
+pixel1_positions = {
+    var dummy  = vtoggle1;
+    var dummy2 = time_auto;
+    var data = [];
+        for (var i = 1; i <= targetnum_1; i++) {
+            var x = Math.random()*(5*width/7 - 2*max_radius_p1) + max_radius_p1 + width/7;
+            var y = Math.random()*(height - 2*max_radius_p1) + max_radius_p1;
+            data.push([x,y]);
+        }
+    return data
+}
+
+pixel2_positions = {
+    var dummy  = vtoggle1;
+    var dummy2 = time_auto;
+    var data = [];
+        for (var i = 1; i <= targetnum_2; i++) {
+            var x = Math.random()*(5*width/7 - 2*max_radius_p1) + max_radius_p1 + width/7;
+            var y = Math.random()*(height - 2*max_radius_p1) + max_radius_p1;
+            data.push([x,y]);
+        }
+    return data
+}
+```
+
+::: {layout-ncol=2}
+```{ojs}
+//two pixels with targets in them
+
+chart3 = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    // define a bounding rectangle
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", height - 2*stroke_width)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 1-amplitude_p1/200)
+
+    // define data used for circles
+    const circles = d3.range(targetnum_1).map(i => ({
+        x: pixel1_positions[i][0],
+        y: pixel1_positions[i][1],
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", function(d,i) {return radii_p1[i]})
+            .attr("stroke", "black")
+            .attr("stroke-width", 4)
+            .attr("fill", d => d3.schemeCategory10[0])
+            .attr("id", function(d,i) {return i})
+
+    return svg.node();
+}
+```
+
+```{ojs}
+chart4 = {
+    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+
+    // define a bounding rectangle
+    svg.append("rect")
+        .attr("x", width/7)
+        .attr("y", stroke_width)
+        .attr("width", 5*width/7)
+        .attr("height", height - 2*stroke_width)
+        .attr("stroke", "black")
+        .attr("stroke-width", stroke_width)
+        .attr("fill-opacity", 1-amplitude_p2/200)
+
+    // define data used for circles
+    const circles = d3.range(targetnum_2).map(i => ({
+        x: pixel2_positions[i][0],
+        y: pixel2_positions[i][1],
+        index: i, 
+    }));
+
+    // define circles as graphic objects
+    svg.selectAll("circle")
+        .data(circles)
+        .join("circle")
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+            .attr("r", function(d,i) {return radii_p2[i]})
+            .attr("stroke", "black")
+            .attr("stroke-width", 4)
+            .attr("fill", d => d3.schemeCategory10[0])
+            .attr("id", function(d,i) {return i})
+
+    return svg.node();
+}
+```
+:::
+
+```{ojs}
+Plot.plot({
+    round: true,
+    color: {legend: true},
+    x: {label: "Brightness"},
+    y: {label: "Frequency"},
+    marks: [
+        Plot.rectY(brightnesses, Plot.binX({y2: "count"}, {x: "x", fill: "p", mixBlendMode: "multiply"})),
+        Plot.ruleY([0])
+        ]
+})
+```
+
+```{ojs}
+//compute the brightness of each pixel
+amplitude_p1 = {
+
+    var dummy = vtoggle1;
+    
+    var amplitude_naught = radii_p1[0];
+
+    var dt_naught =
+        2*Math.sqrt(
+            sat_z**2
+            + (pixel1_positions[0][0]/width*pixel_width - sat_x)**2
+            + (pixel1_positions[0][1]/width*pixel_width - sat_y)**2
+        );
+    
+    var phase_naught =
+        dt_naught / wavelength *2 *Math.PI;
+    
+    //successively add the waves, determining the new phases and amplitudes
+    for (var i = 1; i <= targetnum_1-1; i++) {
+        //compute the phase of the next subwave
+        var dt_next =
+            2*Math.sqrt(
+                sat_z**2
+                + (pixel1_positions[i][0]/width*pixel_width - sat_x)**2
+                + (pixel1_positions[i][1]/width*pixel_width - sat_y)**2
+        );
+
+        var phase_next = 
+            dt_next / wavelength *2 *Math.PI;
+        
+        //compute the amplitude of the new sum
+        var new_amplitude =
+            Math.sqrt(
+                amplitude_naught**2
+                + radii_p1[i]**2
+                + 2*amplitude_naught*radii_p1[i]*Math.cos(phase_next-phase_naught)
+            );
+
+        //compute the phase of the new sum
+        var new_phase =
+            Math.atan(
+                (amplitude_naught*Math.sin(phase_naught) + radii_p1[i]*Math.sin(phase_next))
+                /(amplitude_naught*Math.cos(phase_naught) + radii_p1[i]*Math.cos(phase_next))
+            )
+
+        amplitude_naught = new_amplitude;
+        phase_naught = new_phase;
+
+    }
+    return amplitude_naught
+}
+
+amplitude_p2 = {
+
+    var dummy = vtoggle1;
+    
+    var amplitude_naught = radii_p2[0];
+
+    var dt_naught =
+        2*Math.sqrt(
+            sat_z**2
+            + (pixel2_positions[0][0]/width*pixel_width - sat_x)**2
+            + (pixel2_positions[0][1]/width*pixel_width - sat_y)**2
+        );
+    
+    var phase_naught =
+        dt_naught / wavelength *2 *Math.PI;
+    
+    //successively add the waves, determining the new phases and amplitudes
+    for (var i = 1; i <= targetnum_1-1; i++) {
+        //compute the phase of the next subwave
+        var dt_next =
+            2*Math.sqrt(
+                sat_z**2
+                + (pixel2_positions[i][0]/width*pixel_width - sat_x)**2
+                + (pixel2_positions[i][1]/width*pixel_width - sat_y)**2
+        );
+
+        var phase_next = 
+            dt_next / wavelength *2 *Math.PI;
+        
+        //compute the amplitude of the new sum
+        var new_amplitude =
+            Math.sqrt(
+                amplitude_naught**2
+                + radii_p2[i]**2
+                + 2*amplitude_naught*radii_p2[i]*Math.cos(phase_next-phase_naught)
+            );
+
+        //compute the phase of the new sum
+        var new_phase =
+            Math.atan(
+                (amplitude_naught*Math.sin(phase_naught) + radii_p2[i]*Math.sin(phase_next))
+                /(amplitude_naught*Math.cos(phase_naught) + radii_p2[i]*Math.cos(phase_next))
+            )
+
+        amplitude_naught = new_amplitude;
+        phase_naught = new_phase;
+
+    }
+    return amplitude_naught
+}
+
+{
+mutable brightnesses.push({x: amplitude_p1, p: "Pixel 1"});
+mutable brightnesses.push({x: amplitude_p2, p: "Pixel 2"});
+mutable brightnesses = mutable brightnesses;
+}
+```
+
+```{ojs}
+//histogram to be populated with the brightness values of the two pixels
+mutable brightnesses = [];
+```
+
+These simulations were generally well-received, though to what extent this was simply due to them being interesting diversions from lecture is unclear. Due to the nature of the course and limited resources, comprehensive student interview or response testing was not conducted beyond a majority of students indicating they 'enjoyed' the sims. Given the goal of producing certain outcomes or hypothesizing about the effects of certain changes, several student pairs shared ideas commensurate with the level of understanding needed to apply the concepts to the course material.
+
+Ultimately however, as discussed above we would need to measurably tie the use of these sims to the achievement of learning goals, and incorporate student feedback cyclically, to be confident about their merits as teaching tools. Their creation itself has instead become my own learning experience, and perhaps a useful free resource for anyone desperate enough to find themselves on page 3+ of Google search.
+
+
+## Conclusion
+
+Sims offer students a uniquely valuable opportunity to engage in active, personalized exploration of phenomena in an efficient and engaging way. They allow students to interrogate relationships directly, form and test hypotheses, and interact with representations too complex for chalk and board. Moreover they can offer students a less intimidating exposure to concepts which they have little foreknowledge of. However sims are only effective when designed and implemented with consideration of broader pedagogical principles. The following are the most salient in both my review of the literature and own experience:
+
+<span style="color:#5452ba">**1** - Sims should be designed to facilitate **engaged exploration** of phenomena</span>
+
+<span style="color:#5452ba">**2** - Sims must be **empirically evaluated** by monitoring the experiences of learners and ensuring they align directly with learning goals</span>
+
+<span style="color:#5452ba">**3** - **Guidance** is needed to ensure sim use is productive and encourage reflection on the results of student's experiments</span>
+
+The difficulty of creating good sims (requiring programming, subject matter, and pedagogical expertise) can make their development and use sparse, limited only to large collections with staff and testing procedures, e.g. PHeT. Worse it can make their use superficial or misguided. Yet when intentionally developed as part of a larger educational program, their effect on engagement and learning is too substantial to dismiss.
+
+
+```{ojs}
+time = {
+  let i = 0;
+  while (true) {
+    i += 0.1;
+    yield i
+  }
+}
+```

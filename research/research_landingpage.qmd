@@ -1,0 +1,7 @@
+---
+title: Research
+execute:
+    echo: false
+---
+
+I primarily work on Synthetic Aperture RADAR remote sensing of cryospheric systems, but my work also touches on other remote sensing methods, thermodynamic models which ingest RS data, and physics pedagogy.

@@ -2,7 +2,13 @@
 title: Teaching
 execute:
     echo: false
+bibliography: teaching_references.bib
+csl: vancouver.csl
 ---
 
 Are you a student in my class? A colleague? Graduate student desperately searching the web for an explanation of an obscure concept? Here you'll find a selection of teaching resources associated with my classes and workshops.
 
+---
+<span style="color:#5452ba">
+"Teaching cannot remain the top-down pouring of knowledge into otherwise passive students' minds. If we are to seriously consider constructivism with its cognitive implications, and the interpersonal nature of learning with its social and organizational implications, and if we are to allow technology to be a lever for this kind of shift, then the prototypical kind of the learning environment described above is inevitable. Sure to follow are teamwork, the social appropriation of meaning rather than authority-sanctioned "true" knowledge, interdisciplinary materials, opening up of curricula, constant improvisation, and self-reliance of both teachers and students. But this vision implies a different kind of teacher. The new teachers are hardly ever going to have a detailed, well-worked-out curriculum to follow; they are not going to be the classroom authorities knowledgeable on everything; and they are not going to be the sole actors in the classroom. Instead, the teacher is going to be an autonomous, confident, widely knowledgeable professional, a team player, and a flexible improviser."</span>
+-Gavriel Salomon @salomon1998technology
