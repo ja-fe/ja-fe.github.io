@@ -1,0 +1,198 @@
+---
+title: Speckle filtering
+execute:
+    enabled: true
+    echo: false
+website:
+    page-navigation: true
+
+---
+
+So how do we go about undoing this effect? Clearly multiplying the brightness of each pixel by a (normally-distributed) random number between 0 and 1 isn't exactly a reversible function. But we can use some intuitive methods to clarify the images.
+
+---
+
+:::: {.columns}
+::: {.column width="33%"}
+```{ojs}
+dummy=5
+```
+:::
+::: {.column width="33%"}
+```{ojs}
+tex 
+`\begin{bmatrix}
+    ${fm[0][0]} & ${fm[0][1]} & ${fm[0][2]} & ${fm[0][3]} & ${fm[0][4]}\\ 
+    ${fm[1][0]} & ${fm[1][1]} & ${fm[1][2]} & ${fm[1][3]} & ${fm[1][4]}\\ 
+    ${fm[2][0]} & ${fm[2][1]} & ${fm[2][2]} & ${fm[2][3]} & ${fm[2][4]}\\ 
+    ${fm[3][0]} & ${fm[3][1]} & ${fm[3][2]} & ${fm[3][3]} & ${fm[3][4]}\\ 
+    ${fm[4][0]} & ${fm[4][1]} & ${fm[4][2]} & ${fm[4][3]} & ${fm[4][4]}\\ 
+\end{bmatrix}`
+```
+:::
+::: {.column width="33%"}
+```{ojs}
+dummy2=5
+```
+:::
+::::
+
+---
+
+```{ojs}
+viewof form_row1 = Inputs.form(
+    [
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+viewof form_row2 = Inputs.form(
+    [
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+viewof form_row3 = Inputs.form(
+    [
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 1}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+viewof form_row4 = Inputs.form(
+    [
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+viewof form_row5 = Inputs.form(
+    [
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+        Inputs.number([-10, 10], {step: 1, value: 0}),
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}
+        </div>`
+    }
+)
+
+fm = [
+    [form_row1[0], form_row1[1], form_row1[2], form_row1[3], form_row1[4]],
+    [form_row2[0], form_row2[1], form_row2[2], form_row2[3], form_row2[4]],
+    [form_row3[0], form_row3[1], form_row3[2], form_row3[3], form_row3[4]],
+    [form_row4[0], form_row4[1], form_row4[2], form_row4[3], form_row4[4]],
+    [form_row5[0], form_row5[1], form_row5[2], form_row5[3], form_row5[4]],
+];
+
+
+```
+
+---
+
+```{ojs}
+opa = {
+    const imdata = await FileAttachment("static/SAR_image.csv").csv({ array: true, typed: true } );
+    return imdata.map(d => {
+        d.map(x => {
+            x = +x;
+            return x;
+        })
+        return d; 
+    });
+}
+```
+
+```{ojs}
+fpa = {
+    var fpa = [];
+    var fmflat = fm.flat();
+    var fmsum  = fmflat.reduce((acc,value) => acc += value, 0);
+
+    for (let i=0; i<rowcount; i++){
+        fpa[i] = [];
+        for (let j=0;j<columncount; j++){
+            var indices = [];
+            for (let x=-2; x<3; x++){
+                for (let y=-2; y<3; y++){
+                    if (i+x>=0 && j+y>=0 && i+x<rowcount && j+y<columncount){
+                        indices.push([i+x,j+y,fm[x+2][y+2]]);
+                    }}};
+            var pix=0;
+            var scale=0;
+            indices.forEach(function(item,index){
+                pix += opa[item[0]][item[1]] * item[2];
+                scale += item[2]
+            });
+            scale = fmsum/scale
+
+            fpa[i][j] = pix*scale;
+
+        }
+    }
+    return fpa;
+}
+```
+
+```{ojs}
+imshow(opa, 2, d3.interpolateGreys)
+```
+
+---
+
+```{ojs}
+imshow(fpa, 2, d3.interpolateGreys)
+```
+
+```{ojs}
+rowcount = 250;
+columncount = 370;
+```
+
+
+```{ojs}
+import {imshow} from "@sw1227/reusable-2d-array-image-function"
+```
+
+```{ojs}
+math = require("mathjs@7")
+```
+

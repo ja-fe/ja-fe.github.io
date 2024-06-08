@@ -41,7 +41,10 @@ website:
             - href: teaching/coherence_and_polarization/visualizing_coherence.qmd
             - href: teaching/coherence_and_polarization/polarization_state_pure.qmd
             - href: teaching/coherence_and_polarization/polarization_state_general.qmd
-            - href: teaching/coherence_and_polarization/speckle.qmd
+        - section: "SAR Speckle and Filtering"
+          contents:
+            - href: teaching/SAR_speckle_and_filtering/speckle.qmd
+            - href: teaching/SAR_speckle_and_filtering/speckle_filters.qmd
 
     - title: "Research"
       style: "floating"
