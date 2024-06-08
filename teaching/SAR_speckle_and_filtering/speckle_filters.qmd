@@ -130,7 +130,7 @@ fm = [
 
 ```{ojs}
 opa = {
-    const imdata = await FileAttachment("static/SAR_image.csv").csv({ array: true, typed: true } );
+    const imdata = await FileAttachment("//static/SAR_image.csv").csv({ array: true, typed: true } );
     return imdata.map(d => {
         d.map(x => {
             x = +x;
