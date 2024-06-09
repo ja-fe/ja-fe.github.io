@@ -1,5 +1,5 @@
 ---
-title: Speckle filtering
+title: Speckle filtering (static)
 execute:
     enabled: true
     echo: false

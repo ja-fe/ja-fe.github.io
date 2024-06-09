@@ -44,7 +44,8 @@ website:
         - section: "SAR Speckle and Filtering"
           contents:
             - href: teaching/SAR_speckle_and_filtering/speckle.qmd
-            - href: teaching/SAR_speckle_and_filtering/speckle_filters.qmd
+            - href: teaching/SAR_speckle_and_filtering/speckle_filters_static.qmd
+            - href: teaching/SAR_speckle_and_filtering/speckle_filters_adaptive.qmd
 
     - title: "Research"
       style: "floating"
