@@ -5,7 +5,6 @@ execute:
     echo: false
 website:
     page-navigation: true
-
 ---
 
 So how do we go about undoing this effect? Clearly multiplying the brightness of each pixel by a (normally-distributed) random number between 0 and 1 isn't exactly a reversible function. But we can use some intuitive methods to clarify the images.
@@ -20,14 +19,17 @@ dummy=5
 :::
 ::: {.column width="33%"}
 ```{ojs}
-tex 
-`\begin{bmatrix}
+tex
+`
+\:\:\:\:\:\:
+\begin{bmatrix}
     ${fm[0][0]} & ${fm[0][1]} & ${fm[0][2]} & ${fm[0][3]} & ${fm[0][4]}\\ 
     ${fm[1][0]} & ${fm[1][1]} & ${fm[1][2]} & ${fm[1][3]} & ${fm[1][4]}\\ 
     ${fm[2][0]} & ${fm[2][1]} & ${fm[2][2]} & ${fm[2][3]} & ${fm[2][4]}\\ 
     ${fm[3][0]} & ${fm[3][1]} & ${fm[3][2]} & ${fm[3][3]} & ${fm[3][4]}\\ 
     ${fm[4][0]} & ${fm[4][1]} & ${fm[4][2]} & ${fm[4][3]} & ${fm[4][4]}\\ 
-\end{bmatrix}`
+\end{bmatrix}
+`
 ```
 :::
 ::: {.column width="33%"}
@@ -142,11 +144,10 @@ opa = {
 ```
 
 ```{ojs}
+fmflat = fm.flat()
+fmsum  = fmflat.reduce((acc,value) => acc += Math.abs(value), 0);
 fpa = {
     var fpa = [];
-    var fmflat = fm.flat();
-    var fmsum  = fmflat.reduce((acc,value) => acc += value, 0);
-
     for (let i=0; i<rowcount; i++){
         fpa[i] = [];
         for (let j=0;j<columncount; j++){
@@ -160,7 +161,7 @@ fpa = {
             var scale=0;
             indices.forEach(function(item,index){
                 pix += opa[item[0]][item[1]] * item[2];
-                scale += item[2]
+                scale += Math.abs(item[2])
             });
             scale = fmsum/scale
 
@@ -173,14 +174,15 @@ fpa = {
 ```
 
 ```{ojs}
-imshow(opa, 2, d3.interpolateGreys)
+imshow(fpa, 2, d3.interpolateGreys)
 ```
 
 ---
 
 ```{ojs}
-imshow(fpa, 2, d3.interpolateGreys)
+imshow(opa, 2, d3.interpolateGreys)
 ```
+
 
 ```{ojs}
 rowcount = 250;
