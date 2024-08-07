@@ -1,0 +1,7 @@
+---
+title: Outreach
+execute:
+    echo: false
+---
+
+Simply because I'm chronically online doesn't mean I don't engage with other humans, and these presentations and workshops are proof!

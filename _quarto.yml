@@ -17,6 +17,8 @@ website:
         href: research/research_landingpage.qmd
       - text: "Teaching"
         href: teaching/teaching_landingpage.qmd
+      - text: "Outreach"
+        href: outreach/outreach_landingpage.qmd
     right:
       - text: "{{< fa brands github color=body-color size=xl title='GitHub Link' >}}"
         href: https://github.com/ja-fe
@@ -60,6 +62,18 @@ website:
         - section: "Physics Pedagogy"
           contents:
             - href: research/pedagogy/CUT_research_paper.qmd
+    
+    - title: "Outreach"
+      style: "floating"
+      search: true
+      collapse-level: 1
+      contents:
+        - text: Outreach Home
+          href: outreach/outreach_landingpage.qmd
+        - section: "Public Talks"
+          contents:
+            href: outreach/talks/AstronomyOnTap2024/AstronomyOnTap2024.qmd
+            target: _blank
 
   page-footer:
     left: "<sub>© 2023 Jake Ferguson</sub>"

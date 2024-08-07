@@ -1,0 +1,128 @@
+---
+format:
+    revealjs:
+        theme: dark
+        transition: slide
+        background-transition: fade
+        height: 1080
+        width: 1920
+        fontsize: 44pt
+        embed-resources: true
+---
+
+## [Earth From Orbit:]{style="color:#5077c8"} Space Based Monitoring of a Planet in Flux {background-image="ims/radarsat.webp" background-size=contain}
+
+:::: {.columns}
+::: {.column width="40%"}
+Jake E. Ferguson
+<br/><br/>
+UW [Dept. Geography + Environmental Management]{style="color:#78cc8f;"}
+<br/><br/>
+UW [Water Institute]{style="color:#a0c1fa;"}
+<br/><br/>
+[\<ja-fe.github.io\>]{style="color:#e88e8e;"}
+
+:::
+::: {.column width="60%"}
+
+
+:::
+::::
+
+
+## {background-video="ims/spooky_wisp_work.mp4" background-video-loop=true}
+
+## [Lhù’ààn Mân’]{style="color:#5077c8"} {transition="fade"}
+
+::::: {.columns}
+:::: {.column width="60%"}
+### [or:]{style="color:#5077c8"} a somewhat distressing case study
+
+<br/><br/>
+
+::: {.incremental}
+- Largest lake in the Yukon: 400 km<sup>2</sup>
+- Hydrologically, ecologically, economically, and culturally vital
+- [Water level dropped **2m** in one year]{style="color:#a0c1fa;"}
+:::
+
+::::
+:::: {.column width="40%"}
+![](ims/kluane_map.jpeg)
+::::
+:::::
+
+## [Lhù’ààn Mân’]{style="color:#5077c8"} {transition="fade" transition-speed="slow"}
+
+:::: {.columns}
+::: {.column width="60%"}
+### [or:]{style="color:#5077c8"} a somewhat distressing case study
+
+<br/><br/>
+
+- Largest lake in the Yukon: 400 km<sup>2</sup>
+- Hydrologically, ecologically, economically, and culturally vital
+- [Water level dropped **2m** in one year]{style="color:#a0c1fa;"}
+
+:::
+::: {.column width="40%"}
+![](ims/dock.jpg)
+:::
+::::
+
+## {auto-animate=true}
+
+<br/><br/>
+<br/><br/>
+
+
+<span style="font-size:180%;">How many lakes are in Canada?</span>
+
+## {auto-animate=true}
+
+<br/><br/>
+<br/><br/>
+
+<span style="font-size:180%; color:#5077c8">**900,000**</span>
+
+<span style="font-size:180%;">How many lakes are in Canada?</span>
+
+## {auto-animate=true}
+
+<br/><br/>
+<br/><br/>
+
+
+<span style="font-size:180%; color:#5077c8">**62% of world total count**</span>
+
+<span style="font-size:180%; color:#5077c8">~~**900,000**~~</span>
+
+<span style="font-size:180%;">How many lakes are in Canada?</span>
+
+
+## {auto-animate=true}
+
+<br/><br/>
+<br/><br/>
+
+<span style="font-size:220%; color:#107842">**Most of 'em**</span>
+
+<span style="font-size:180%; color:#5077c8">~~**62% of world total count**~~</span>
+
+<span style="font-size:180%; color:#5077c8">~~**900,000**~~</span>
+
+<span style="font-size:180%;">How many lakes are in Canada?</span>
+
+## {background-image="ims/hydrolakes.jpeg" background-size=contain transition="slide" transition-speed="slow"}
+
+## A common problem on planet Earth
+
+<br/><br/>
+
+::: {.incremental}
+- Millions of km<sup>2</sup> to observe (weekly! daily!)
+    - [Forests [biomass, moisture levels]]{style="color:#107842;"}
+    - [Water bodies [ice presense, ice type]]{style="color:#a0c1fa;"}
+    - All current snow cover [density, water equivalent]
+- Something
+:::
