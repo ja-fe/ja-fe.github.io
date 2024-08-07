@@ -43,7 +43,7 @@ UW [Water Institute]{style="color:#a0c1fa;"}
 ::: {.incremental}
 - Largest lake in the Yukon: 400 km<sup>2</sup>
 - Hydrologically, ecologically, economically, and culturally vital
-- [Water level dropped **2m** in one year]{style="color:#a0c1fa;"}
+- [In 2016, water level dropped **2m**]{style="color:#a0c1fa;"}
 :::
 
 ::::
@@ -62,7 +62,7 @@ UW [Water Institute]{style="color:#a0c1fa;"}
 
 - Largest lake in the Yukon: 400 km<sup>2</sup>
 - Hydrologically, ecologically, economically, and culturally vital
-- [Water level dropped **2m** in one year]{style="color:#a0c1fa;"}
+- [In 2016, water level dropped **2m**]{style="color:#a0c1fa;"}
 
 :::
 ::: {.column width="40%"}
@@ -115,14 +115,165 @@ UW [Water Institute]{style="color:#a0c1fa;"}
 
 ## {background-image="ims/hydrolakes.jpeg" background-size=contain transition="slide" transition-speed="slow"}
 
-## A common problem on planet Earth
+## A common problem on [planet Earth]{style="color:#a0c1fa;"} {auto-animate="true"} 
 
 <br/><br/>
 
 ::: {.incremental}
-- Millions of km<sup>2</sup> to observe (weekly! daily!)
-    - [Forests [biomass, moisture levels]]{style="color:#107842;"}
+- Millions of km<sup>2</sup> to observe (Monthly! Weekly! Daily if you don't mind!)
+    - [Vegetation [species, biomass, plant moisture levels]]{style="color:#107842;"}
+    - [Soil [moisture]]{style="color:#5fc968;"}
     - [Water bodies [ice presense, ice type]]{style="color:#a0c1fa;"}
     - All current snow cover [density, water equivalent]
-- Something
+- How do we monitor our planet?
 :::
+
+## A common problem on [planet Earth]{style="color:#a0c1fa;"} {auto-animate="true"} 
+
+<br/><br/>
+
+- Millions of km<sup>2</sup> to observe (weekly! daily!)
+    - [Vegetation [species, biomass, plant moisture levels]]{style="color:#107842;"}
+    - [Soil [moisture]]{style="color:#5fc968;"}
+    - [Water bodies [ice presense, ice type]]{style="color:#a0c1fa;"}
+    - All current snow cover [density, water equivalent]
+- How do we monitor our planet?
+- <span style="font-size:120%; color:#e88e8e;">**Satellites**</span>
+
+## Revisiting [Kluane]{style="color:#5077c8"} {auto-animate="true"}
+
+::::: {.columns}
+:::: {.column width="55%"}
+
+<br/><br/>
+
+::: {.incremental}
+- Let's image the surface using a ~~glorified camera~~ [*advanced optical sensor*]{style="color:#e88e8e;"}!
+
+:::
+::::
+:::: {.column width="45%"}
+![](ims/kluane_optical.png){.nostretch fig-align="center" width="600px"}
+::::
+:::::
+
+## Revisiting [Kluane]{style="color:#5077c8"} {auto-animate="true"}
+
+::::: {.columns}
+:::: {.column width="55%"}
+
+<br/><br/>
+
+- Let's image the surface using a ~~glorified camera~~ [*advanced optical sensor*]{style="color:#e88e8e;"}!
+
+- [Pro:]{style="color:#107842;"} Works basically exactly how you think it does
+::::
+:::: {.column width="45%"}
+![](ims/kluane_optical_summer.png){.nostretch fig-align="center" width="600px"}
+::::
+:::::
+
+## Revisiting [Kluane]{style="color:#5077c8"} {auto-animate="true"}
+
+::::: {.columns}
+:::: {.column width="55%"}
+
+<br/><br/>
+
+- Let's image the surface using a ~~glorified camera~~ [*advanced optical sensor*]{style="color:#e88e8e;"}!
+
+- [Pro:]{style="color:#107842;"} Works basically exactly how you think it does
+
+- [Con:]{style="color:#e88e8e;"} So do clouds
+
+- [Con:]{style="color:#e88e8e;"} Cameras are only skin deep
+
+::::
+:::: {.column width="45%"}
+![](ims/kluane_optical_cloud.png){.nostretch fig-align="center" width="600px"}
+::::
+:::::
+
+## Inspiration from Venus
+
+::::: {.columns}
+:::: {.column width="55%"}
+
+<br/><br/>
+
+::: {.incremental}
+
+- 90s: Magellan probe is tasked with imaging Venus
+
+- Problem: Venus is completely covered in sulfiric acid clouds
+
+- Solution: Radio waves [RADAR]
+
+:::
+
+::::
+:::: {.column width="45%"}
+![](ims/venus_optical.jpg)
+::::
+:::::
+
+## [Irradiating Venus (just a little, as a treat)]{style="color:#5077c8;background-color:black"} {background-image="ims/venus_natural.jpg" background-size=contain}
+
+## [Irradiating Venus (just a little, as a treat)]{style="color:#5077c8;background-color:black"} {background-image="ims/venus_elevation.jpg" background-size=contain}
+
+## [Tracking the original AMZN]{style="color:#5077c8;background-color:black"} {background-image="ims/amazon1.png" background-size=contain}
+
+## [Tracking the original AMZN]{style="color:#5077c8;background-color:black"} {background-image="ims/amazon_water.png" background-size=contain}
+
+## [Tracking the original AMZN]{style="color:#5077c8;background-color:black"} {background-image="ims/amazon_vegetation.png" background-size=contain}
+
+## [Tracking the original AMZN]{style="color:#5077c8;background-color:black"} {background-image="ims/amazon_inundated.png" background-size=contain}
+
+## [Po River, 2019]{style="color:#5077c8;background-color:black"} {background-image="ims/po_river.png" background-size=contain}
+
+## {background-image="ims/po_river2.png" background-size=contain}
+
+## Return to [Kluane]{style="color:#5077c8"}
+
+::::: {.columns}
+:::: {.column width="55%"}
+
+<br/><br/>
+
+- We can cut right through the clouds using Canada's own [RADARSAT Constellation Mission!]{style="color:#e88e8e"}
+::::
+
+:::: {.column width="45%"}
+
+![](ims/kluane_radar1.png){.nostretch fig-align="center" width="620px"}
+
+::::
+:::::
+
+## {background-image="ims/kluane_radar2.jpg" background-size=contain}
+
+## {background-image="ims/shards1.jpg" background-size=contain}
+
+## {background-image="ims/shards2.jpg" background-size=contain}
+
+## {background-image="ims/kluane_radar2.jpg" background-size=contain}
+
+## {background-image="ims/ridge1.jpg" background-size=contain}
+
+## {background-image="ims/ridge2.jpg" background-size=contain}
+
+## Where does that leave us?
+
+## Acknowledgement and final note
+
+<br/><br/>
+
+This work uses satellite imagery of land held and stewarded by the Kluane First Nation, and imagery of fieldwork conducted on Kluane lake which would simply not have been either safe or possible without the magnanimous help and consultation of the community there.
+
+<br/><br/>
+
+[\<ja-fe.github.io\>]{style="color:#e88e8e;"}
+
+
+
+
