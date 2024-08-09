@@ -1,0 +1,112 @@
+---
+title: Natural light and the absence of speckle
+execute:
+    echo: false
+website:
+    page-navigation: true
+---
+
+Armed with an understanding of this new light phenomenon, we might ask the obvious question: Why doesn't *normal* light behave this way? Certainly when we look at an object using an optical satellite, or even just our own eyes, it doesn't appear *speckley*. What gives? Let's simply resimulate the prior situation using light from the sun; note that unlike our "pure" 50cm wave before, solar radiation is the confluence of many different frequencies in different proportion:
+
+
+```{ojs}
+viewof form_nl1 = Inputs.form(
+    [
+        Inputs.range([0, 1000], {label: html`<font size="3.5">Offset</font>`, step: 1, value: 500}),
+        Inputs.range([0, 20], {label: html`<font size="3.5">Speed</font>`, step: 1, value: 10})
+    ],
+    {
+        template: (inputs) => htl.html`<div style="display: flex; gap: 1em">
+        ${inputs}</div>`
+    }
+)
+
+phase_diff_nl  = form_nl1[0];
+speed_nl = form_nl1[1];
+
+
+distance_nl = 400;
+NumPoints_nl = 1000;
+NumWaves_nl = 20
+wavelengths_nl = [1,2,3,5,8,10,11,14,15,17,19,20,23,25,26,28,29,32,33,35]
+phases_nl = [0,0.4,1,0.5,2,3.1,4,4.9,1.3,.8,6,2.2,2.8,1.7,.85,.9,3,2.4,1.8,1.3];
+
+```
+
+```{ojs}
+wave_nl1 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints_nl; i++) {
+        var y = 0
+        for (var k = 1; k < NumWaves_nl; k++) {
+            var j = i * distance_nl / NumPoints_nl;
+            y += 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k])
+        }
+        data.push([j,y]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+wave_nl2 = {
+    var data = [];
+    for (var i = 1; i <= NumPoints_nl; i++) {
+        var y = 0
+        for (var k = 1; k < NumWaves_nl; k++) {
+            var j = i * distance_nl / NumPoints_nl;
+            y += 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k] + phase_diff_nl/wavelengths_nl[k])
+        }
+        data.push([j,y]);
+    }
+    return data;
+}
+```
+
+
+```{ojs}
+wavesum_nl = {
+    var data = [];
+    for (var i = 1; i <= NumPoints_nl; i++) {
+        var y = 0
+        for (var k = 1; k < NumWaves_nl; k++) {
+            var j = i * distance_nl / NumPoints_nl;
+            y += 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k]) + 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k] + phase_diff_nl/wavelengths_nl[k])
+        }
+        data.push([j,y]);
+    }
+    return data;
+}
+```
+
+```{ojs}
+rnl = d3.line()(wave_nl1);
+bnl = d3.line()(wave_nl2);
+svg`<svg viewBox="0 -64 400 128">
+  <path d="${rnl}" stroke="red" fill="none" />
+  <path d="${bnl}" stroke="blue" fill="none" />
+</svg>`
+```
+
+```{ojs}
+pnl = d3.line()(wavesum_nl);
+svg`<svg viewBox="0 -128 400 256">
+  <path d="${pnl}" stroke="black" fill="none" />
+</svg>`
+```
+
+```{ojs}
+time = {
+  let i = 0;
+  while (true) {
+    i += speed_nl * 0.01;
+    yield i
+  }
+}
+```
+
+Here we've made the blue/red waves the sum of about 20 different wavelengths roughly proportionate to the visual spectrum range to represent natural light. Chaotic! Try slowing down the speed to zero and manipulating the offset value. Notice that if the offset is zero the sum is quite large, which makes sense, since it then represents essentially a doubly-bright individual target. But if we give it any appreciable offset, representing two separate targets, we quickly decay down to a sum which is itself chaotic but broadly about the same size regardless of the offset.
+
+Essentially, natural light is too "messy" to interfere with itself. Mathematically we might say that it isn't periodic on any appreciable scale, so it never "syncs back up" if you offset it. Whereas two well-defined, periodic (RADAR) waves will cyclically constructively and deconstructively interfere, light composed of many sub-frequencies will not. While two periodic waves can sum to be twice as big or annihilate entirely, two piles of chaos kind of just always sum to a different pile of chaos.
+
+Hence we don't see speckle when considering natural light/solar radiation, and why speckle is such an alien phenomenon for us to consider.
