@@ -19,6 +19,8 @@ website:
         href: teaching/teaching_landingpage.qmd
       - text: "Outreach"
         href: outreach/outreach_landingpage.qmd
+      - text: "-misc-"
+        href: misc/misc_landingpage.qmd
     right:
       - text: "{{< fa brands github color=body-color size=xl title='GitHub Link' >}}"
         href: https://github.com/ja-fe
@@ -46,6 +48,7 @@ website:
         - section: "SAR Speckle and Filtering"
           contents:
             - href: teaching/SAR_speckle_and_filtering/speckle.qmd
+            - href: teaching/SAR_speckle_and_filtering/speckle_solar_radiation.qmd
             - href: teaching/SAR_speckle_and_filtering/speckle_filters_static.qmd
             - href: teaching/SAR_speckle_and_filtering/speckle_filters_adaptive.qmd
 
@@ -74,6 +77,16 @@ website:
           contents:
             href: outreach/talks/AstronomyOnTap2024/AstronomyOnTap2024.qmd
             target: _blank
+      
+    - title: "misc"
+      style: "floating"
+      search: true
+      collapse-level: 1
+      contents:
+        - text: misc
+          href: misc/misc_landingpage.qmd
+        - text: Modding custom flora into Stardew Valley
+          href: misc/moddingstardew.qmd  
 
   page-footer:
     left: "<sub>© 2023 Jake Ferguson</sub>"

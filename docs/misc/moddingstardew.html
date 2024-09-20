@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.336">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>jf_web - Modding Stardew Valley for fun and (imaginary) profit</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../static/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../academicons.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">jf_web</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about_jake.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../research/research_landingpage.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../teaching/teaching_landingpage.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../outreach/outreach_landingpage.html" rel="" target="">
+ <span class="menu-text">Outreach</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../misc/misc_landingpage.html" rel="" target="" aria-current="page">
+ <span class="menu-text">-misc-</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/ja-fe" rel="" target="">
+ <span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
+ <span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
+ <span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../misc/moddingstardew.html">Modding custom flora into Stardew Valley</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../misc/misc_landingpage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">misc</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../misc/moddingstardew.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Modding custom flora into Stardew Valley</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Modding Stardew Valley for fun and (imaginary) profit</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Stardew Valley is an immensely popular slice-of-life game released in 2016 by ConcernedApe which teaches players the value of living in ecological balance with the environment, being connected to your local community, and digging through trashbins every day. But what if we are unsatisfied with the default bevy of crops available to us? What if we want to farm species endemic to our region, or that are beneficial to local insects? What if your partner really likes tamarinds but you can’t find a mod pack with tamarind trees that doesn’t include like 50 other plants you don’t even want to deal with and the supplied image textures for breadfruit are awful like has this guy ever even seen breadfruit???<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Fortunately, you too can straightforwardly and safely modify your local game to <del>warp reality to your capricious whims</del> experiment with new ideas and get creative!</p>
+<hr>
+<p>This quick guide will:</p>
+<ul>
+<li>Review the basics of installing mods for Stardew Valley</li>
+<li>Review the basics of creating your own mod</li>
+<li>Provide a simple workflow for adding your own flora into the game</li>
+<li>Come back to haunt me when my partner starts making “Yellow-Rumped Warbler Plants” that produce entire birds as “produce” for our co-op game<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+</ul>
+<p>The main community resource for modding can be found <a href="https://stardewvalleywiki.com/Modding:Index">here</a>; this guide aims to streamline the process to a very specific and achievable goal in order to show anyone that they can try it too.</p>
+<section id="getting-set-up" class="level5">
+<h5 class="anchored" data-anchor-id="getting-set-up">Getting set up</h5>
+<p>The Stardew Modding Application Programming Interface (SMAPI) is a free, community-made and open-source program that makes installing and using mods easy and safe. Instructions for installing SMAPI on your computer can be found <a href="https://stardewvalleywiki.com/Modding:Player_Guide/Getting_Started#Install_SMAPI">here</a>. All you need to do is:</p>
+<ul>
+<li>Download the program</li>
+<li>Decompress or “unzip” the program</li>
+<li>Install the program</li>
+<li>Tell your game launcher (e.g.&nbsp;Steam or GoG) to work with the program</li>
+</ul>
+<p>Modifying a game’s code directly is… inadvisable. You can imagine how hard it might be to just crack open the ‘guts’ of a complicated program and start just making edits. Moreover many important game files are compiled, meaning they exist on the computer in a computer-efficient but human-unreadable format. Fortunately community members make meta-mods (AKA framework mods): mods which are designed to automatically hangle the minutia of coding and compiling for you and make creating certain types of mods much easier. For example some mods make adding new objects to the game easier, by creating a framework where you can just create some image files (defining the graphics) and basic text files (defining the properties) and boom: the meta-mod comes along, reads your files, and edits and recompiles to game code to include those objects. Thus you don’t really need to program anything, just define things you want to be in the game!</p>
+<p>We will install a meta-mod called JSON Assets. Check out the <a href="https://www.nexusmods.com/stardewvalley">Stardew NexusMods page</a> and make an account. Then navigate to the <a href="https://www.nexusmods.com/stardewvalley/mods/1720">JSON Assets page</a>. Notice that JSON Assets itself is reliant on three mods:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/JA_requirements.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">JSON Assets requirements: Expanded Preconditions Utility, SMAPI, SpaceCore</figcaption>
+</figure>
+</div>
+<p>Let’s download and install JSON Assets (manual download):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/JAdownload.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">JSON Assets download page. Select Files &gt; Manual Download</figcaption>
+</figure>
+</div>
+<p>Now, find where Stardew Valley is installed on your machine. If you are using Windows and Steam, it will be located at</p>
+<p><code>C:\Program Files (x86)\Steam\steamapps\common\Stardew Valley</code></p>
+<p>You can verify this by right-clicking Stardew Valley in Steam, selecting <code>Properties &gt; Installed Files &gt; Browse</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/stardewfilelocation.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Typical method for jumping to where a game is installed using Steam</figcaption>
+</figure>
+</div>
+<p>A quick reference for other operating systems and game launchers <a href="https://stardewvalleywiki.com/Modding:Player_Guide/Getting_Started#Find_your_game_folder">can be found here</a>.</p>
+<p>Move the JSON Assets mod to the /Mods folder and unpack it. It should then look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/JAinstalled.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Mods folder with one mod in it</figcaption>
+</figure>
+</div>
+<p>Congratulations: you have installed your first mod! In fact you now know how to install most any mod you might want. Simply download the mod files and unpack them in the Mods folder<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. In fact, also install the <a href="https://www.nexusmods.com/stardewvalley/mods/6529">Expanded Preconditions Utility</a> and <a href="https://www.nexusmods.com/stardewvalley/mods/1348">SpaceCore</a> mods which are required for JSON Assets to function.</p>
+<p>We can test that it works by launching Stardew Valley as normal. This time you will notice that a terminal also opens up and displays output from SMAPI. SMAPI tells us that we are running Stardew Valley version 1.6.8, that it found and successfully loaded our three mods, and gives us a polite warning noting that the mods are ‘intensive’ and directly alter the core game code and save files. This is fine, that’s what we want!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/successfulmodload.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">SMAPI output after installing both it and Content Patcher properly</figcaption>
+</figure>
+</div>
+<hr>
+<p>Now we can make our own mod! Let’s add mountain mint (genus <em>Pycnanthemum</em>) as a new cultivar of flower to grow on the farm. Mountain mint is native the Canada and the continental US, produces fragrant leaves<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, and is an excellent support for native wasps. Now… hey! Trust me: countless species of native wasps are utterly benign to humans. Many species feed primarily on nectar as adults and are parasitoids, laying their eggs inside pest insect species like tomato hornworms to fatal effect. Thus they serve two vital ecosystem and agricultural roles: pollination and pest predation. Wasps are just as important as bees!</p>
+<p>We’ll create a new folder in Mods called JakesMod. Inside that folder we’ll add a <em>manfest.json</em> file while holds the basic information of our mod.</p>
+<pre><code>{
+    "Name": "JakesMod",
+    "Author": "ja-fe",
+    "Version": "1.0",
+    "Description": "This mod adds mountain mint as a summer crop to the game.",
+    "UniqueID": "ja-fe.JakesMod",
+    "UpdateKeys": [],
+    "ContentPackFor": {
+        "UniqueID": "spacechase0.JsonAssets"
+    },
+}</code></pre>
+<p>The first parts just give the mod an official name and description, while the last part tells SMAPI that it is meant to be run using the JSON Assets framework.</p>
+<p>As simple as that, our mod now exists! We want to add a crop to the game. In the JSON Assets framework, all we need to do is create a folder called <code>Crops</code>. Inside we’ll create a folder called <code>Mountain Mint</code>. That folder will contain three files. <code>crop.json</code> will be a text file which defines all the properties of the plant: how much it’s seeds cost, what season it can be grown in, etc. <code>seeds.png</code> will be a 16x16 pixel image file which defines the graphics for the seed packet. <code>crop.png</code> will be a 128x32 pixel image which defines the graphics for the plant in it’s different growth stages.</p>
+<p>We also need to add a vegetable/fruit/flower object to the game that this crop will produce. In the main directory, we’ll create an <code>Objects</code> folder. Inside we’ll create a folder called <code>Mountain Mint</code> (the name of the plant is the same as the object it produces, as opposed to e.g.&nbsp;almond tree and almond). That folder will contain two files. <code>object.json</code> will be a text file which defines all the properties of the flower: how much it sells for, which villagers hate/like/love it, etc. <code>object.png</code> will be a 16x16 pixel image which defines the graphics for the flower.</p>
+<p>Thus, the mod folder will look like this:</p>
+<pre><code>/jakesmod
+    manifest.json
+    /Crops
+        /Mountain Mint
+            crop.json
+            crop.png
+            seeds.png
+    /Objects
+        /Mountain Mint
+            object.json
+            object.png</code></pre>
+<p>Once these files are defined, Mountain Mint will simply be added into the game! A simple way to get started is to download the <a href="https://www.nexusmods.com/stardewvalley/mods/4590">JSON Assets Resource Pack</a> which contains a single example of each type of item that can be added to the game. We can see that we are given a template for a new crop (plus some bonus base graphics to use for the seed pack):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/JAtemplate.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Crop template</figcaption>
+</figure>
+</div>
+<p>Let’s copy that template to our mod and edit the <code>crop.json</code> file. After filling out the form according to the instructions, we have:</p>
+<pre><code>{
+    "Name": "Mountain Mint",
+    "Product": "Mountain Mint", 
+    "SeedName": "Mountain Mint Seeds",
+    "SeedDescription": "A fragrant, beautiful flower beloved by pollinators. Plant in Spring.",
+    "Type": "Flower",
+    "CropType": "Normal",
+    "Seasons": ["spring"],
+    "Phases": [2, 2, 2, 2],
+    "RegrowthPhase": -1,
+    "HarvestWithScythe": false,
+    "TrellisCrop": false,
+    "Colors": null,
+    "Bonus": //This block determines the chance to get multiple crops.
+    {
+        "MinimumPerHarvest": 1,
+        "MaximumPerHarvest": 1,
+        "MaxIncreasePerFarmLevel": 5,
+        "ExtraChance": 0.0,
+    },
+    "SeedPurchaseRequirements": null,
+    "SeedPurchaseFrom": "Pierre",
+    "SeedPurchasePrice": 60,
+
+    // Localization
+
+    "SeedNameLocalization":
+    {
+        "es": "", //Spansih
+        "ko": "", //Korean
+        "de": "", //German
+        "fr": "", //French
+        "hu": "", //Hungarian
+        "it": "", //Italian
+        "ja": "", //Japanese
+        "pt": "", //Portuguese
+        "ru": "", //Russian
+        "tr": "", //Turkish
+        "zh": "", //Chinese (Simplified)
+    },
+    "SeedDescriptionLocalization":
+    {
+        "es": "", //Spansih
+        "ko": "", //Korean
+        "de": "", //German
+        "fr": "", //French
+        "hu": "", //Hungarian
+        "it": "", //Italian
+        "ja": "", //Japanese
+        "pt": "", //Portuguese
+        "ru": "", //Russian
+        "tr": "", //Turkish
+        "zh": "", //Chinese (Simplified)
+    }
+}</code></pre>
+<p>Here we’ve left out the Localization info (i.e.&nbsp;translation info for when the game is played on different language settings). Done! Now let’s create a seed packet graphic. We can use any online pixel art editor such as <a href="https://www.pixilart.com/draw">PixilArt</a> to open the seed template image, copy a design to a 16x16 grid, and edit it up for our graphic:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/drawingseeds.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">A lovely little graphic</figcaption>
+</figure>
+</div>
+<p>Saving that as <code>seeds.png</code> we can now draw the graphics for the crop. The crop image is actually up to 8 16x32 pixel graphics side by side. Because we defined mountain mint as having four growth phases of two days each we only need 6 graphics:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/cropgraphic_withlines.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Crop graphic with reference lines</figcaption>
+</figure>
+</div>
+<p>The first two sprites are always for two different “just planted” seed graphics, and the rest are the growth stages of the plant. The end of each graphic here is represented by the vertical red lines. The horizontal red line represents the point where a graphic will begin to cover up the space above it: this is fine, e.g.&nbsp;for a tall crop like corn, but a shrub like mountain mint doesn’t grow that large. Removing the reference lines, we have the actual texture file:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/cropgraphic.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Actual crop graphic</figcaption>
+</figure>
+</div>
+<p>Our crop now exists! But the item it produces (mountain mint flower) does not. Let’s quickly define the object and graphics. Filling out the <code>object.json</code> form we have (again, ommitting localization):</p>
+<pre><code>{
+    "Name": "Mountain Mint", //The name you would like your object to have, this should be identical to the subfolder name.
+    "Description": "Mountain mint flowers and fragrant leaves", //Description of the product.
+    "Category": "Flower",
+    "Edibility": -300,
+    "Price": 100,
+    "IsColored": false,
+    "Recipe": null,
+    "GiftTastes":
+    {
+        "Love": ["Demetrius", "Linus", "Caroline"],
+        "Like": ["Robin", "Alex"],
+        "Neutral": null,
+        "Dislike": ["Abigail", "Haley"],
+        "Hate": ["Vincent"]
+    },
+
+    // Localization
+
+    "NameLocalization":
+    {
+        "es": "", //Spanish
+        "ko": "", //Korean
+        "de": "", //German
+        "fr": "", //French
+        "hu": "", //Hungarian
+        "it": "", //Italian
+        "ja": "", //Japanese
+        "pt": "", //Portuguese
+        "ru": "", //Russian
+        "tr": "", //Turkish
+        "zh": "", //Chinese (Simplified)
+    },
+    "DescriptionLocalization":
+    {
+        "es": "", //Spanish
+        "ko": "", //Korean
+        "de": "", //German
+        "fr": "", //French
+        "hu": "", //Hungarian
+        "it": "", //Italian
+        "ja": "", //Japanese
+        "pt": "", //Portuguese
+        "ru": "", //Russian
+        "tr": "", //Turkish
+        "zh": "", //Chinese (Simplified)
+    },
+}</code></pre>
+<p>And we can draw a 16x16 graphic representing a bunch of small flowers:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/mmobjectgraphic.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">You’re NOT ALLOWED to make fun of my pixel art skills</figcaption>
+</figure>
+</div>
+<p>And we’re done! Putting our mod in the /Mods folder of our Stardew installation allows us to add it to the game. SMAPI tells us that the mod is loaded successfully as a content pack. Going to Pierre’s we can buy the seeds:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/success1.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">FP</figcaption>
+</figure>
+</div>
+<p>Plant them:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/success2.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Don’t mind the current state of ModTest Farm</figcaption>
+</figure>
+</div>
+<p>Grow them:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/success3.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Pixel art looks better in-game</figcaption>
+</figure>
+</div>
+<p>Harvest them:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/success4.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Our hard work rewarded</figcaption>
+</figure>
+</div>
+<p>and give them away!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="MS_resources/success5.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Local ecologist approved!</figcaption>
+</figure>
+</div>
+<p>And you can share the mod with anyone who also has JSON Assets installed! Just have them drop the mod folder into their /Mods folder. You can also add many other objects to the game in a similar manner, see the <a href="https://github.com/spacechase0/StardewValleyMods/blob/develop/JsonAssets/docs/author-guide.md">JSON Assets reference</a>.</p>
+<section id="nerd-stuff" class="level6">
+<h6 class="anchored" data-anchor-id="nerd-stuff">Nerd stuff</h6>
+<ul>
+<li><p>For a more detailed description of what SMAPI does, see the <a href="https://github.com/Pathoschild/SMAPI">README on the project’s GitHub page</a></p></li>
+<li><p>For a more detailed description of JSON Assets, see the <a href="https://github.com/spacechase0/StardewValleyMods/blob/develop/JsonAssets/docs/author-guide.md">reference</a></p></li>
+</ul>
+</section>
+</section>
+<section id="bugfixing" class="level4">
+<h4 class="anchored" data-anchor-id="bugfixing">Bugfixing</h4>
+<p>Uh oh. If you’re here something went wrong.</p>
+<section id="required-mods-dont-load-properly" class="level6">
+<h6 class="anchored" data-anchor-id="required-mods-dont-load-properly">Required mods don’t load properly</h6>
+<p>Let’s look at a typical ERROR/WARNING/UPDATE RECOMMENDED SMAPI output:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="modversionerror.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Error caused by installing old versions of the required mods</figcaption>
+</figure>
+</div>
+<p>Here SpaceCore was loaded fine, but JSON Assets and Expanded Preconditions Utility were not. In red, SMAPI tells us this is a serious error (they straight-up failed and the game was loaded without them). It also tells us that these versions are not compatible (i.e.&nbsp;out of date) and to go download the newer versions. Helpfully, in purple SMAPI tells us that the latest versions (i.e.&nbsp;the ones we should use) are Expanded Precondition Utility 1.0.2-alpha.20240225 and JSON Assets 1.11.8. Follow the provided links and make sure to download those versions of the mods. The game will then work properly.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>An all-too common occurence for many people, I’m sure<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Actually that sounds kind of awesome. As long as you don’t, uh, accidentally eat one because they will be typed as produce by the game<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Make sure you have also installed any mods that a given mod relies upon!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Do not drink tea made of mountain mint leaves<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><sub>© 2023 Jake Ferguson</sub></div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right"><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></div>
+  </div>
+</footer>
+
+
+
+</body></html>
