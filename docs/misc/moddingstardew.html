@@ -198,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Stardew Valley is an immensely popular slice-of-life game released in 2016 by ConcernedApe which teaches players the value of living in ecological balance with the environment, being connected to your local community, and digging through trashbins every day. But what if we are unsatisfied with the default bevy of crops available to us? What if we want to farm species endemic to our region, or that are beneficial to local insects? What if your partner really likes tamarinds but you can’t find a mod pack with tamarind trees that doesn’t include like 50 other plants you don’t even want to deal with and the supplied image textures for breadfruit are awful like has this guy ever even seen breadfruit???<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Stardew Valley is an immensely popular slice-of-life game released in 2016 by ConcernedApe which teaches players the value of living in <span style="color:green">ecological balance with the environment</span>, <span style="color:#4187e8">being connected to your local community</span>, and <span style="color:black">digging through your neighbour’s trash bins</span>. But what if we are unsatisfied with the default bevy of crops available to us? What if we want to farm species endemic to our region, or that are beneficial to local insects? What if your partner really likes tamarinds but you can’t find a mod pack with tamarind trees that doesn’t include like 50 other plants you don’t even want to deal with and the supplied image textures for breadfruit are awful like has this guy ever even seen breadfruit???<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>Fortunately, you too can straightforwardly and safely modify your local game to <del>warp reality to your capricious whims</del> experiment with new ideas and get creative!</p>
 <hr>
 <p>This quick guide will:</p>
@@ -206,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Review the basics of installing mods for Stardew Valley</li>
 <li>Review the basics of creating your own mod</li>
 <li>Provide a simple workflow for adding your own flora into the game</li>
-<li>Come back to haunt me when my partner starts making “Yellow-Rumped Warbler Plants” that produce entire birds as “produce” for our co-op game<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li>Come back to haunt me when my partner starts making “Yellow-Rumped Warbler Plants” that produce entire birds as “vegetables” for our co-op game</li>
 </ul>
 <p>The main community resource for modding can be found <a href="https://stardewvalleywiki.com/Modding:Index">here</a>; this guide aims to streamline the process to a very specific and achievable goal in order to show anyone that they can try it too.</p>
 <section id="getting-set-up" class="level5">
@@ -218,7 +218,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Install the program</li>
 <li>Tell your game launcher (e.g.&nbsp;Steam or GoG) to work with the program</li>
 </ul>
-<p>Modifying a game’s code directly is… inadvisable. You can imagine how hard it might be to just crack open the ‘guts’ of a complicated program and start just making edits. Moreover many important game files are compiled, meaning they exist on the computer in a computer-efficient but human-unreadable format. Fortunately community members make meta-mods (AKA framework mods): mods which are designed to automatically hangle the minutia of coding and compiling for you and make creating certain types of mods much easier. For example some mods make adding new objects to the game easier, by creating a framework where you can just create some image files (defining the graphics) and basic text files (defining the properties) and boom: the meta-mod comes along, reads your files, and edits and recompiles to game code to include those objects. Thus you don’t really need to program anything, just define things you want to be in the game!</p>
+<p>Modifying a game’s code directly is… inadvisable. You can imagine how hard it might be to just crack open the ‘guts’ of a complicated program and start just making edits. Moreover many important game files are compiled, meaning they exist on the computer in a computer-efficient but human-unreadable format. Fortunately community members make meta-mods (AKA framework mods): mods which are designed to automatically handle the minutia of coding and compiling for you and make creating certain types of mods much easier. For example some mods make adding new objects to the game easier, by creating a framework where you can just create some image files (defining the graphics) and basic text files (defining the properties) and boom: the meta-mod comes along, reads your files, and edits and recompiles to game code to include those objects. Thus you don’t really need to program anything, just define things you want to be in the game!</p>
 <p>We will install a meta-mod called JSON Assets. Check out the <a href="https://www.nexusmods.com/stardewvalley">Stardew NexusMods page</a> and make an account. Then navigate to the <a href="https://www.nexusmods.com/stardewvalley/mods/1720">JSON Assets page</a>. Notice that JSON Assets itself is reliant on three mods:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -250,22 +250,22 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">Mods folder with one mod in it</figcaption>
 </figure>
 </div>
-<p>Congratulations: you have installed your first mod! In fact you now know how to install most any mod you might want. Simply download the mod files and unpack them in the Mods folder<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. In fact, also install the <a href="https://www.nexusmods.com/stardewvalley/mods/6529">Expanded Preconditions Utility</a> and <a href="https://www.nexusmods.com/stardewvalley/mods/1348">SpaceCore</a> mods which are required for JSON Assets to function.</p>
+<p>Congratulations: you have installed your first mod! In fact you now know how to install most any mod you might want. Simply download the mod files and unpack them in the Mods folder<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In fact, also install the <a href="https://www.nexusmods.com/stardewvalley/mods/6529">Expanded Preconditions Utility</a> and <a href="https://www.nexusmods.com/stardewvalley/mods/1348">SpaceCore</a> mods which are required for JSON Assets to function.</p>
 <p>We can test that it works by launching Stardew Valley as normal. This time you will notice that a terminal also opens up and displays output from SMAPI. SMAPI tells us that we are running Stardew Valley version 1.6.8, that it found and successfully loaded our three mods, and gives us a polite warning noting that the mods are ‘intensive’ and directly alter the core game code and save files. This is fine, that’s what we want!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="MS_resources/successfulmodload.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">SMAPI output after installing both it and Content Patcher properly</figcaption>
+<figcaption class="figure-caption">SMAPI output after installing both it and JSON Assets properly</figcaption>
 </figure>
 </div>
 <hr>
-<p>Now we can make our own mod! Let’s add mountain mint (genus <em>Pycnanthemum</em>) as a new cultivar of flower to grow on the farm. Mountain mint is native the Canada and the continental US, produces fragrant leaves<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, and is an excellent support for native wasps. Now… hey! Trust me: countless species of native wasps are utterly benign to humans. Many species feed primarily on nectar as adults and are parasitoids, laying their eggs inside pest insect species like tomato hornworms to fatal effect. Thus they serve two vital ecosystem and agricultural roles: pollination and pest predation. Wasps are just as important as bees!</p>
+<p>Now we can make our own mod! Let’s add mountain mint (genus <em>Pycnanthemum</em>) as a new cultivar of flower to grow on the farm. Mountain mint is native to Canada and the continental US, produces fragrant leaves, and is an excellent support for native wasps. Now… hey! Trust me: countless species of native wasps are utterly benign to humans. Many species feed primarily on nectar as adults and are parasitoids, laying their eggs inside pest insect species like tomato hornworms to fatal effect. Thus they serve two vital ecosystem and agricultural roles: pollination and pest predation. <span style="color:green">Wasps are just as important as bees!</span></p>
 <p>We’ll create a new folder in Mods called JakesMod. Inside that folder we’ll add a <em>manfest.json</em> file while holds the basic information of our mod.</p>
 <pre><code>{
     "Name": "JakesMod",
     "Author": "ja-fe",
     "Version": "1.0",
-    "Description": "This mod adds mountain mint as a summer crop to the game.",
+    "Description": "This mod adds mountain mint as a spring crop to the game.",
     "UniqueID": "ja-fe.JakesMod",
     "UpdateKeys": [],
     "ContentPackFor": {
@@ -273,8 +273,8 @@ ul.task-list li input[type="checkbox"] {
     },
 }</code></pre>
 <p>The first parts just give the mod an official name and description, while the last part tells SMAPI that it is meant to be run using the JSON Assets framework.</p>
-<p>As simple as that, our mod now exists! We want to add a crop to the game. In the JSON Assets framework, all we need to do is create a folder called <code>Crops</code>. Inside we’ll create a folder called <code>Mountain Mint</code>. That folder will contain three files. <code>crop.json</code> will be a text file which defines all the properties of the plant: how much it’s seeds cost, what season it can be grown in, etc. <code>seeds.png</code> will be a 16x16 pixel image file which defines the graphics for the seed packet. <code>crop.png</code> will be a 128x32 pixel image which defines the graphics for the plant in it’s different growth stages.</p>
-<p>We also need to add a vegetable/fruit/flower object to the game that this crop will produce. In the main directory, we’ll create an <code>Objects</code> folder. Inside we’ll create a folder called <code>Mountain Mint</code> (the name of the plant is the same as the object it produces, as opposed to e.g.&nbsp;almond tree and almond). That folder will contain two files. <code>object.json</code> will be a text file which defines all the properties of the flower: how much it sells for, which villagers hate/like/love it, etc. <code>object.png</code> will be a 16x16 pixel image which defines the graphics for the flower.</p>
+<p>As simple as that, our mod now exists! We want to add a crop to the game. In the JSON Assets framework, all we need to do is create a folder called <code>Crops</code>. Inside we’ll create a folder called <code>Mountain Mint</code>. That folder will contain three files. <code>crop.json</code> will be a text file which defines all the properties of the plant: how much its seeds cost, what season it can be grown in, etc. <code>seeds.png</code> will be a 16x16 pixel image file which defines the graphics for the seed packet. <code>crop.png</code> will be a 128x32 pixel image which defines the graphics for the plant in its different growth stages.</p>
+<p>We also need to add a flower object to the game that this crop will produce. In the main directory, we’ll create an <code>Objects</code> folder. Inside we’ll create a folder called <code>Mountain Mint</code> (the name of the plant is the same as the object it produces, as opposed to e.g.&nbsp;almond tree and almond). That folder will contain two files. <code>object.json</code> will be a text file which defines all the properties of the flower: how much it sells for, which villagers hate/like/love it, etc. <code>object.png</code> will be a 16x16 pixel image which defines the graphics for the flower.</p>
 <p>Thus, the mod folder will look like this:</p>
 <pre><code>/jakesmod
     manifest.json
@@ -471,15 +471,15 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="bugfixing" class="level4">
-<h4 class="anchored" data-anchor-id="bugfixing">Bugfixing</h4>
+<section id="bugfixing-tips" class="level4">
+<h4 class="anchored" data-anchor-id="bugfixing-tips">Bugfixing Tips</h4>
 <p>Uh oh. If you’re here something went wrong.</p>
 <section id="required-mods-dont-load-properly" class="level6">
 <h6 class="anchored" data-anchor-id="required-mods-dont-load-properly">Required mods don’t load properly</h6>
 <p>Let’s look at a typical ERROR/WARNING/UPDATE RECOMMENDED SMAPI output:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="modversionerror.png" class="img-fluid figure-img"></p>
+<p><img src="MS_resources/modversionerror.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Error caused by installing old versions of the required mods</figcaption>
 </figure>
 </div>
@@ -494,9 +494,7 @@ ul.task-list li input[type="checkbox"] {
 
 <ol>
 <li id="fn1"><p>An all-too common occurence for many people, I’m sure<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Actually that sounds kind of awesome. As long as you don’t, uh, accidentally eat one because they will be typed as produce by the game<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Make sure you have also installed any mods that a given mod relies upon!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Do not drink tea made of mountain mint leaves<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Make sure you have also installed any mods that a given mod relies upon!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

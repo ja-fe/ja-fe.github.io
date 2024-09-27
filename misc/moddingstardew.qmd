@@ -6,7 +6,7 @@ website:
     page-navigation: 
 ---
 
-Stardew Valley is an immensely popular slice-of-life game released in 2016 by ConcernedApe which teaches players the value of living in ecological balance with the environment, being connected to your local community, and digging through trashbins every day. But what if we are unsatisfied with the default bevy of crops available to us? What if we want to farm species endemic to our region, or that are beneficial to local insects? What if your partner really likes tamarinds but you can't find a mod pack with tamarind trees that doesn't include like 50 other plants you don't even want to deal with and the supplied image textures for breadfruit are awful like has this guy ever even seen breadfruit???[^1]
+Stardew Valley is an immensely popular slice-of-life game released in 2016 by ConcernedApe which teaches players the value of living in <span style="color:green">ecological balance with the environment</span>, <span style="color:#4187e8">being connected to your local community</span>, and <span style="color:black">digging through your neighbour's trash bins</span>. But what if we are unsatisfied with the default bevy of crops available to us? What if we want to farm species endemic to our region, or that are beneficial to local insects? What if your partner really likes tamarinds but you can't find a mod pack with tamarind trees that doesn't include like 50 other plants you don't even want to deal with and the supplied image textures for breadfruit are awful like has this guy ever even seen breadfruit???[^1]
 
 [^1]: An all-too common occurence for many people, I'm sure
 
@@ -19,7 +19,7 @@ This quick guide will:
 + Review the basics of installing mods for Stardew Valley
 + Review the basics of creating your own mod
 + Provide a simple workflow for adding your own flora into the game
-+ Come back to haunt me when my partner starts making "Yellow-Rumped Warbler Plants" that produce entire birds as "produce" for our co-op game[^2]
++ Come back to haunt me when my partner starts making "Yellow-Rumped Warbler Plants" that produce entire birds as "vegetables" for our co-op game
 
 The main community resource for modding can be found [here](https://stardewvalleywiki.com/Modding:Index); this guide aims to streamline the process to a very specific and achievable goal in order to show anyone that they can try it too.
 
@@ -33,7 +33,7 @@ The Stardew Modding Application Programming Interface (SMAPI) is a free, communi
 + Tell your game launcher (e.g. Steam or GoG) to work with the program
 
 
-Modifying a game's code directly is... inadvisable. You can imagine how hard it might be to just crack open the 'guts' of a complicated program and start just making edits. Moreover many important game files are compiled, meaning they exist on the computer in a computer-efficient but human-unreadable format. Fortunately community members make meta-mods (AKA framework mods): mods which are designed to automatically hangle the minutia of coding and compiling for you and make creating certain types of mods much easier. For example some mods make adding new objects to the game easier, by creating a framework where you can just create some image files (defining the graphics) and basic text files (defining the properties) and boom: the meta-mod comes along, reads your files, and edits and recompiles to game code to include those objects. Thus you don't really need to program anything, just define things you want to be in the game!
+Modifying a game's code directly is... inadvisable. You can imagine how hard it might be to just crack open the 'guts' of a complicated program and start just making edits. Moreover many important game files are compiled, meaning they exist on the computer in a computer-efficient but human-unreadable format. Fortunately community members make meta-mods (AKA framework mods): mods which are designed to automatically handle the minutia of coding and compiling for you and make creating certain types of mods much easier. For example some mods make adding new objects to the game easier, by creating a framework where you can just create some image files (defining the graphics) and basic text files (defining the properties) and boom: the meta-mod comes along, reads your files, and edits and recompiles to game code to include those objects. Thus you don't really need to program anything, just define things you want to be in the game!
 
 We will install a meta-mod called JSON Assets. Check out the [Stardew NexusMods page](https://www.nexusmods.com/stardewvalley) and make an account. Then navigate to the [JSON Assets page](https://www.nexusmods.com/stardewvalley/mods/1720). Notice that JSON Assets itself is reliant on three mods:
 
@@ -63,13 +63,11 @@ Congratulations: you have installed your first mod! In fact you now know how to 
 
 We can test that it works by launching Stardew Valley as normal. This time you will notice that a terminal also opens up and displays output from SMAPI. SMAPI tells us that we are running Stardew Valley version 1.6.8, that it found and successfully loaded our three mods, and gives us a polite warning noting that the mods are 'intensive' and directly alter the core game code and save files. This is fine, that's what we want!
 
-![SMAPI output after installing both it and Content Patcher properly](MS_resources/successfulmodload.png)
+![SMAPI output after installing both it and JSON Assets properly](MS_resources/successfulmodload.png)
 
 ---
 
-Now we can make our own mod! Let's add mountain mint (genus *Pycnanthemum*) as a new cultivar of flower to grow on the farm. Mountain mint is native the Canada and the continental US, produces fragrant leaves[^4], and is an excellent support for native wasps. Now... hey! Trust me: countless species of native wasps are utterly benign to humans. Many species feed primarily on nectar as adults and are parasitoids, laying their eggs inside pest insect species like tomato hornworms to fatal effect. Thus they serve two vital ecosystem and agricultural roles: pollination and pest predation. Wasps are just as important as bees!
-
-[^4]: Do not drink tea made of mountain mint leaves
+Now we can make our own mod! Let's add mountain mint (genus *Pycnanthemum*) as a new cultivar of flower to grow on the farm. Mountain mint is native to Canada and the continental US, produces fragrant leaves, and is an excellent support for native wasps. Now... hey! Trust me: countless species of native wasps are utterly benign to humans. Many species feed primarily on nectar as adults and are parasitoids, laying their eggs inside pest insect species like tomato hornworms to fatal effect. Thus they serve two vital ecosystem and agricultural roles: pollination and pest predation. <span style="color:green">Wasps are just as important as bees!</span>
 
 We'll create a new folder in Mods called JakesMod. Inside that folder we'll add a *manfest.json* file while holds the basic information of our mod.
 
@@ -78,7 +76,7 @@ We'll create a new folder in Mods called JakesMod. Inside that folder we'll add 
     "Name": "JakesMod",
     "Author": "ja-fe",
     "Version": "1.0",
-    "Description": "This mod adds mountain mint as a summer crop to the game.",
+    "Description": "This mod adds mountain mint as a spring crop to the game.",
     "UniqueID": "ja-fe.JakesMod",
     "UpdateKeys": [],
     "ContentPackFor": {
@@ -89,9 +87,9 @@ We'll create a new folder in Mods called JakesMod. Inside that folder we'll add 
 
 The first parts just give the mod an official name and description, while the last part tells SMAPI that it is meant to be run using the JSON Assets framework.
 
-As simple as that, our mod now exists! We want to add a crop to the game. In the JSON Assets framework, all we need to do is create a folder called `Crops`. Inside we'll create a folder called `Mountain Mint`. That folder will contain three files. `crop.json` will be a text file which defines all the properties of the plant: how much it's seeds cost, what season it can be grown in, etc. `seeds.png` will be a 16x16 pixel image file which defines the graphics for the seed packet. `crop.png` will be a 128x32 pixel image which defines the graphics for the plant in it's different growth stages.
+As simple as that, our mod now exists! We want to add a crop to the game. In the JSON Assets framework, all we need to do is create a folder called `Crops`. Inside we'll create a folder called `Mountain Mint`. That folder will contain three files. `crop.json` will be a text file which defines all the properties of the plant: how much its seeds cost, what season it can be grown in, etc. `seeds.png` will be a 16x16 pixel image file which defines the graphics for the seed packet. `crop.png` will be a 128x32 pixel image which defines the graphics for the plant in its different growth stages.
 
-We also need to add a vegetable/fruit/flower object to the game that this crop will produce. In the main directory, we'll create an `Objects` folder. Inside we'll create a folder called `Mountain Mint` (the name of the plant is the same as the object it produces, as opposed to e.g. almond tree and almond). That folder will contain two files. `object.json` will be a text file which defines all the properties of the flower: how much it sells for, which villagers hate/like/love it, etc. `object.png` will be a 16x16 pixel image which defines the graphics for the flower.
+We also need to add a flower object to the game that this crop will produce. In the main directory, we'll create an `Objects` folder. Inside we'll create a folder called `Mountain Mint` (the name of the plant is the same as the object it produces, as opposed to e.g. almond tree and almond). That folder will contain two files. `object.json` will be a text file which defines all the properties of the flower: how much it sells for, which villagers hate/like/love it, etc. `object.png` will be a 16x16 pixel image which defines the graphics for the flower.
 
 Thus, the mod folder will look like this:
 
@@ -283,9 +281,7 @@ And you can share the mod with anyone who also has JSON Assets installed! Just h
 
 + For a more detailed description of JSON Assets, see the [reference](https://github.com/spacechase0/StardewValleyMods/blob/develop/JsonAssets/docs/author-guide.md)
 
-[^2]: Actually that sounds kind of awesome. As long as you don't, uh, accidentally eat one because they will be typed as produce by the game
-
-#### Bugfixing
+#### Bugfixing Tips
 
 Uh oh. If you're here something went wrong.
 
@@ -293,6 +289,6 @@ Uh oh. If you're here something went wrong.
 
 Let's look at a typical ERROR/WARNING/UPDATE RECOMMENDED SMAPI output:
 
-![Error caused by installing old versions of the required mods](modversionerror.png)
+![Error caused by installing old versions of the required mods](MS_resources/modversionerror.png)
 
 Here SpaceCore was loaded fine, but JSON Assets and Expanded Preconditions Utility were not. In red, SMAPI tells us this is a serious error (they straight-up failed and the game was loaded without them). It also tells us that these versions are not compatible (i.e. out of date) and to go download the newer versions. Helpfully, in purple SMAPI tells us that the latest versions (i.e. the ones we should use) are Expanded Precondition Utility 1.0.2-alpha.20240225 and JSON Assets 1.11.8. Follow the provided links and make sure to download those versions of the mods. The game will then work properly.
