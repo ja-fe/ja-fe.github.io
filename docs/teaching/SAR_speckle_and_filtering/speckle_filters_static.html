@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.336">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>jf_web - Speckle filtering (static)</title>
+<title>Speckle filtering (static) – jf_web</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +86,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,15 +101,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="../../academicons.css">
@@ -113,72 +148,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">jf_web</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about_jake.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about_jake.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/research_landingpage.html" rel="" target="">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../research/research_landingpage.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../teaching/teaching_landingpage.html" rel="" target="" aria-current="page">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link active" href="../../teaching/teaching_landingpage.html" aria-current="page"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../outreach/outreach_landingpage.html" rel="" target="">
- <span class="menu-text">Outreach</span></a>
+    <a class="nav-link" href="../../outreach/outreach_landingpage.html"> 
+<span class="menu-text">Outreach</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../misc/misc_landingpage.html" rel="" target="">
- <span class="menu-text">-misc-</span></a>
+    <a class="nav-link" href="../../misc/misc_landingpage.html"> 
+<span class="menu-text">-misc-</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ja-fe" rel="" target="">
- <span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
+    <a class="nav-link" href="https://github.com/ja-fe"> 
+<span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en"> 
+<span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://orcid.org/0009-0003-0043-9064"> 
+<span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle.html">SAR Speckle and Filtering</a></li><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle_filters_static.html">Speckle filtering (static)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle.html">SAR Speckle and Filtering</a></li><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle_filters_static.html">Speckle filtering (static)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -188,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -204,9 +239,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Wave Coherence and Polarization State</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -245,9 +280,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">SAR Speckle and Filtering</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -281,15 +316,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle.html">SAR Speckle and Filtering</a></li><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle_filters_static.html">Speckle filtering (static)</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Speckle filtering (static)</h1>
 </div>
@@ -304,7 +339,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>So how do we go about undoing this effect? Clearly multiplying the brightness of each pixel by a (normally-distributed) random number between 0 and 1 isn’t exactly a reversible function. But we can use some intuitive methods to clarify the images. Since we want to undo the variability it causes we can start by simply applying a ‘blur’ effect to the image to smooth it out; replacing every pixel with the average value of all nearby pixels.</p>
 <p>We can represent that notationally using a matrix:</p>
@@ -324,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="columns">
 <div class="column" style="width:33%;">
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="33" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 32;"><span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>dummy<span class="op">=</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -336,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div><div class="column" style="width:33%;">
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="38" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 37;"><span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>tex</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
@@ -358,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div><div class="column" style="width:33%;">
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="53" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 52;"><span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>dummy2<span class="op">=</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -372,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb4" data-startfrom="62" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 61;"><span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>viewof form_row1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    [</span>
@@ -502,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb5" data-startfrom="150" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 149;"><span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a>opa <span class="op">=</span> {</span>
 <span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> imdata <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"//static/SAR_image.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({ <span class="dt">array</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span> } )<span class="op">;</span></span>
@@ -522,7 +559,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb6" data-startfrom="164" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 163;"><span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>fmflat <span class="op">=</span> fm<span class="op">.</span><span class="fu">flat</span>()</span>
 <span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>fmsum  <span class="op">=</span> fmflat<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span>value) <span class="kw">=&gt;</span> acc <span class="op">+=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(value)<span class="op">,</span> <span class="dv">0</span>)<span class="op">;</span></span>
@@ -575,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(fpa<span class="op">,</span> <span class="dv">2</span><span class="op">,</span> d3<span class="op">.</span><span class="at">interpolateGreys</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -587,7 +624,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb8" data-startfrom="199" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 198;"><span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a><span class="fu">imshow</span>(opa<span class="op">,</span> <span class="dv">2</span><span class="op">,</span> d3<span class="op">.</span><span class="at">interpolateGreys</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -598,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb9" data-startfrom="205" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 204;"><span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a>rowcount <span class="op">=</span> <span class="dv">250</span><span class="op">;</span></span>
 <span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>columncount <span class="op">=</span> <span class="dv">370</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -619,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb10" data-startfrom="210" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 209;"><span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {imshow} <span class="im">from</span> <span class="st">"@sw1227/reusable-2d-array-image-function"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -630,7 +667,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb11" data-startfrom="214" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 213;"><span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a>math <span class="op">=</span> <span class="pp">require</span>(<span class="st">"mathjs@7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -645,14 +682,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul class="task-list">
-<li><p><input type="checkbox">Inverts the image brightness</p></li>
-<li><p><input type="checkbox">Shifts the entire image two pixels to the right</p></li>
-<li><p><input type="checkbox">Blurs the image</p></li>
-<li><p><input type="checkbox">Blurs the image but gives more power to near pixels then far pixels</p></li>
-<li><p><input type="checkbox">Highlights vertical edges</p></li>
-<li><p><input type="checkbox">Highlights horizontal edges</p></li>
-<li><p><input type="checkbox">Highlights both vertical and horizontal edges</p></li>
-<li><p><input type="checkbox">I don’t know does something funky then explain why it does that</p></li>
+<li><p><label><input type="checkbox">Inverts the image brightness</label></p></li>
+<li><p><label><input type="checkbox">Shifts the entire image two pixels to the right</label></p></li>
+<li><p><label><input type="checkbox">Blurs the image</label></p></li>
+<li><p><label><input type="checkbox">Blurs the image but gives more power to near pixels then far pixels</label></p></li>
+<li><p><label><input type="checkbox">Highlights vertical edges</label></p></li>
+<li><p><label><input type="checkbox">Highlights horizontal edges</label></p></li>
+<li><p><label><input type="checkbox">Highlights both vertical and horizontal edges</label></p></li>
+<li><p><label><input type="checkbox">I don’t know does something funky then explain why it does that</label></p></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <details>
@@ -710,7 +747,7 @@ Hint
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"dummy=5\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"tex\n`\n\\:\\:\\:\\:\\:\\:\n\\begin{bmatrix}\n    ${fm[0][0]} & ${fm[0][1]} & ${fm[0][2]} & ${fm[0][3]} & ${fm[0][4]}\\\\ \n    ${fm[1][0]} & ${fm[1][1]} & ${fm[1][2]} & ${fm[1][3]} & ${fm[1][4]}\\\\ \n    ${fm[2][0]} & ${fm[2][1]} & ${fm[2][2]} & ${fm[2][3]} & ${fm[2][4]}\\\\ \n    ${fm[3][0]} & ${fm[3][1]} & ${fm[3][2]} & ${fm[3][3]} & ${fm[3][4]}\\\\ \n    ${fm[4][0]} & ${fm[4][1]} & ${fm[4][2]} & ${fm[4][3]} & ${fm[4][4]}\\\\ \n\\end{bmatrix}\n`\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"dummy2=5\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"viewof form_row1 = Inputs.form(\n    [\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nviewof form_row2 = Inputs.form(\n    [\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nviewof form_row3 = Inputs.form(\n    [\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 1}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nviewof form_row4 = Inputs.form(\n    [\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nviewof form_row5 = Inputs.form(\n    [\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n        Inputs.number([-50, 50], {step: 1, value: 0}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nfm = [\n    [form_row1[0], form_row1[1], form_row1[2], form_row1[3], form_row1[4]],\n    [form_row2[0], form_row2[1], form_row2[2], form_row2[3], form_row2[4]],\n    [form_row3[0], form_row3[1], form_row3[2], form_row3[3], form_row3[4]],\n    [form_row4[0], form_row4[1], form_row4[2], form_row4[3], form_row4[4]],\n    [form_row5[0], form_row5[1], form_row5[2], form_row5[3], form_row5[4]],\n];\n\n\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"opa = {\n    const imdata = await FileAttachment(\"//static/SAR_image.csv\").csv({ array: true, typed: true } );\n    return imdata.map(d => {\n        d.map(x => {\n            x = +x;\n            return x;\n        })\n        return d; \n    });\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"fmflat = fm.flat()\nfmsum  = fmflat.reduce((acc,value) => acc += Math.abs(value), 0);\nfpa = {\n    var fpa = [];\n    for (let i=0; i<rowcount; i++){\n        fpa[i] = [];\n        for (let j=0;j<columncount; j++){\n            var indices = [];\n            for (let x=-2; x<3; x++){\n                for (let y=-2; y<3; y++){\n                    if (i+x>=0 && j+y>=0 && i+x<rowcount && j+y<columncount){\n                        indices.push([i+x,j+y,fm[x+2][y+2]]);\n                    }}};\n            var pix=0;\n            var scale=0;\n            indices.forEach(function(item,index){\n                pix += opa[item[0]][item[1]] * item[2];\n                scale += Math.abs(item[2])\n            });\n            scale = fmsum/scale\n\n            fpa[i][j] = pix*scale;\n\n        }\n    }\n    return fpa;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"imshow(fpa, 2, d3.interpolateGreys)\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"imshow(opa, 2, d3.interpolateGreys)\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"rowcount = 250;\ncolumncount = 370;\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"import {imshow} from \"@sw1227/reusable-2d-array-image-function\"\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"math = require(\"mathjs@7\")\n"},{"methodName":"interpretQuiet","source":"shinyInput('form_row1')"},{"methodName":"interpretQuiet","source":"shinyInput('form_row2')"},{"methodName":"interpretQuiet","source":"shinyInput('form_row3')"},{"methodName":"interpretQuiet","source":"shinyInput('form_row4')"},{"methodName":"interpretQuiet","source":"shinyInput('form_row5')"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImR1bW15PTVcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRleFxuYFxuXFw6XFw6XFw6XFw6XFw6XFw6XG5cXGJlZ2lue2JtYXRyaXh9XG4gICAgJHtmbVswXVswXX0gJiAke2ZtWzBdWzFdfSAmICR7Zm1bMF1bMl19ICYgJHtmbVswXVszXX0gJiAke2ZtWzBdWzRdfVxcXFwgXG4gICAgJHtmbVsxXVswXX0gJiAke2ZtWzFdWzFdfSAmICR7Zm1bMV1bMl19ICYgJHtmbVsxXVszXX0gJiAke2ZtWzFdWzRdfVxcXFwgXG4gICAgJHtmbVsyXVswXX0gJiAke2ZtWzJdWzFdfSAmICR7Zm1bMl1bMl19ICYgJHtmbVsyXVszXX0gJiAke2ZtWzJdWzRdfVxcXFwgXG4gICAgJHtmbVszXVswXX0gJiAke2ZtWzNdWzFdfSAmICR7Zm1bM11bMl19ICYgJHtmbVszXVszXX0gJiAke2ZtWzNdWzRdfVxcXFwgXG4gICAgJHtmbVs0XVswXX0gJiAke2ZtWzRdWzFdfSAmICR7Zm1bNF1bMl19ICYgJHtmbVs0XVszXX0gJiAke2ZtWzRdWzRdfVxcXFwgXG5cXGVuZHtibWF0cml4fVxuYFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZHVtbXkyPTVcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBmb3JtX3JvdzEgPSBJbnB1dHMuZm9ybShcbiAgICBbXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgIF0sXG4gICAge1xuICAgICAgICB0ZW1wbGF0ZTogKGlucHV0cykgPT4gaHRsLmh0bWxgPGRpdiBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGdhcDogMWVtXCI+XG4gICAgICAgICR7aW5wdXRzfVxuICAgICAgICA8L2Rpdj5gXG4gICAgfVxuKVxuXG52aWV3b2YgZm9ybV9yb3cyID0gSW5wdXRzLmZvcm0oXG4gICAgW1xuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICBdLFxuICAgIHtcbiAgICAgICAgdGVtcGxhdGU6IChpbnB1dHMpID0+IGh0bC5odG1sYDxkaXYgc3R5bGU9XCJkaXNwbGF5OiBmbGV4OyBnYXA6IDFlbVwiPlxuICAgICAgICAke2lucHV0c31cbiAgICAgICAgPC9kaXY+YFxuICAgIH1cbilcblxudmlld29mIGZvcm1fcm93MyA9IElucHV0cy5mb3JtKFxuICAgIFtcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDF9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgXSxcbiAgICB7XG4gICAgICAgIHRlbXBsYXRlOiAoaW5wdXRzKSA9PiBodGwuaHRtbGA8ZGl2IHN0eWxlPVwiZGlzcGxheTogZmxleDsgZ2FwOiAxZW1cIj5cbiAgICAgICAgJHtpbnB1dHN9XG4gICAgICAgIDwvZGl2PmBcbiAgICB9XG4pXG5cbnZpZXdvZiBmb3JtX3JvdzQgPSBJbnB1dHMuZm9ybShcbiAgICBbXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgIF0sXG4gICAge1xuICAgICAgICB0ZW1wbGF0ZTogKGlucHV0cykgPT4gaHRsLmh0bWxgPGRpdiBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGdhcDogMWVtXCI+XG4gICAgICAgICR7aW5wdXRzfVxuICAgICAgICA8L2Rpdj5gXG4gICAgfVxuKVxuXG52aWV3b2YgZm9ybV9yb3c1ID0gSW5wdXRzLmZvcm0oXG4gICAgW1xuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICAgICAgSW5wdXRzLm51bWJlcihbLTUwLCA1MF0sIHtzdGVwOiAxLCB2YWx1ZTogMH0pLFxuICAgICAgICBJbnB1dHMubnVtYmVyKFstNTAsIDUwXSwge3N0ZXA6IDEsIHZhbHVlOiAwfSksXG4gICAgICAgIElucHV0cy5udW1iZXIoWy01MCwgNTBdLCB7c3RlcDogMSwgdmFsdWU6IDB9KSxcbiAgICBdLFxuICAgIHtcbiAgICAgICAgdGVtcGxhdGU6IChpbnB1dHMpID0+IGh0bC5odG1sYDxkaXYgc3R5bGU9XCJkaXNwbGF5OiBmbGV4OyBnYXA6IDFlbVwiPlxuICAgICAgICAke2lucHV0c31cbiAgICAgICAgPC9kaXY+YFxuICAgIH1cbilcblxuZm0gPSBbXG4gICAgW2Zvcm1fcm93MVswXSwgZm9ybV9yb3cxWzFdLCBmb3JtX3JvdzFbMl0sIGZvcm1fcm93MVszXSwgZm9ybV9yb3cxWzRdXSxcbiAgICBbZm9ybV9yb3cyWzBdLCBmb3JtX3JvdzJbMV0sIGZvcm1fcm93MlsyXSwgZm9ybV9yb3cyWzNdLCBmb3JtX3JvdzJbNF1dLFxuICAgIFtmb3JtX3JvdzNbMF0sIGZvcm1fcm93M1sxXSwgZm9ybV9yb3czWzJdLCBmb3JtX3JvdzNbM10sIGZvcm1fcm93M1s0XV0sXG4gICAgW2Zvcm1fcm93NFswXSwgZm9ybV9yb3c0WzFdLCBmb3JtX3JvdzRbMl0sIGZvcm1fcm93NFszXSwgZm9ybV9yb3c0WzRdXSxcbiAgICBbZm9ybV9yb3c1WzBdLCBmb3JtX3JvdzVbMV0sIGZvcm1fcm93NVsyXSwgZm9ybV9yb3c1WzNdLCBmb3JtX3JvdzVbNF1dLFxuXTtcblxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJvcGEgPSB7XG4gICAgY29uc3QgaW1kYXRhID0gYXdhaXQgRmlsZUF0dGFjaG1lbnQoXCIvL3N0YXRpYy9TQVJfaW1hZ2UuY3N2XCIpLmNzdih7IGFycmF5OiB0cnVlLCB0eXBlZDogdHJ1ZSB9ICk7XG4gICAgcmV0dXJuIGltZGF0YS5tYXAoZCA9PiB7XG4gICAgICAgIGQubWFwKHggPT4ge1xuICAgICAgICAgICAgeCA9ICt4O1xuICAgICAgICAgICAgcmV0dXJuIHg7XG4gICAgICAgIH0pXG4gICAgICAgIHJldHVybiBkOyBcbiAgICB9KTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImZtZmxhdCA9IGZtLmZsYXQoKVxuZm1zdW0gID0gZm1mbGF0LnJlZHVjZSgoYWNjLHZhbHVlKSA9PiBhY2MgKz0gTWF0aC5hYnModmFsdWUpLCAwKTtcbmZwYSA9IHtcbiAgICB2YXIgZnBhID0gW107XG4gICAgZm9yIChsZXQgaT0wOyBpPHJvd2NvdW50OyBpKyspe1xuICAgICAgICBmcGFbaV0gPSBbXTtcbiAgICAgICAgZm9yIChsZXQgaj0wO2o8Y29sdW1uY291bnQ7IGorKyl7XG4gICAgICAgICAgICB2YXIgaW5kaWNlcyA9IFtdO1xuICAgICAgICAgICAgZm9yIChsZXQgeD0tMjsgeDwzOyB4Kyspe1xuICAgICAgICAgICAgICAgIGZvciAobGV0IHk9LTI7IHk8MzsgeSsrKXtcbiAgICAgICAgICAgICAgICAgICAgaWYgKGkreD49MCAmJiBqK3k+PTAgJiYgaSt4PHJvd2NvdW50ICYmIGoreTxjb2x1bW5jb3VudCl7XG4gICAgICAgICAgICAgICAgICAgICAgICBpbmRpY2VzLnB1c2goW2kreCxqK3ksZm1beCsyXVt5KzJdXSk7XG4gICAgICAgICAgICAgICAgICAgIH19fTtcbiAgICAgICAgICAgIHZhciBwaXg9MDtcbiAgICAgICAgICAgIHZhciBzY2FsZT0wO1xuICAgICAgICAgICAgaW5kaWNlcy5mb3JFYWNoKGZ1bmN0aW9uKGl0ZW0saW5kZXgpe1xuICAgICAgICAgICAgICAgIHBpeCArPSBvcGFbaXRlbVswXV1baXRlbVsxXV0gKiBpdGVtWzJdO1xuICAgICAgICAgICAgICAgIHNjYWxlICs9IE1hdGguYWJzKGl0ZW1bMl0pXG4gICAgICAgICAgICB9KTtcbiAgICAgICAgICAgIHNjYWxlID0gZm1zdW0vc2NhbGVcblxuICAgICAgICAgICAgZnBhW2ldW2pdID0gcGl4KnNjYWxlO1xuXG4gICAgICAgIH1cbiAgICB9XG4gICAgcmV0dXJuIGZwYTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imltc2hvdyhmcGEsIDIsIGQzLmludGVycG9sYXRlR3JleXMpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJpbXNob3cob3BhLCAyLCBkMy5pbnRlcnBvbGF0ZUdyZXlzKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicm93Y291bnQgPSAyNTA7XG5jb2x1bW5jb3VudCA9IDM3MDtcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJpbXBvcnQge2ltc2hvd30gZnJvbSBcIkBzdzEyMjcvcmV1c2FibGUtMmQtYXJyYXktaW1hZ2UtZnVuY3Rpb25cIlxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1hdGggPSByZXF1aXJlKFwibWF0aGpzQDdcIilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm9ybV9yb3cxJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Zvcm1fcm93MicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdmb3JtX3JvdzMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm9ybV9yb3c0JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Zvcm1fcm93NScpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -761,6 +798,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -829,13 +893,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -870,18 +936,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -913,11 +968,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -927,8 +1026,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -940,7 +1048,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -984,6 +1215,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1009,6 +1241,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1066,32 +1324,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><sub>© 2023 Jake Ferguson</sub></div>   
+    <div class="nav-footer-left">
+<p><sub>© 2023 Jake Ferguson</sub></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right"><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></div>
+    <div class="nav-footer-right">
+<p><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></p>
+</div>
   </div>
 </footer>
+
 
 
 

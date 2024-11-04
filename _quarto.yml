@@ -27,7 +27,7 @@ website:
       - text: "{{< ai google-scholar color=body-color size=xl title='Google Scholar Link' >}}"
         href: https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&hl=en
       - text: "{{< ai orcid color=body-color size=xl title='OrcID Link' >}} "
-        href: https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&hl=en
+        href: https://orcid.org/0009-0003-0043-9064
 
   sidebar:
 
@@ -85,8 +85,16 @@ website:
       contents:
         - text: misc
           href: misc/misc_landingpage.qmd
-        - text: Modding custom flora into Stardew Valley
-          href: misc/moddingstardew.qmd  
+        - section: "Fun and Games"
+          contents:
+            - text: Birble
+              href: misc/funandgames/birble.qmd
+            - text: Obtuse Units
+              href: misc/funandgames/obtuseunits.qmd
+        - section: "Modding"
+          contents:
+            - text: Modding custom flora into Stardew Valley
+              href: misc/modding/moddingstardew.qmd  
 
   page-footer:
     left: "<sub>© 2023 Jake Ferguson</sub>"

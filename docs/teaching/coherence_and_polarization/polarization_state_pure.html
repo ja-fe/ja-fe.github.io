@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.336">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>jf_web - Polarization State (Pure)</title>
+<title>Polarization State (Pure) – jf_web</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +86,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,8 +101,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -111,72 +119,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">jf_web</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about_jake.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about_jake.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/research_landingpage.html" rel="" target="">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../research/research_landingpage.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../teaching/teaching_landingpage.html" rel="" target="" aria-current="page">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link active" href="../../teaching/teaching_landingpage.html" aria-current="page"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../outreach/outreach_landingpage.html" rel="" target="">
- <span class="menu-text">Outreach</span></a>
+    <a class="nav-link" href="../../outreach/outreach_landingpage.html"> 
+<span class="menu-text">Outreach</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../misc/misc_landingpage.html" rel="" target="">
- <span class="menu-text">-misc-</span></a>
+    <a class="nav-link" href="../../misc/misc_landingpage.html"> 
+<span class="menu-text">-misc-</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ja-fe" rel="" target="">
- <span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
+    <a class="nav-link" href="https://github.com/ja-fe"> 
+<span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en"> 
+<span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://orcid.org/0009-0003-0043-9064"> 
+<span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/coherence_and_polarization/sums_of_waves.html">Wave Coherence and Polarization State</a></li><li class="breadcrumb-item"><a href="../../teaching/coherence_and_polarization/polarization_state_pure.html">Polarization State (Pure)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/coherence_and_polarization/sums_of_waves.html">Wave Coherence and Polarization State</a></li><li class="breadcrumb-item"><a href="../../teaching/coherence_and_polarization/polarization_state_pure.html">Polarization State (Pure)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -186,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -202,9 +210,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Wave Coherence and Polarization State</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -243,9 +251,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">SAR Speckle and Filtering</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -279,15 +287,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/coherence_and_polarization/sums_of_waves.html">Wave Coherence and Polarization State</a></li><li class="breadcrumb-item"><a href="../../teaching/coherence_and_polarization/polarization_state_pure.html">Polarization State (Pure)</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Polarization State (Pure)</h1>
 </div>
@@ -302,11 +310,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Use the sliders below to explore polarization state as expressed in a linear basis (e.g.&nbsp;V/H)</p>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>viewof form1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    [</span>
@@ -345,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="29" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 28;"><span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>viewof form2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    [</span>
@@ -376,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="44" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>viewof form3 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    [</span>
@@ -416,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb4" data-startfrom="61" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 60;"><span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>l1_color <span class="op">=</span> {<span class="cf">return</span> <span class="bn">0xff0000</span>}</span>
 <span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>l2_color <span class="op">=</span> {<span class="cf">return</span> <span class="bn">0x0000ff</span>}</span>
@@ -469,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb5" data-startfrom="76" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 75;"><span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> renderer <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">WebGLRenderer</span>({<span class="dt">antialias</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">alpha</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
@@ -495,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb6" data-startfrom="95" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 94;"><span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>scene <span class="op">=</span> {</span>
 <span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> scene <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">Scene</span>()<span class="op">;</span></span>
@@ -517,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb7" data-startfrom="111" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 110;"><span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>line1 <span class="op">=</span> {</span>
 <span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> material <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">LineMaterial</span>({</span>
@@ -596,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb8" data-startfrom="166" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 165;"><span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>camera <span class="op">=</span> {</span>
 <span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> camera <span class="op">=</span> <span class="kw">new</span> THREE<span class="op">.</span><span class="fu">PerspectiveCamera</span>( <span class="dv">45</span><span class="op">,</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerWidth</span> <span class="op">/</span> <span class="bu">window</span><span class="op">.</span><span class="at">innerHeight</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">500</span> )<span class="op">;</span></span>
@@ -612,7 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb9" data-startfrom="176" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">600</span><span class="op">;</span></span>
 <span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a>NumPoints <span class="op">=</span> <span class="dv">200</span><span class="op">;</span></span>
@@ -641,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb10" data-startfrom="182" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>version<span class="op">=</span><span class="vs">`0.130.0`</span><span class="op">;</span></span>
 <span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>THREE <span class="op">=</span> {</span>
@@ -674,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p>Looking at this mono-frequency wave head-on, we can see that the electric field vector traces out an ellipse. Each combination of power in the V, power in the H and phase difference corresponds to a unique ellipse. Thus when we think about all the ways a pure wave could be polarization-wise, we can use two equivalent classes of description. Describe the basis waves (Power in the V, power in the H, and their phase difference) or the polarization ellipse (e.g.&nbsp;length of major axis, length of minor axis, angle of orientation).</p>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb11" data-startfrom="200" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 199;"><span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>ellipse_points <span class="op">=</span> {</span>
 <span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
@@ -691,7 +701,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb12" data-startfrom="211" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 210;"><span id="cb12-211"><a href="#cb12-211" aria-hidden="true" tabindex="-1"></a>ellipse <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(ellipse_points)<span class="op">;</span></span>
 <span id="cb12-212"><a href="#cb12-212" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="-50 -50 100 100"&gt;</span></span>
@@ -718,7 +728,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\nviewof form1 = Inputs.form(\n    [\n        Inputs.range([0, 20], {label: \"Amplitude 1\",    step: 1, value: 10}),\n        Inputs.range([0, 20], {label: \"Amplitude 2\", step: 1, value: 10}),\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\namplitude_1 = form1[0];\namplitude_2 = form1[1];\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof form2 = Inputs.form(\n    [\n        Inputs.range([0, 6.2], {label: \"Phase Diff\", step: 0.1, value: 0})\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nphase_diff  = form2[0];\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof form3 = Inputs.form(\n    [\n        Inputs.button(\"Toggle Sum\"),\n        Inputs.button(\"Toggle H and V\")\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}\n        </div>`\n    }\n)\n\nvtoggle1    = form3[0];\nvtoggle2    = form3[1];\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"l1_color = {return 0xff0000}\nl2_color = {return 0x0000ff}\nl3_color = {return 0x36454f}\n\nrender_l1l2 = {\n    if(vtoggle2 % 2 == 0){return true}\n        else{return false}\n}\n\nrender_l3 = {\n    if(vtoggle1 % 2 == 0){return false}\n        else{return true}\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"{\n    const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});\n    invalidation.then(() => renderer.dispose());\n    renderer.setSize(width, height);\n    renderer.setPixelRatio(devicePixelRatio);\n    renderer.setClearColor( 0xffffff, 0 )\n    \n    const controls = new THREE.OrbitControls(camera, renderer.domElement);\n    controls.addEventListener(\"change\", () => renderer.render(scene, camera));\n    invalidation.then(() => (controls.dispose(), renderer.dispose()));\n    \n    while (true) {\n        renderer.render(scene, camera);\n        yield renderer.domElement;\n    }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"scene = {\n  const scene = new THREE.Scene();\n  scene.background = null;\n  if (render_l1l2 == true){\n    scene.add(line1);\n    scene.add(line2);\n  };\n  if (render_l3 == true){\n    scene.add(line3)\n  };\n  return scene;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"line1 = {\n    const material = new THREE.LineMaterial({\n        color: l1_color,\n        linewidth: 3,\n    });\n\n    material.resolution.set(width, height);\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        points.push( i-NumPoints/2, 0, 2*amplitude_1*Math.sin(i/10) );\n    }\n\n    const geometry = new THREE.LineGeometry().setPositions( points );\n    const line = new THREE.Line2( geometry, material );\n    return line;\n}\n\nline2 = {\n    const material = new THREE.LineMaterial({\n        color: l2_color,\n        linewidth: 3,\n    });\n\n    material.resolution.set(width, height);\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        points.push( i-NumPoints/2, 2*amplitude_2*Math.sin(i/10 + phase_diff), 0);\n    }\n\n    const geometry = new THREE.LineGeometry().setPositions( points );\n    const line = new THREE.Line2( geometry, material );\n    return line;\n}\n\nline3 = {\n    const material = new THREE.LineMaterial({\n        color: l3_color,\n        linewidth: 3,\n    });\n\n    material.resolution.set(width, height);\n\n    const points = [];\n    for (var i = 1; i <= NumPoints; i++) {\n        points.push(i-NumPoints/2, 2*amplitude_2*Math.sin(i/10 + phase_diff), 2*amplitude_1*Math.sin(i/10));\n    }\n\n    const geometry = new THREE.LineGeometry().setPositions( points );\n    const line = new THREE.Line2( geometry, material );\n    return line;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"camera = {\n    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );\n    camera.position.set( 100, 100, 100 );\n    camera.lookAt( 0, 0, 0 );\n    return camera;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"height = 600;\nNumPoints = 200;\nNumPoints_ellipse = 200;\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"version=`0.130.0`;\nTHREE = {\n    const THREE = window.THREE = await require(`three@${version}/build/three.min.js`);\n    await require(`three@${version}/examples/js/controls/OrbitControls.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineSegments2.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineSegmentsGeometry.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/Line2.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineGeometry.js`).catch(() => {});\n    await require(`three@${version}/examples/js/lines/LineMaterial.js`).catch(() => {});\n\n    return THREE;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"ellipse_points = {\n    var data = [];\n    for (var i = 1; i<=NumPoints_ellipse;i++){\n        data.push([2*amplitude_1*Math.sin(i/10), 2*amplitude_2*Math.sin(i/10 + phase_diff)])\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"ellipse = d3.line()(ellipse_points);\nsvg`<svg viewBox=\"-50 -50 100 100\">\n  <path d=\"${ellipse}\" stroke=\"gray\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpretQuiet","source":"shinyInput('form1')"},{"methodName":"interpretQuiet","source":"shinyInput('form2')"},{"methodName":"interpretQuiet","source":"shinyInput('form3')"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ilxudmlld29mIGZvcm0xID0gSW5wdXRzLmZvcm0oXG4gICAgW1xuICAgICAgICBJbnB1dHMucmFuZ2UoWzAsIDIwXSwge2xhYmVsOiBcIkFtcGxpdHVkZSAxXCIsICAgIHN0ZXA6IDEsIHZhbHVlOiAxMH0pLFxuICAgICAgICBJbnB1dHMucmFuZ2UoWzAsIDIwXSwge2xhYmVsOiBcIkFtcGxpdHVkZSAyXCIsIHN0ZXA6IDEsIHZhbHVlOiAxMH0pLFxuICAgIF0sXG4gICAge1xuICAgICAgICB0ZW1wbGF0ZTogKGlucHV0cykgPT4gaHRsLmh0bWxgPGRpdiBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGdhcDogMWVtXCI+XG4gICAgICAgICR7aW5wdXRzfVxuICAgICAgICA8L2Rpdj5gXG4gICAgfVxuKVxuYW1wbGl0dWRlXzEgPSBmb3JtMVswXTtcbmFtcGxpdHVkZV8yID0gZm9ybTFbMV07XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgZm9ybTIgPSBJbnB1dHMuZm9ybShcbiAgICBbXG4gICAgICAgIElucHV0cy5yYW5nZShbMCwgNi4yXSwge2xhYmVsOiBcIlBoYXNlIERpZmZcIiwgc3RlcDogMC4xLCB2YWx1ZTogMH0pXG4gICAgXSxcbiAgICB7XG4gICAgICAgIHRlbXBsYXRlOiAoaW5wdXRzKSA9PiBodGwuaHRtbGA8ZGl2IHN0eWxlPVwiZGlzcGxheTogZmxleDsgZ2FwOiAxZW1cIj5cbiAgICAgICAgJHtpbnB1dHN9XG4gICAgICAgIDwvZGl2PmBcbiAgICB9XG4pXG5cbnBoYXNlX2RpZmYgID0gZm9ybTJbMF07XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgZm9ybTMgPSBJbnB1dHMuZm9ybShcbiAgICBbXG4gICAgICAgIElucHV0cy5idXR0b24oXCJUb2dnbGUgU3VtXCIpLFxuICAgICAgICBJbnB1dHMuYnV0dG9uKFwiVG9nZ2xlIEggYW5kIFZcIilcbiAgICBdLFxuICAgIHtcbiAgICAgICAgdGVtcGxhdGU6IChpbnB1dHMpID0+IGh0bC5odG1sYDxkaXYgc3R5bGU9XCJkaXNwbGF5OiBmbGV4OyBnYXA6IDFlbVwiPlxuICAgICAgICAke2lucHV0c31cbiAgICAgICAgPC9kaXY+YFxuICAgIH1cbilcblxudnRvZ2dsZTEgICAgPSBmb3JtM1swXTtcbnZ0b2dnbGUyICAgID0gZm9ybTNbMV07XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJsMV9jb2xvciA9IHtyZXR1cm4gMHhmZjAwMDB9XG5sMl9jb2xvciA9IHtyZXR1cm4gMHgwMDAwZmZ9XG5sM19jb2xvciA9IHtyZXR1cm4gMHgzNjQ1NGZ9XG5cbnJlbmRlcl9sMWwyID0ge1xuICAgIGlmKHZ0b2dnbGUyICUgMiA9PSAwKXtyZXR1cm4gdHJ1ZX1cbiAgICAgICAgZWxzZXtyZXR1cm4gZmFsc2V9XG59XG5cbnJlbmRlcl9sMyA9IHtcbiAgICBpZih2dG9nZ2xlMSAlIDIgPT0gMCl7cmV0dXJuIGZhbHNlfVxuICAgICAgICBlbHNle3JldHVybiB0cnVlfVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoie1xuICAgIGNvbnN0IHJlbmRlcmVyID0gbmV3IFRIUkVFLldlYkdMUmVuZGVyZXIoe2FudGlhbGlhczogdHJ1ZSwgYWxwaGE6IHRydWV9KTtcbiAgICBpbnZhbGlkYXRpb24udGhlbigoKSA9PiByZW5kZXJlci5kaXNwb3NlKCkpO1xuICAgIHJlbmRlcmVyLnNldFNpemUod2lkdGgsIGhlaWdodCk7XG4gICAgcmVuZGVyZXIuc2V0UGl4ZWxSYXRpbyhkZXZpY2VQaXhlbFJhdGlvKTtcbiAgICByZW5kZXJlci5zZXRDbGVhckNvbG9yKCAweGZmZmZmZiwgMCApXG4gICAgXG4gICAgY29uc3QgY29udHJvbHMgPSBuZXcgVEhSRUUuT3JiaXRDb250cm9scyhjYW1lcmEsIHJlbmRlcmVyLmRvbUVsZW1lbnQpO1xuICAgIGNvbnRyb2xzLmFkZEV2ZW50TGlzdGVuZXIoXCJjaGFuZ2VcIiwgKCkgPT4gcmVuZGVyZXIucmVuZGVyKHNjZW5lLCBjYW1lcmEpKTtcbiAgICBpbnZhbGlkYXRpb24udGhlbigoKSA9PiAoY29udHJvbHMuZGlzcG9zZSgpLCByZW5kZXJlci5kaXNwb3NlKCkpKTtcbiAgICBcbiAgICB3aGlsZSAodHJ1ZSkge1xuICAgICAgICByZW5kZXJlci5yZW5kZXIoc2NlbmUsIGNhbWVyYSk7XG4gICAgICAgIHlpZWxkIHJlbmRlcmVyLmRvbUVsZW1lbnQ7XG4gICAgfVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2NlbmUgPSB7XG4gIGNvbnN0IHNjZW5lID0gbmV3IFRIUkVFLlNjZW5lKCk7XG4gIHNjZW5lLmJhY2tncm91bmQgPSBudWxsO1xuICBpZiAocmVuZGVyX2wxbDIgPT0gdHJ1ZSl7XG4gICAgc2NlbmUuYWRkKGxpbmUxKTtcbiAgICBzY2VuZS5hZGQobGluZTIpO1xuICB9O1xuICBpZiAocmVuZGVyX2wzID09IHRydWUpe1xuICAgIHNjZW5lLmFkZChsaW5lMylcbiAgfTtcbiAgcmV0dXJuIHNjZW5lO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC03IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibGluZTEgPSB7XG4gICAgY29uc3QgbWF0ZXJpYWwgPSBuZXcgVEhSRUUuTGluZU1hdGVyaWFsKHtcbiAgICAgICAgY29sb3I6IGwxX2NvbG9yLFxuICAgICAgICBsaW5ld2lkdGg6IDMsXG4gICAgfSk7XG5cbiAgICBtYXRlcmlhbC5yZXNvbHV0aW9uLnNldCh3aWR0aCwgaGVpZ2h0KTtcblxuICAgIGNvbnN0IHBvaW50cyA9IFtdO1xuICAgIGZvciAodmFyIGkgPSAxOyBpIDw9IE51bVBvaW50czsgaSsrKSB7XG4gICAgICAgIHBvaW50cy5wdXNoKCBpLU51bVBvaW50cy8yLCAwLCAyKmFtcGxpdHVkZV8xKk1hdGguc2luKGkvMTApICk7XG4gICAgfVxuXG4gICAgY29uc3QgZ2VvbWV0cnkgPSBuZXcgVEhSRUUuTGluZUdlb21ldHJ5KCkuc2V0UG9zaXRpb25zKCBwb2ludHMgKTtcbiAgICBjb25zdCBsaW5lID0gbmV3IFRIUkVFLkxpbmUyKCBnZW9tZXRyeSwgbWF0ZXJpYWwgKTtcbiAgICByZXR1cm4gbGluZTtcbn1cblxubGluZTIgPSB7XG4gICAgY29uc3QgbWF0ZXJpYWwgPSBuZXcgVEhSRUUuTGluZU1hdGVyaWFsKHtcbiAgICAgICAgY29sb3I6IGwyX2NvbG9yLFxuICAgICAgICBsaW5ld2lkdGg6IDMsXG4gICAgfSk7XG5cbiAgICBtYXRlcmlhbC5yZXNvbHV0aW9uLnNldCh3aWR0aCwgaGVpZ2h0KTtcblxuICAgIGNvbnN0IHBvaW50cyA9IFtdO1xuICAgIGZvciAodmFyIGkgPSAxOyBpIDw9IE51bVBvaW50czsgaSsrKSB7XG4gICAgICAgIHBvaW50cy5wdXNoKCBpLU51bVBvaW50cy8yLCAyKmFtcGxpdHVkZV8yKk1hdGguc2luKGkvMTAgKyBwaGFzZV9kaWZmKSwgMCk7XG4gICAgfVxuXG4gICAgY29uc3QgZ2VvbWV0cnkgPSBuZXcgVEhSRUUuTGluZUdlb21ldHJ5KCkuc2V0UG9zaXRpb25zKCBwb2ludHMgKTtcbiAgICBjb25zdCBsaW5lID0gbmV3IFRIUkVFLkxpbmUyKCBnZW9tZXRyeSwgbWF0ZXJpYWwgKTtcbiAgICByZXR1cm4gbGluZTtcbn1cblxubGluZTMgPSB7XG4gICAgY29uc3QgbWF0ZXJpYWwgPSBuZXcgVEhSRUUuTGluZU1hdGVyaWFsKHtcbiAgICAgICAgY29sb3I6IGwzX2NvbG9yLFxuICAgICAgICBsaW5ld2lkdGg6IDMsXG4gICAgfSk7XG5cbiAgICBtYXRlcmlhbC5yZXNvbHV0aW9uLnNldCh3aWR0aCwgaGVpZ2h0KTtcblxuICAgIGNvbnN0IHBvaW50cyA9IFtdO1xuICAgIGZvciAodmFyIGkgPSAxOyBpIDw9IE51bVBvaW50czsgaSsrKSB7XG4gICAgICAgIHBvaW50cy5wdXNoKGktTnVtUG9pbnRzLzIsIDIqYW1wbGl0dWRlXzIqTWF0aC5zaW4oaS8xMCArIHBoYXNlX2RpZmYpLCAyKmFtcGxpdHVkZV8xKk1hdGguc2luKGkvMTApKTtcbiAgICB9XG5cbiAgICBjb25zdCBnZW9tZXRyeSA9IG5ldyBUSFJFRS5MaW5lR2VvbWV0cnkoKS5zZXRQb3NpdGlvbnMoIHBvaW50cyApO1xuICAgIGNvbnN0IGxpbmUgPSBuZXcgVEhSRUUuTGluZTIoIGdlb21ldHJ5LCBtYXRlcmlhbCApO1xuICAgIHJldHVybiBsaW5lO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiY2FtZXJhID0ge1xuICAgIGNvbnN0IGNhbWVyYSA9IG5ldyBUSFJFRS5QZXJzcGVjdGl2ZUNhbWVyYSggNDUsIHdpbmRvdy5pbm5lcldpZHRoIC8gd2luZG93LmlubmVySGVpZ2h0LCAxLCA1MDAgKTtcbiAgICBjYW1lcmEucG9zaXRpb24uc2V0KCAxMDAsIDEwMCwgMTAwICk7XG4gICAgY2FtZXJhLmxvb2tBdCggMCwgMCwgMCApO1xuICAgIHJldHVybiBjYW1lcmE7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTkiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJoZWlnaHQgPSA2MDA7XG5OdW1Qb2ludHMgPSAyMDA7XG5OdW1Qb2ludHNfZWxsaXBzZSA9IDIwMDtcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2ZXJzaW9uPWAwLjEzMC4wYDtcblRIUkVFID0ge1xuICAgIGNvbnN0IFRIUkVFID0gd2luZG93LlRIUkVFID0gYXdhaXQgcmVxdWlyZShgdGhyZWVAJHt2ZXJzaW9ufS9idWlsZC90aHJlZS5taW4uanNgKTtcbiAgICBhd2FpdCByZXF1aXJlKGB0aHJlZUAke3ZlcnNpb259L2V4YW1wbGVzL2pzL2NvbnRyb2xzL09yYml0Q29udHJvbHMuanNgKS5jYXRjaCgoKSA9PiB7fSk7XG4gICAgYXdhaXQgcmVxdWlyZShgdGhyZWVAJHt2ZXJzaW9ufS9leGFtcGxlcy9qcy9saW5lcy9MaW5lU2VnbWVudHMyLmpzYCkuY2F0Y2goKCkgPT4ge30pO1xuICAgIGF3YWl0IHJlcXVpcmUoYHRocmVlQCR7dmVyc2lvbn0vZXhhbXBsZXMvanMvbGluZXMvTGluZVNlZ21lbnRzR2VvbWV0cnkuanNgKS5jYXRjaCgoKSA9PiB7fSk7XG4gICAgYXdhaXQgcmVxdWlyZShgdGhyZWVAJHt2ZXJzaW9ufS9leGFtcGxlcy9qcy9saW5lcy9MaW5lMi5qc2ApLmNhdGNoKCgpID0+IHt9KTtcbiAgICBhd2FpdCByZXF1aXJlKGB0aHJlZUAke3ZlcnNpb259L2V4YW1wbGVzL2pzL2xpbmVzL0xpbmVHZW9tZXRyeS5qc2ApLmNhdGNoKCgpID0+IHt9KTtcbiAgICBhd2FpdCByZXF1aXJlKGB0aHJlZUAke3ZlcnNpb259L2V4YW1wbGVzL2pzL2xpbmVzL0xpbmVNYXRlcmlhbC5qc2ApLmNhdGNoKCgpID0+IHt9KTtcblxuICAgIHJldHVybiBUSFJFRTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTEiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJlbGxpcHNlX3BvaW50cyA9IHtcbiAgICB2YXIgZGF0YSA9IFtdO1xuICAgIGZvciAodmFyIGkgPSAxOyBpPD1OdW1Qb2ludHNfZWxsaXBzZTtpKyspe1xuICAgICAgICBkYXRhLnB1c2goWzIqYW1wbGl0dWRlXzEqTWF0aC5zaW4oaS8xMCksIDIqYW1wbGl0dWRlXzIqTWF0aC5zaW4oaS8xMCArIHBoYXNlX2RpZmYpXSlcbiAgICB9XG4gICAgcmV0dXJuIGRhdGE7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEyIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZWxsaXBzZSA9IGQzLmxpbmUoKShlbGxpcHNlX3BvaW50cyk7XG5zdmdgPHN2ZyB2aWV3Qm94PVwiLTUwIC01MCAxMDAgMTAwXCI+XG4gIDxwYXRoIGQ9XCIke2VsbGlwc2V9XCIgc3Ryb2tlPVwiZ3JheVwiIGZpbGw9XCJub25lXCIgLz5cbjwvc3ZnPmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm9ybTEnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm9ybTInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm9ybTMnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -769,6 +779,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -837,13 +874,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -878,18 +917,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -921,11 +949,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -935,8 +1007,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -948,7 +1029,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -992,6 +1196,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1017,6 +1222,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1074,32 +1305,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><sub>© 2023 Jake Ferguson</sub></div>   
+    <div class="nav-footer-left">
+<p><sub>© 2023 Jake Ferguson</sub></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right"><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></div>
+    <div class="nav-footer-right">
+<p><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></p>
+</div>
   </div>
 </footer>
+
 
 
 

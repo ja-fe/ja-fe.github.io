@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.336">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>jf_web - Natural light and the absence of speckle</title>
+<title>Natural light and the absence of speckle – jf_web</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +86,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,8 +101,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -111,72 +119,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">jf_web</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about_jake.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about_jake.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/research_landingpage.html" rel="" target="">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../research/research_landingpage.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../teaching/teaching_landingpage.html" rel="" target="" aria-current="page">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link active" href="../../teaching/teaching_landingpage.html" aria-current="page"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../outreach/outreach_landingpage.html" rel="" target="">
- <span class="menu-text">Outreach</span></a>
+    <a class="nav-link" href="../../outreach/outreach_landingpage.html"> 
+<span class="menu-text">Outreach</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../misc/misc_landingpage.html" rel="" target="">
- <span class="menu-text">-misc-</span></a>
+    <a class="nav-link" href="../../misc/misc_landingpage.html"> 
+<span class="menu-text">-misc-</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ja-fe" rel="" target="">
- <span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
+    <a class="nav-link" href="https://github.com/ja-fe"> 
+<span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en"> 
+<span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://orcid.org/0009-0003-0043-9064"> 
+<span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle.html">SAR Speckle and Filtering</a></li><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle_solar_radiation.html">Natural light and the absence of speckle</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle.html">SAR Speckle and Filtering</a></li><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle_solar_radiation.html">Natural light and the absence of speckle</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -186,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -202,9 +210,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Wave Coherence and Polarization State</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -243,9 +251,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">SAR Speckle and Filtering</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -279,15 +287,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle.html">SAR Speckle and Filtering</a></li><li class="breadcrumb-item"><a href="../../teaching/SAR_speckle_and_filtering/speckle_solar_radiation.html">Natural light and the absence of speckle</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Natural light and the absence of speckle</h1>
 </div>
@@ -302,11 +310,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Armed with an understanding of this new light phenomenon, we might ask the obvious question: Why doesn’t <em>normal</em> light behave this way? Certainly when we look at an object using an optical satellite, or even just our own eyes, it doesn’t appear <em>speckley</em>. What gives? Let’s simply resimulate the prior situation using light from the sun; note that unlike our “pure” 50cm wave before, solar radiation is the confluence of many different frequencies in different proportion:</p>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>viewof form_nl1 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>(</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    [</span>
@@ -387,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="36" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 35;"><span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>wave_nl1 <span class="op">=</span> {</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
@@ -409,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="51" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 50;"><span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>wave_nl2 <span class="op">=</span> {</span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
@@ -431,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb4" data-startfrom="67" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>wavesum_nl <span class="op">=</span> {</span>
 <span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> data <span class="op">=</span> []<span class="op">;</span></span>
@@ -453,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb5" data-startfrom="83" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 82;"><span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>rnl <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wave_nl1)<span class="op">;</span></span>
 <span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>bnl <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wave_nl2)<span class="op">;</span></span>
@@ -485,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb6" data-startfrom="92" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>pnl <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()(wavesum_nl)<span class="op">;</span></span>
 <span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="fu">svg</span><span class="vs">`&lt;svg viewBox="0 -128 400 256"&gt;</span></span>
@@ -508,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb7" data-startfrom="98" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 97;"><span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> {</span>
 <span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -532,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof form_nl1 = Inputs.form(\n    [\n        Inputs.range([0, 1000], {label: html`<font size=\"3.5\">Offset</font>`, step: 1, value: 500}),\n        Inputs.range([0, 20], {label: html`<font size=\"3.5\">Speed</font>`, step: 1, value: 10})\n    ],\n    {\n        template: (inputs) => htl.html`<div style=\"display: flex; gap: 1em\">\n        ${inputs}</div>`\n    }\n)\n\nphase_diff_nl  = form_nl1[0];\nspeed_nl = form_nl1[1];\n\n\ndistance_nl = 400;\nNumPoints_nl = 1000;\nNumWaves_nl = 20\nwavelengths_nl = [1,2,3,5,8,10,11,14,15,17,19,20,23,25,26,28,29,32,33,35]\nphases_nl = [0,0.4,1,0.5,2,3.1,4,4.9,1.3,.8,6,2.2,2.8,1.7,.85,.9,3,2.4,1.8,1.3];\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"wave_nl1 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints_nl; i++) {\n        var y = 0\n        for (var k = 1; k < NumWaves_nl; k++) {\n            var j = i * distance_nl / NumPoints_nl;\n            y += 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k])\n        }\n        data.push([j,y]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"wave_nl2 = {\n    var data = [];\n    for (var i = 1; i <= NumPoints_nl; i++) {\n        var y = 0\n        for (var k = 1; k < NumWaves_nl; k++) {\n            var j = i * distance_nl / NumPoints_nl;\n            y += 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k] + phase_diff_nl/wavelengths_nl[k])\n        }\n        data.push([j,y]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"wavesum_nl = {\n    var data = [];\n    for (var i = 1; i <= NumPoints_nl; i++) {\n        var y = 0\n        for (var k = 1; k < NumWaves_nl; k++) {\n            var j = i * distance_nl / NumPoints_nl;\n            y += 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k]) + 7 * Math.sin(j * 2*Math.PI / wavelengths_nl[k] + time + phases_nl[k] + phase_diff_nl/wavelengths_nl[k])\n        }\n        data.push([j,y]);\n    }\n    return data;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"rnl = d3.line()(wave_nl1);\nbnl = d3.line()(wave_nl2);\nsvg`<svg viewBox=\"0 -64 400 128\">\n  <path d=\"${rnl}\" stroke=\"red\" fill=\"none\" />\n  <path d=\"${bnl}\" stroke=\"blue\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"pnl = d3.line()(wavesum_nl);\nsvg`<svg viewBox=\"0 -128 400 256\">\n  <path d=\"${pnl}\" stroke=\"black\" fill=\"none\" />\n</svg>`\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"time = {\n  let i = 0;\n  while (true) {\n    i += speed_nl * 0.01;\n    yield i\n  }\n}\n"},{"methodName":"interpretQuiet","source":"shinyInput('form_nl1')"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBmb3JtX25sMSA9IElucHV0cy5mb3JtKFxuICAgIFtcbiAgICAgICAgSW5wdXRzLnJhbmdlKFswLCAxMDAwXSwge2xhYmVsOiBodG1sYDxmb250IHNpemU9XCIzLjVcIj5PZmZzZXQ8L2ZvbnQ+YCwgc3RlcDogMSwgdmFsdWU6IDUwMH0pLFxuICAgICAgICBJbnB1dHMucmFuZ2UoWzAsIDIwXSwge2xhYmVsOiBodG1sYDxmb250IHNpemU9XCIzLjVcIj5TcGVlZDwvZm9udD5gLCBzdGVwOiAxLCB2YWx1ZTogMTB9KVxuICAgIF0sXG4gICAge1xuICAgICAgICB0ZW1wbGF0ZTogKGlucHV0cykgPT4gaHRsLmh0bWxgPGRpdiBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGdhcDogMWVtXCI+XG4gICAgICAgICR7aW5wdXRzfTwvZGl2PmBcbiAgICB9XG4pXG5cbnBoYXNlX2RpZmZfbmwgID0gZm9ybV9ubDFbMF07XG5zcGVlZF9ubCA9IGZvcm1fbmwxWzFdO1xuXG5cbmRpc3RhbmNlX25sID0gNDAwO1xuTnVtUG9pbnRzX25sID0gMTAwMDtcbk51bVdhdmVzX25sID0gMjBcbndhdmVsZW5ndGhzX25sID0gWzEsMiwzLDUsOCwxMCwxMSwxNCwxNSwxNywxOSwyMCwyMywyNSwyNiwyOCwyOSwzMiwzMywzNV1cbnBoYXNlc19ubCA9IFswLDAuNCwxLDAuNSwyLDMuMSw0LDQuOSwxLjMsLjgsNiwyLjIsMi44LDEuNywuODUsLjksMywyLjQsMS44LDEuM107XG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IndhdmVfbmwxID0ge1xuICAgIHZhciBkYXRhID0gW107XG4gICAgZm9yICh2YXIgaSA9IDE7IGkgPD0gTnVtUG9pbnRzX25sOyBpKyspIHtcbiAgICAgICAgdmFyIHkgPSAwXG4gICAgICAgIGZvciAodmFyIGsgPSAxOyBrIDwgTnVtV2F2ZXNfbmw7IGsrKykge1xuICAgICAgICAgICAgdmFyIGogPSBpICogZGlzdGFuY2VfbmwgLyBOdW1Qb2ludHNfbmw7XG4gICAgICAgICAgICB5ICs9IDcgKiBNYXRoLnNpbihqICogMipNYXRoLlBJIC8gd2F2ZWxlbmd0aHNfbmxba10gKyB0aW1lICsgcGhhc2VzX25sW2tdKVxuICAgICAgICB9XG4gICAgICAgIGRhdGEucHVzaChbaix5XSk7XG4gICAgfVxuICAgIHJldHVybiBkYXRhO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoid2F2ZV9ubDIgPSB7XG4gICAgdmFyIGRhdGEgPSBbXTtcbiAgICBmb3IgKHZhciBpID0gMTsgaSA8PSBOdW1Qb2ludHNfbmw7IGkrKykge1xuICAgICAgICB2YXIgeSA9IDBcbiAgICAgICAgZm9yICh2YXIgayA9IDE7IGsgPCBOdW1XYXZlc19ubDsgaysrKSB7XG4gICAgICAgICAgICB2YXIgaiA9IGkgKiBkaXN0YW5jZV9ubCAvIE51bVBvaW50c19ubDtcbiAgICAgICAgICAgIHkgKz0gNyAqIE1hdGguc2luKGogKiAyKk1hdGguUEkgLyB3YXZlbGVuZ3Roc19ubFtrXSArIHRpbWUgKyBwaGFzZXNfbmxba10gKyBwaGFzZV9kaWZmX25sL3dhdmVsZW5ndGhzX25sW2tdKVxuICAgICAgICB9XG4gICAgICAgIGRhdGEucHVzaChbaix5XSk7XG4gICAgfVxuICAgIHJldHVybiBkYXRhO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoid2F2ZXN1bV9ubCA9IHtcbiAgICB2YXIgZGF0YSA9IFtdO1xuICAgIGZvciAodmFyIGkgPSAxOyBpIDw9IE51bVBvaW50c19ubDsgaSsrKSB7XG4gICAgICAgIHZhciB5ID0gMFxuICAgICAgICBmb3IgKHZhciBrID0gMTsgayA8IE51bVdhdmVzX25sOyBrKyspIHtcbiAgICAgICAgICAgIHZhciBqID0gaSAqIGRpc3RhbmNlX25sIC8gTnVtUG9pbnRzX25sO1xuICAgICAgICAgICAgeSArPSA3ICogTWF0aC5zaW4oaiAqIDIqTWF0aC5QSSAvIHdhdmVsZW5ndGhzX25sW2tdICsgdGltZSArIHBoYXNlc19ubFtrXSkgKyA3ICogTWF0aC5zaW4oaiAqIDIqTWF0aC5QSSAvIHdhdmVsZW5ndGhzX25sW2tdICsgdGltZSArIHBoYXNlc19ubFtrXSArIHBoYXNlX2RpZmZfbmwvd2F2ZWxlbmd0aHNfbmxba10pXG4gICAgICAgIH1cbiAgICAgICAgZGF0YS5wdXNoKFtqLHldKTtcbiAgICB9XG4gICAgcmV0dXJuIGRhdGE7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJybmwgPSBkMy5saW5lKCkod2F2ZV9ubDEpO1xuYm5sID0gZDMubGluZSgpKHdhdmVfbmwyKTtcbnN2Z2A8c3ZnIHZpZXdCb3g9XCIwIC02NCA0MDAgMTI4XCI+XG4gIDxwYXRoIGQ9XCIke3JubH1cIiBzdHJva2U9XCJyZWRcIiBmaWxsPVwibm9uZVwiIC8+XG4gIDxwYXRoIGQ9XCIke2JubH1cIiBzdHJva2U9XCJibHVlXCIgZmlsbD1cIm5vbmVcIiAvPlxuPC9zdmc+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoicG5sID0gZDMubGluZSgpKHdhdmVzdW1fbmwpO1xuc3ZnYDxzdmcgdmlld0JveD1cIjAgLTEyOCA0MDAgMjU2XCI+XG4gIDxwYXRoIGQ9XCIke3BubH1cIiBzdHJva2U9XCJibGFja1wiIGZpbGw9XCJub25lXCIgLz5cbjwvc3ZnPmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRpbWUgPSB7XG4gIGxldCBpID0gMDtcbiAgd2hpbGUgKHRydWUpIHtcbiAgICBpICs9IHNwZWVkX25sICogMC4wMTtcbiAgICB5aWVsZCBpXG4gIH1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm9ybV9ubDEnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -583,6 +593,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -651,13 +688,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -692,18 +731,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -735,11 +763,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -749,8 +821,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -762,7 +843,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -806,6 +1010,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -831,6 +1036,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -888,32 +1119,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><sub>© 2023 Jake Ferguson</sub></div>   
+    <div class="nav-footer-left">
+<p><sub>© 2023 Jake Ferguson</sub></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right"><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></div>
+    <div class="nav-footer-right">
+<p><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></p>
+</div>
   </div>
 </footer>
+
 
 
 

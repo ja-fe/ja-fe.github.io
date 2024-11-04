@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.336">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>jf_web -</title>
+<title>about_jake – jf_web</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -94,8 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -110,62 +118,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">jf_web</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about_jake.html" rel="" target="" aria-current="page">
- <span class="menu-text">About</span></a>
+    <a class="nav-link active" href="./about_jake.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research/research_landingpage.html" rel="" target="">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="./research/research_landingpage.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching/teaching_landingpage.html" rel="" target="">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="./teaching/teaching_landingpage.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./outreach/outreach_landingpage.html" rel="" target="">
- <span class="menu-text">Outreach</span></a>
+    <a class="nav-link" href="./outreach/outreach_landingpage.html"> 
+<span class="menu-text">Outreach</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./misc/misc_landingpage.html" rel="" target="">
- <span class="menu-text">-misc-</span></a>
+    <a class="nav-link" href="./misc/misc_landingpage.html"> 
+<span class="menu-text">-misc-</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/ja-fe" rel="" target="">
- <span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
+    <a class="nav-link" href="https://github.com/ja-fe"> 
+<span class="menu-text"><i class="fa-brands fa-github fa-xl" title="GitHub Link" aria-label="github"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en"> 
+<span class="menu-text"><i class="ai  ai-google-scholar ai-xl" title="Google Scholar Link" style="color:body-color"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://scholar.google.ca/citations?user=4hb0ypQAAAAJ&amp;hl=en" rel="" target="">
- <span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
+    <a class="nav-link" href="https://orcid.org/0009-0003-0043-9064"> 
+<span class="menu-text"><i class="ai  ai-orcid ai-xl" title="OrcID Link" style="color:body-color"></i></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -186,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <main class="content" id="quarto-document-content">
 
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="21" data-source-offset="-230"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 20;"><span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>mx <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(gridData<span class="op">,</span> d<span class="kw">=&gt;</span>d<span class="op">.</span><span class="at">x</span>)<span class="op">;</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>my <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(gridData<span class="op">,</span> d<span class="kw">=&gt;</span>d<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
@@ -326,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="110" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 109;"><span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>scale_x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
 <span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> mx])</span>
@@ -338,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<details class="hidden">
+<details class="code-fold hidden">
 <summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="116" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 115;"><span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>scale_y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
 <span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> my])</span>
@@ -382,7 +390,7 @@ BSc. Physics | April 2017</p>
 </div>
  <!-- /main -->
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpretLenient","cellName":"ojs-cell-1","inline":false,"source":"//Note that this code assumes the x,y positions of each subimage is indices and doesn't not normalize, e.g. if they are coordinates in an arbitrary system\n//The main images and subimages also need to be square to render properly\n\nmx = d3.max(gridData, d=>d.x);\nmy = d3.max(gridData, d=>d.y);\nheight = 460;\nwidth  = 300;\nnumCellsx = 21;\nnumCellsy = 32;\n\ngridData = {\n    var da = [];\n    var c = 0;\n    for (var j = 0; j <= numCellsx; j++) {\n        for (var k = 0; k <= numCellsy; k++) {\n        c+=1;\n        da.push({id:c,x:j,y:k,opa:1});\n    }}\n    return da;\n}\n\n{\n\n  var hover  = -10;\n  var ref_x  = 0;\n  var ref_y  = 0;\n  var dist   = 0;\n  var stophover = false\n  const svg = d3.select(DOM.svg(width, height));\n\n\n  svg.append(\"image\")\n    .attr(\"width\", \"100%\")\n    .attr(\"height\", \"100%\")\n    .attr(\"xlink:href\", \"static/logo_think.png\");\n\n  var node = svg.selectAll(\"g.node\")\n    .data(gridData, d => d.id)\n    \n  var nodeEnter = node.enter()\n    .append(\"svg:g\")\n    .attr(\"class\", \"node\")\n\n  nodeEnter.append(\"rect\")\n    .attr(\"id\", d => d.id)\n    .attr(\"x\", d => scale_x(d.x))\n    .attr(\"y\", d => scale_y(d.y))\n    .attr(\"width\", width/(mx+1))\n    .attr(\"height\", height/(my+1))\n    .attr(\"fill\", \"white\")\n    .attr(\"opacity\", function(d){\n      if (d.x > numCellsx/3 && d.x < numCellsx*.75 && d.y > numCellsy/10 && d.y < numCellsy/4.5) {\n        d.opa = 0\n        return 0}\n      else {return 1}\n    })\n    .on(\"mouseover\", function (event, d) {\n      if (!stophover){\n      hover = d.id\n      ref_x = d.x\n      ref_y = d.y\n      d3.selectAll(\"rect\")\n        //.transition()\n        //.delay(function(d,i){return Math.sqrt(Math.abs(d.x - ref_x)**2 + Math.abs(d.y - ref_y)**2);})\n        //.duration(1000)\n        //.attr(\"opacity\",0)\n        .attr(\"opacity\",function(d){\n          if (Math.sqrt(Math.abs(d.x - ref_x)**2 + Math.abs(d.y - ref_y)**2) < 4.1) {\n            d.opa = d.opa*.93\n            return d.opa*.93}\n          else {return d3.select(this).attr(\"opacity\")}\n        })}\n    })\n    .on(\"click\", function (event, d) {\n      stophover = true\n      hover = d.id\n      ref_x = d.x\n      ref_y = d.y\n      d3.selectAll(\"rect\")\n        .transition()\n        .delay(function(d,i){return 100*Math.sqrt(Math.abs(d.x - ref_x)**2 + Math.abs(d.y - ref_y)**2)})\n        .duration(1000)\n        .attr(\"opacity\",function(d){\n          d.opa = 0\n          return 0\n        })\n    });\n\n  return svg.node();\n}\n"},{"methodName":"interpretLenient","cellName":"ojs-cell-2","inline":false,"source":"scale_x = d3.scaleLinear()\n  .domain([0, mx])\n  .range([0, width * (1-1/(mx+1))])\n"},{"methodName":"interpretLenient","cellName":"ojs-cell-3","inline":false,"source":"scale_y = d3.scaleLinear()\n  .domain([0, my])\n  .range([0, height * (1-1/(my+1))])\n"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldExlbmllbnQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvL05vdGUgdGhhdCB0aGlzIGNvZGUgYXNzdW1lcyB0aGUgeCx5IHBvc2l0aW9ucyBvZiBlYWNoIHN1YmltYWdlIGlzIGluZGljZXMgYW5kIGRvZXNuJ3Qgbm90IG5vcm1hbGl6ZSwgZS5nLiBpZiB0aGV5IGFyZSBjb29yZGluYXRlcyBpbiBhbiBhcmJpdHJhcnkgc3lzdGVtXG4vL1RoZSBtYWluIGltYWdlcyBhbmQgc3ViaW1hZ2VzIGFsc28gbmVlZCB0byBiZSBzcXVhcmUgdG8gcmVuZGVyIHByb3Blcmx5XG5cbm14ID0gZDMubWF4KGdyaWREYXRhLCBkPT5kLngpO1xubXkgPSBkMy5tYXgoZ3JpZERhdGEsIGQ9PmQueSk7XG5oZWlnaHQgPSA0NjA7XG53aWR0aCAgPSAzMDA7XG5udW1DZWxsc3ggPSAyMTtcbm51bUNlbGxzeSA9IDMyO1xuXG5ncmlkRGF0YSA9IHtcbiAgICB2YXIgZGEgPSBbXTtcbiAgICB2YXIgYyA9IDA7XG4gICAgZm9yICh2YXIgaiA9IDA7IGogPD0gbnVtQ2VsbHN4OyBqKyspIHtcbiAgICAgICAgZm9yICh2YXIgayA9IDA7IGsgPD0gbnVtQ2VsbHN5OyBrKyspIHtcbiAgICAgICAgYys9MTtcbiAgICAgICAgZGEucHVzaCh7aWQ6Yyx4OmoseTprLG9wYToxfSk7XG4gICAgfX1cbiAgICByZXR1cm4gZGE7XG59XG5cbntcblxuICB2YXIgaG92ZXIgID0gLTEwO1xuICB2YXIgcmVmX3ggID0gMDtcbiAgdmFyIHJlZl95ICA9IDA7XG4gIHZhciBkaXN0ICAgPSAwO1xuICB2YXIgc3RvcGhvdmVyID0gZmFsc2VcbiAgY29uc3Qgc3ZnID0gZDMuc2VsZWN0KERPTS5zdmcod2lkdGgsIGhlaWdodCkpO1xuXG5cbiAgc3ZnLmFwcGVuZChcImltYWdlXCIpXG4gICAgLmF0dHIoXCJ3aWR0aFwiLCBcIjEwMCVcIilcbiAgICAuYXR0cihcImhlaWdodFwiLCBcIjEwMCVcIilcbiAgICAuYXR0cihcInhsaW5rOmhyZWZcIiwgXCJzdGF0aWMvbG9nb190aGluay5wbmdcIik7XG5cbiAgdmFyIG5vZGUgPSBzdmcuc2VsZWN0QWxsKFwiZy5ub2RlXCIpXG4gICAgLmRhdGEoZ3JpZERhdGEsIGQgPT4gZC5pZClcbiAgICBcbiAgdmFyIG5vZGVFbnRlciA9IG5vZGUuZW50ZXIoKVxuICAgIC5hcHBlbmQoXCJzdmc6Z1wiKVxuICAgIC5hdHRyKFwiY2xhc3NcIiwgXCJub2RlXCIpXG5cbiAgbm9kZUVudGVyLmFwcGVuZChcInJlY3RcIilcbiAgICAuYXR0cihcImlkXCIsIGQgPT4gZC5pZClcbiAgICAuYXR0cihcInhcIiwgZCA9PiBzY2FsZV94KGQueCkpXG4gICAgLmF0dHIoXCJ5XCIsIGQgPT4gc2NhbGVfeShkLnkpKVxuICAgIC5hdHRyKFwid2lkdGhcIiwgd2lkdGgvKG14KzEpKVxuICAgIC5hdHRyKFwiaGVpZ2h0XCIsIGhlaWdodC8obXkrMSkpXG4gICAgLmF0dHIoXCJmaWxsXCIsIFwid2hpdGVcIilcbiAgICAuYXR0cihcIm9wYWNpdHlcIiwgZnVuY3Rpb24oZCl7XG4gICAgICBpZiAoZC54ID4gbnVtQ2VsbHN4LzMgJiYgZC54IDwgbnVtQ2VsbHN4Ki43NSAmJiBkLnkgPiBudW1DZWxsc3kvMTAgJiYgZC55IDwgbnVtQ2VsbHN5LzQuNSkge1xuICAgICAgICBkLm9wYSA9IDBcbiAgICAgICAgcmV0dXJuIDB9XG4gICAgICBlbHNlIHtyZXR1cm4gMX1cbiAgICB9KVxuICAgIC5vbihcIm1vdXNlb3ZlclwiLCBmdW5jdGlvbiAoZXZlbnQsIGQpIHtcbiAgICAgIGlmICghc3RvcGhvdmVyKXtcbiAgICAgIGhvdmVyID0gZC5pZFxuICAgICAgcmVmX3ggPSBkLnhcbiAgICAgIHJlZl95ID0gZC55XG4gICAgICBkMy5zZWxlY3RBbGwoXCJyZWN0XCIpXG4gICAgICAgIC8vLnRyYW5zaXRpb24oKVxuICAgICAgICAvLy5kZWxheShmdW5jdGlvbihkLGkpe3JldHVybiBNYXRoLnNxcnQoTWF0aC5hYnMoZC54IC0gcmVmX3gpKioyICsgTWF0aC5hYnMoZC55IC0gcmVmX3kpKioyKTt9KVxuICAgICAgICAvLy5kdXJhdGlvbigxMDAwKVxuICAgICAgICAvLy5hdHRyKFwib3BhY2l0eVwiLDApXG4gICAgICAgIC5hdHRyKFwib3BhY2l0eVwiLGZ1bmN0aW9uKGQpe1xuICAgICAgICAgIGlmIChNYXRoLnNxcnQoTWF0aC5hYnMoZC54IC0gcmVmX3gpKioyICsgTWF0aC5hYnMoZC55IC0gcmVmX3kpKioyKSA8IDQuMSkge1xuICAgICAgICAgICAgZC5vcGEgPSBkLm9wYSouOTNcbiAgICAgICAgICAgIHJldHVybiBkLm9wYSouOTN9XG4gICAgICAgICAgZWxzZSB7cmV0dXJuIGQzLnNlbGVjdCh0aGlzKS5hdHRyKFwib3BhY2l0eVwiKX1cbiAgICAgICAgfSl9XG4gICAgfSlcbiAgICAub24oXCJjbGlja1wiLCBmdW5jdGlvbiAoZXZlbnQsIGQpIHtcbiAgICAgIHN0b3Bob3ZlciA9IHRydWVcbiAgICAgIGhvdmVyID0gZC5pZFxuICAgICAgcmVmX3ggPSBkLnhcbiAgICAgIHJlZl95ID0gZC55XG4gICAgICBkMy5zZWxlY3RBbGwoXCJyZWN0XCIpXG4gICAgICAgIC50cmFuc2l0aW9uKClcbiAgICAgICAgLmRlbGF5KGZ1bmN0aW9uKGQsaSl7cmV0dXJuIDEwMCpNYXRoLnNxcnQoTWF0aC5hYnMoZC54IC0gcmVmX3gpKioyICsgTWF0aC5hYnMoZC55IC0gcmVmX3kpKioyKX0pXG4gICAgICAgIC5kdXJhdGlvbigxMDAwKVxuICAgICAgICAuYXR0cihcIm9wYWNpdHlcIixmdW5jdGlvbihkKXtcbiAgICAgICAgICBkLm9wYSA9IDBcbiAgICAgICAgICByZXR1cm4gMFxuICAgICAgICB9KVxuICAgIH0pO1xuXG4gIHJldHVybiBzdmcubm9kZSgpO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0TGVuaWVudCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InNjYWxlX3ggPSBkMy5zY2FsZUxpbmVhcigpXG4gIC5kb21haW4oWzAsIG14XSlcbiAgLnJhbmdlKFswLCB3aWR0aCAqICgxLTEvKG14KzEpKV0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRMZW5pZW50IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoic2NhbGVfeSA9IGQzLnNjYWxlTGluZWFyKClcbiAgLmRvbWFpbihbMCwgbXldKVxuICAucmFuZ2UoWzAsIGhlaWdodCAqICgxLTEvKG15KzEpKV0pXG4ifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -433,6 +441,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -501,13 +536,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -535,18 +572,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -578,11 +604,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -592,8 +662,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -605,7 +684,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -649,6 +851,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -674,6 +877,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -731,32 +960,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><sub>© 2023 Jake Ferguson</sub></div>   
+    <div class="nav-footer-left">
+<p><sub>© 2023 Jake Ferguson</sub></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right"><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></div>
+    <div class="nav-footer-right">
+<p><sub>This website attempts to be <a href="https://en.wikipedia.org/wiki/WAI-ARIA">WAI-ARIA</a> compliant – if you find any issues please email me</sub><br><sub>Built using <a href="https://quarto.org/">Quarto</a>; CSS theme modified from <a href="https://bootswatch.com/litera/"><em>litera</em></a></sub></p>
+</div>
   </div>
 </footer>
+
 
 
 
