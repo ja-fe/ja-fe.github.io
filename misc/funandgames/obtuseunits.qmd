@@ -1,0 +1,5 @@
+---
+title: "Obtuse Units"
+---
+
+TODO: This doesn't work yet, because it uses Python on a static site and static Shiny is still being made (easily) operational with Quarto. And I don't want to create a Shiny server just for this project. Check out the obtuse-conversion repo on my Github if you want to have fun with a program that turns arbitrary text containing units into absurd but accurate jumbles of SI units, e.g. "I just ran 5 miles!" --> "I just ran 804634695 petacoulomb-attowebers per hectonewton-second!"

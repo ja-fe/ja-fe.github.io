@@ -1,0 +1,270 @@
+---
+title: Birble
+execute:
+    echo: false
+website:
+    page-navigation: 
+---
+
+I am currently in ~~birbta~~ beta!
+
+Identify the bird in question by spending points to uncover information about its appearance, behaviour, and more!
+
+```{ojs}
+viewof score = Inputs.number([0, 100], {step: 1, label: "Score", value:20, disabled:true})
+```
+
+
+```{ojs}
+//Common name, conservation status, latin name, abundance image link, McCauley call audio file asset number, physical description
+birbdata = [
+    [["Double-Crested Cormorant"],["Least Concern"],["Nannopterum auritum"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/31913881/640"],[65707121],["Dark body with orange bare skin at the base of the bill. Breeding adults are all black. Immatures and nonbreeders have paler breast."]],
+    [["Black-Capped Chickadee"],["Least Concern"],["Poecile atricapillus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/120480101/640"],[54840711],["This tiny, plump-bodied, big-headed bird is a familiar woodland resident and backyard visitor in the northern U.S. and Canada. Gray overall with light buffy flanks and a contrasting head pattern: black cap, white cheek, and black throat. Short, stubby bill is used for hammering open seeds."]],
+    [["California Condor"],["Critical"],["Gymnogyps californianus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/25035971/640"],[163903],["This behemoth is unmistakable solely due to its massive size, much larger than any other REDACTED. Adults are black with a white stripe on the underwing and an orange head. Wingtips are splayed into conspicuous fingertips. Young birds are duller with a gray head and only slightly paler stripe on the underwing."]],
+]
+```
+
+```{ojs}
+// Helper function for synchronizing variables across cells, see https://observablehq.com/@observablehq/synchronized-inputs
+function adjust(input, value) {
+  // Set a new value to the input
+  input.value = input.value + value;
+  // Dispatch an update event to the input
+  input.dispatchEvent(new Event("input", {bubbles: true}));
+}
+```
+
+```{ojs}
+function set(input, value) {
+  input.value = value;
+  input.dispatchEvent(new Event("input", {bubbles: true}));
+}
+```
+
+```{ojs}
+//Reveal the bird call
+viewof BC = {
+  newbirb;
+  let value = 0;
+  const button = html`<button>[3] Hear birb call</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => ++value;
+  return button;
+}
+
+BCembedsrc = {
+    if (BC > 0) {
+        //Adjust score at one button press
+        if (BC == 1){adjust(viewof score,-3)};
+        //Change conservation status text
+        return (newbirb, 'https://macaulaylibrary.org/asset/'.concat(current_birb[4][0],'/embed'))
+    } else {return "\n"}
+}
+
+html`<iframe src="${BCembedsrc}" height="340" width="320" scrolling="no" style="border: 3px solid black;" allowfullscreen></iframe>`
+
+
+
+```
+
+```{ojs}
+//Reveal conservation status of birb
+viewof CS = {
+  newbirb;
+  let value = 0;
+  const button = html`<button>[1] Conservation Status</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => ++value;
+  return button;
+}
+
+CStext = {
+    if (CS > 0) {
+        //Adjust score at one button press
+        if (CS == 1){adjust(viewof score,-1)};
+        //Change conservation status text
+        return (newbirb, current_birb[1][0])
+    } else {return "\n"}
+}
+
+//Output conservation status text
+viewof CSA = Inputs.text({value:CStext, disabled:true})
+```
+
+```{ojs}
+//Reveal conservation status of birb
+viewof BN = {
+  newbirb;
+  let value = 0;
+  const button = html`<button>[1] Latin Name</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => ++value;
+  return button;
+}
+
+BNtext = {
+    if (BN > 0) {
+        //Adjust score at one button press asdas
+        if (BN == 1){adjust(viewof score,-1)};
+        //Change conservation status text
+        return (newbirb, current_birb[2][0])
+    } else {return "\n"}
+}
+
+//Output conservation status text
+viewof BNA = Inputs.text({value:BNtext, disabled:true})
+```
+
+```{ojs}
+//Reveal physical description
+viewof PD = {
+  newbirb;
+  let value = 0;
+  const button = html`<button>[4] Physical Description</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => ++value;
+  return button;
+}
+
+PDtext = {
+    if (PD > 0) {
+        //Adjust score at one button press asdas
+        if (PD == 1){adjust(viewof score,-4)};
+        //Change conservation status text
+        return (newbirb, current_birb[5][0])
+    } else {return "\n"}
+}
+
+PDtext;
+```
+
+
+```{ojs}
+//Image for the abundance/range data
+
+//Old method with hardcoded files
+/*
+RDfile = "birble_resources/".concat(current_birb[3][0]);
+
+FileAttachment("birble_resources/placeholder.png").image({
+  width: 400,
+  border: "10px solid black",
+  onclick: (e)=> { 
+    e.target.src=`${RDfile}`;
+    if (mapclick==0){
+      adjust(viewof score,-3)
+      adjust(viewof mapclick,1)
+    };
+  },
+})
+*/
+
+//New method using iframes to save space but possibly very susceptible to link rot
+viewof BR = {
+  newbirb;
+  let value = 0;
+  const button = html`<button>[3] Birb Range data</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => ++value;
+  return button;
+}
+
+BRembedsrc = {
+    if (BR > 0) {
+        //Adjust score at one button press
+        if (BR == 1){adjust(viewof score,-3)};
+        //Change conservation status text
+        return (newbirb, current_birb[3][0])
+    } else {return "\n"}
+}
+
+html`<iframe src="${BRembedsrc}" height="340" width="320" scrolling="no" style="border: 3px solid black;" allowfullscreen></iframe>`
+```
+
+---
+
+```{ojs}
+
+viewof guess = Inputs.text({placeholder:"e.g. American Robin", disabled:false, width:400});
+
+viewof guessbirb = {
+  newbirb;
+  let value = "";
+  const button = html`<button>${gbtext}</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => {
+    if (giveup==0){
+      if (guess.toLowerCase() == current_birb[0][0].toLowerCase()){
+        value = "Correct | ".concat(current_birb[0][0], " | Final Score: ", String(score));
+        return value;
+      } else {
+        value = "Incorrect guess";
+        return value
+      }
+    } else{
+      value = current_birb[0][0].concat(" ")
+      return value;
+    }
+  }
+  return button;
+}
+
+```
+
+```{ojs}
+viewof giveup = {
+  newbirb;
+  let value = 0;
+  const button = html`<button>Give up!</button>`;
+  Object.defineProperty(button, "value", {get() { return value; }});
+  button.onclick = () => ++value;
+  return button;
+}
+
+gbtext = {
+  if (giveup > 0){
+    return "Confirm give up"
+  }
+  else {
+    return "Guess birb!"
+  }
+
+}
+```
+
+```{ojs}
+viewof answer = Inputs.text({placeholder:guessbirb, disabled:true, width:400});
+```
+
+---
+
+```{ojs}
+// New bird button
+viewof newbirb = html`<button>New Birb</button>`;
+//html`<p style="font-family:courier;">This is a paragraph.</p>`;
+// Select from array of birb data
+current_birb = {
+  set(viewof score, 20);
+  set(viewof mapclick, 0);
+  const buttonClicked = await newbirb;
+  return birbdata[Math.floor(Math.random()*birbdata.length)];
+}
+```
+
+---
+
+---
+
+Compliance:
+
+This material uses data from the eBird Status and Trends Project at the Cornell Lab of Ornithology, eBird.org. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the Cornell Lab of Ornithology.
+
+Range data: Fink, D., T. Auer, A. Johnston, M. Strimas-Mackey, S. Ligocki, O. Robinson, W. Hochachka, L. Jaromczyk, C. Crowley, K. Dunham, A. Stillman, I. Davies, A. Rodewald, V. Ruiz-Gutierrez, C. Wood. 2023. eBird Status and Trends, Data Version: 2022; Released: 2023. Cornell Lab of Ornithology, Ithaca, New York. https://doi.org/10.2173/ebirdst.2022
+
+---
+
+```{ojs}
+viewof mapclick = Inputs.number([0, 100], {step: 1, label: "mapclick", value:0, disabled:true})
+```
+
+
