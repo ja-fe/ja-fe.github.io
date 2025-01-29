@@ -16,11 +16,38 @@ viewof score = Inputs.number([0, 100], {step: 1, label: "Score", value:20, disab
 
 
 ```{ojs}
-//Common name, conservation status, latin name, abundance image link, McCauley call audio file asset number, physical description
+//Common name, conservation status, latin name, abundance image link, McCauley call audio file asset number, physical description, size category
 birbdata = [
-    [["Double-Crested Cormorant"],["Least Concern"],["Nannopterum auritum"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/31913881/640"],[65707121],["Dark body with orange bare skin at the base of the bill. Breeding adults are all black. Immatures and nonbreeders have paler breast."]],
-    [["Black-Capped Chickadee"],["Least Concern"],["Poecile atricapillus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/120480101/640"],[54840711],["This tiny, plump-bodied, big-headed bird is a familiar woodland resident and backyard visitor in the northern U.S. and Canada. Gray overall with light buffy flanks and a contrasting head pattern: black cap, white cheek, and black throat. Short, stubby bill is used for hammering open seeds."]],
-    [["California Condor"],["Critical"],["Gymnogyps californianus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/25035971/640"],[163903],["This behemoth is unmistakable solely due to its massive size, much larger than any other REDACTED. Adults are black with a white stripe on the underwing and an orange head. Wingtips are splayed into conspicuous fingertips. Young birds are duller with a gray head and only slightly paler stripe on the underwing."]],
+    [["Double-Crested Cormorant"],["Least Concern"],["Nannopterum auritum"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/31913881/640"],[65707121],["Dark body with orange bare skin at the base of the bill. Breeding adults are all black. Immatures and nonbreeders have paler breast."],["GSL"]],
+    [["Black-Capped Chickadee"],["Least Concern"],["Poecile atricapillus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/120480101/640"],[54840711],["This tiny, plump-bodied, big-headed bird is a familiar woodland resident and backyard visitor in the northern U.S. and Canada. Gray overall with light buffy flanks and a contrasting head pattern: black cap, white cheek, and black throat. Short, stubby bill is used for hammering open seeds."],["SSS"]],
+    [["California Condor"],["Critical"],["Gymnogyps californianus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/25035971/640"],[163903],["This behemoth is unmistakable solely due to its massive size, much larger than any other [REDACTED]. Adults are black with a white stripe on the underwing and an orange head. Wingtips are splayed into conspicuous fingertips. Young birds are duller with a gray head and only slightly paler stripe on the underwing."],["GSL"]],
+    [["White-Breasted Nuthatch"],["Least Concern"],["Sitta carolinensis"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/31504131/640"],[120214],["The largest [REDACTED]] in North America, with distinctive white face, black cap, and blue-gray upperparts. Also note rusty lower belly and undertail coverts. Females have a slightly paler crown than males."],["BSB"]],
+    [["Red-Breasted Nuthatch"],["Least Concern"],["Sitta canadensis"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/32258961/640"],[287188101],["Small, cute, energetic [REDACTED]. Distinctive with bold black-and-white head pattern, blue-gray upperparts, and orangey belly. Males are brighter than females. "],["BSB"]],
+    [["Pileated Woodpecker"],["Least Concern"],["Dryocopus pileatus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/32323421/640"],[88310041],["Large, unmistakable [REDACTED]. Mostly black, with red crest and bold white stripes on head and neck. Flies with deep, rowing wingbeats, almost like a crow but more irregular; also look for mostly white underwings and white patches on upperwing. "],["CS"]],
+    [["Common Loon"],["Least Concern"],["Gavia immer"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/317961781/640"],[33842721],["A large, heavy-billed [REDACTED]. Common and widespread in North America; somewhat less common and more local in Europe. Breeding adults have gorgeous black-and-white patterning; especially note fully black head with iridescent sheen and boldly checkered back. Nonbreeding plumage is plainer gray above and white below; note the jagged border between gray and white on the neck. Heavy bill is usually held straight (compare with Yellow-billed [REDACTED])."],["BCG"]],
+    [["Wild Turkey"],["Least Concern"],["Meleagris gallopavo"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/25003991/640"],[73964601],["Among the largest birds in North America. The large-bodied, long-legged and small-headed look of a [REDACTED] is distinctive. Appears dark from a distance. "],["GSL"]],
+    [["Bald Eagle"],["Least Concern"],["Haliaeetus leucocephalus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/490921951/640"],[200943],["Majestic adults have blackish-brown body with white head and tail. Several stages of immature plumages aren't quite as majestic, from fully dark brown to messy and mottled with large patches of white. Look especially for white mottling on the belly on immatures. Soars with wings flat, like a large, dark plank. Head appears large in flight; projects far in front of wings."],["BCG"]],
+    [["Barred Owl"],["Least Concern"],["Strix varia"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/621274649/640"],[311542871],["Large [REDACTED], mottled brown and white. Rounded head lacks ear tufts. Black eyes."],["BCG"]],
+    [["Red Crossbill"],["Least Concern"],["Loxia curvirostra"],["https://www.allaboutbirds.org/guide/assets/photo/32257131-1280px.jpg"],[64047331],["Stocky, large-headed [REDACTED] with unique crossed bill used to pry seeds out of conifer cones. Males are dull red or orange overall with gray or brown highlights. Females are dull olive-yellow. Immatures are streakier than adults. Look for brownish wings with no wingbars."],["SSS"]],
+    [["Tundra Swan"],["Least Concern"],["Cygnus columbianus"],["https://www.allaboutbirds.org/guide/assets/photo/31493371-1280px.jpg"],[406700341],["Huge white bird with a long elegant neck. North American “Whistling” [REDACTED]s have a mostly black bill, with a yellow spot near the eye; Eurasian “Bewick’s” [REDACTED]s have a more evenly divided black-and-yellow bill. Immatures dusky gray-brown with pink on bill. Easily confused with Whooper and Trumpeter [REDACTED]s where their ranges overlap"],["GSL"]],
+    [["Trumpeter Swan"],["Least Concern"],["Cygnus buccinator"],["https://www.allaboutbirds.org/guide/assets/photo/175747531-1280px.jpg"],[70543481],["Huge white bird with long neck and all-black bill. Immatures dusky gray-brown with pink on bill. Extremely similar to Tundra [REDACTED], but never shows yellow on bill. Also, note subtle features of face: facial skin is relatively broad where it meets eye, so the eye doesn't stand out, and border between white face and black bill is straight (curved on Tundra)."],["GSL"]],
+    [["American Robin"],["Least Concern"],["Turdus migratorius"],["https://www.allaboutbirds.org/guide/assets/photo/615207099-1280px.jpg"],[94261],["Fairly large songbird with round body, long legs, and longish tail. Gray above with warm orange underparts and blackish head."],["BBS"]],
+    [["Northern Cardinal"],["Least Concern"],["Cardinalis cardinalis"],["https://www.allaboutbirds.org/guide/assets/photo/311148961-1280px.jpg"],[339922801],["Striking and familiar [REDACTED]. Crest, large red bill, and long tail render this species distinctive even with a poor view. Male is entirely red with a black face. Female is brownish overall with redder wings and tail."],["BSB"]],
+    [["Pine Sisken"],["Least Concern"],["Spinus pinus"],["https://www.allaboutbirds.org/guide/assets/photo/31752411-1280px.jpg"],[89549511],["Small, brown, streaked [REDACTED]. Some show yellow in the wing and tail. Sharply pointed bill. Short, notched tail and long wings."],["SSS"]],
+    [["Red-Winged Blackbird"],["Least Concern"],["Agelaius phoeniceus"],["https://www.allaboutbirds.org/guide/assets/photo/32257341-1280px.jpg"],[314523871],["Males are black with red shoulder patch that is sometimes concealed. Males have rusty feather edges in the winter. Females are streaked brown and often confused with [REDACTED]. Look for long, sharply pointed bill."],["BBS"]],
+    [["Swamp Sparrow"],["Least Concern"],["Melospiza georgiana"],["https://www.allaboutbirds.org/guide/assets/photo/31752291-1280px.jpg"],[55235401],["A medium-sized [REDACTED] with attractive rufous and gray pattern. Slightly smaller than Song [REDACTED], with a blurrier look overall (like a watercolor vs. an oil painting). Look for bright reddish-brown wings and relatively plain underparts. Adults are plain grayish below with buffy sides; males have a rufous crown. Immatures often show buffy tones on the face and streaking on the underparts, but never as crisp and extensive as Lincoln’s [REDACTED]."],["SSS"]],
+    [["Canada Goose"],["Least Concern"],["Branta canadensis"],["https://www.allaboutbirds.org/guide/assets/photo/31492711-1280px.jpg"],[158978601],["A large brown [REDACTED] with a black neck and white chinstrap. Overall size, bill size, and brown coloration variable across subspecies. [REDACTED] is almost always larger, longer-necked, and longer-billed than Cackling [REDACTED], although beware there is some overlap between the smallest [REDACTED] and largest Cackling."],["GSL"]],
+    [["Canada Jay"],["Least Concern"],["Perisoreus canadensis"],["https://www.allaboutbirds.org/guide/assets/photo/41196131-1280px.jpg"],[13510],["Adults are gray overall with a white head and dark nape. Juveniles are dark sooty-gray with a white mustache stripe. Some variation across range; Rocky Mountain birds are palest."],["BSB"]],
+    [["Bufflehead"],["Least Concern"],["Bucephala albeola"],["https://www.allaboutbirds.org/guide/assets/photo/38821501-1280px.jpg"],[326635731],["Small, compact diving [REDACTED] with large head and small gray bill. Breeding males are black and white with large white patch on back of head. Females and immature males are gray-brown with white patch on cheek. Much smaller than [REDACTED] with which it often associates"],["BCG"]],
+    [["Mallard"],["Least Concern"],["Anas platyrhynchos"],["https://www.allaboutbirds.org/guide/assets/photo/169626481-1280px.jpg"],[105200981],["A large [REDACTED]. Males are distinctive with iridescent green head, yellow bill, chestnut breast, and gray body. Females are mottled brown with orange and black splotches on the bill."],["BCG"]],
+    [["Hooded Merganser"],["Least Concern"],["Lophodytes cucullatus"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/32312371/640"],[414920021],["Small diving [REDACTED] with thin serrated bill. Breeding males have showy black-and-white crest, a couple zebra stripes on the white breast, and cinnamon-colored sides. Females are brown with a puffy crest and partly yellow bill. Looks slender and long-necked in flight, with very fast wingbeats."],["CS"]],
+    [["Ring-billed Gull"],["Least Concern"],["Larus delawarensis"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/39431981/640"],[78362981],["Fairly small [REDACTED]. Breeding adults are white-headed with a bold black ring around the bill; nonbreeding adults have smudgy brown markings on the head. Note pale eye and yellow legs. Immatures are mottled brownish overall; note pink bill with black tip."],["CS"]],
+    [["Great Blue Heron"],["Least Concern"],["Ardea herodias"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/39447471/640"],[92488041],["Huge gray [REDACTED], no other similar species in range. Note large yellow-orange bill, short black plumes on head, and black and chestnut pattern on shoulder. Immatures are more brownish than adults, and have a dark crown."],["GSL"]],
+    [["Red-tailed Hawk"],["Least Concern"],["Buteo jamaicensis"],["https://www.allaboutbirds.org/guide/assets/photo/39403381-1280px.jpg"],[241076151],["Incredible variation in plumages, including less common dark morphs and various regional differences. Eastern adults have brilliant reddish-orange tail and pale underparts with obvious band of dark marks across belly. Western birds are typically darker. Immatures do not have a red tail."],["BCG"]],
+    [["Red-shouldered Hawk"],["Least Concern"],["Buteo lineatus"],["https://www.allaboutbirds.org/guide/assets/photo/32257721-1280px.jpg"],[229090],["Smaller than [REDACTED]. Adults are beautiful with rich orange barring below and bold black-and-white checkerboard patterning on wings. In flight, wings seem narrow and pushed forward compared to [REDACTED] or [REDACTED]; also note relatively long tail. Population in California is more richly colored (darker orange) than paler Eastern birds; while Florida birds are paler with gray head and back."],["BCG"]],
+    [["Chimney Swift"],["Vulnerable"],["Chaetura pelagica"],["https://www.allaboutbirds.org/guide/assets/photo/39419141-1280px.jpg"],[527296],["The 'flying cigar' with a blunt head, squared-off tail, and long, sickle-shaped wings. Body is dark gray with a slightly paler throat. Flies all day long with ridiculously fast, snappy wingbeats."],["BSB"]],
+    [["Yellow-bellied Sapsucker"],["Least Concern"],["Sphyrapicus varius"],["https://cdn.download.ams.birds.cornell.edu/api/v1/asset/39441281/640"],[425580881],["Striking and unmistakable. Long, solid white wing patch helps distinguish it from [REDACTED] and [REDACTED]. Adult male has red cap and throat; females are similar but with white throat; juveniles are messy brownish-gray overall. The namesake yellow belly can be difficult to see and is sometimes almost absent. Often looks disheveled, especially in fall and winter. Note [this bird] has complete black border around red throat patch, and the white markings on the back are more extensive and messy."],["BSB"]],
+    [["Eastern Whip-poor-whill"],["Near Threatened"],["Antrostomus vociferus"],["https://www.allaboutbirds.org/guide/assets/photo/39404921-1280px.jpg"],[245943381],["Intricately patterned with a complicated mottling of gray, brown, and black. Note blackish throat bordered by thin white collar."],["BBS"]]
 ]
 ```
 
@@ -116,11 +143,67 @@ viewof BNA = Inputs.text({value:BNtext, disabled:true})
 ```
 
 ```{ojs}
+
+BSfile = {
+  //sparrow-sized or smaller
+  if (current_birb[6][0] == "SSS"){
+    return "birble_resources/SSS.png"
+  //between sparrow and blackbird
+  } else if (current_birb[6][0] == "BSB"){
+    return "birble_resources/BSB.png"
+  //blackbird sized
+  } else if (current_birb[6][0] == "BBS"){
+    return "birble_resources/BBS.png"
+  //between blackbird and crow
+  } else if (current_birb[6][0] == "BBC"){
+    return "birble_resources/BBC.png"
+  //crow sized
+  } else if (current_birb[6][0] == "CS"){
+    return "birble_resources/CS.png"
+  //between crow and goose
+  } else if (current_birb[6][0] == "BCG"){
+    return "birble_resources/BCG.png"
+  //goose sized or larger
+  } else if (current_birb[6][0] == "GSL"){
+    return "birble_resources/GSL.png"
+  }
+}
+
+/*
+html`
+<body>
+
+<button onclick="document.getElementById('myImage').src=${BSfile}">[3] Reveal birb size</button>
+
+<img id="myImage" src="birble_resources/birbsizeplaceholder.png" style="width:400px">
+
+</body>
+`*/
+
+FileAttachment("birble_resources/birbsizeplaceholder.png").image({
+  width: 500,
+  border: "10px solid black",
+  onclick: (e)=> { 
+    e.target.src=`${BSfile}`;
+    if (BSclick==0){
+      adjust(viewof score,-3)
+      adjust(viewof BSclick,1)
+    };
+  },
+})
+
+```
+
+
+
+
+
+```{ojs}
 //Reveal physical description
 viewof PD = {
   newbirb;
   let value = 0;
-  const button = html`<button>[4] Physical Description</button>`;
+  const button = html`<button>[3] Physical Description</button>`;
   Object.defineProperty(button, "value", {get() { return value; }});
   button.onclick = () => ++value;
   return button;
@@ -129,8 +212,8 @@ viewof PD = {
 PDtext = {
     if (PD > 0) {
         //Adjust score at one button press asdas
-        if (PD == 1){adjust(viewof score,-4)};
-        //Change conservation status text
+        if (PD == 1){adjust(viewof score,-3)};
+        //Change status text
         return (newbirb, current_birb[5][0])
     } else {return "\n"}
 }
@@ -178,7 +261,7 @@ BRembedsrc = {
     } else {return "\n"}
 }
 
-html`<iframe src="${BRembedsrc}" height="340" width="320" scrolling="no" style="border: 3px solid black;" allowfullscreen></iframe>`
+html`<iframe src="${BRembedsrc}" height="340" width="320" style="border: 3px solid black;" allowfullscreen></iframe>`
 ```
 
 ---
@@ -243,12 +326,14 @@ viewof answer = Inputs.text({placeholder:guessbirb, disabled:true, width:400});
 viewof newbirb = html`<button>New Birb</button>`;
 //html`<p style="font-family:courier;">This is a paragraph.</p>`;
 // Select from array of birb data
+
 current_birb = {
   set(viewof score, 20);
-  set(viewof mapclick, 0);
+  set(viewof BSclick, 0);
   const buttonClicked = await newbirb;
   return birbdata[Math.floor(Math.random()*birbdata.length)];
 }
+
 ```
 
 ---
@@ -264,7 +349,13 @@ Range data: Fink, D., T. Auer, A. Johnston, M. Strimas-Mackey, S. Ligocki, O. Ro
 ---
 
 ```{ojs}
-viewof mapclick = Inputs.number([0, 100], {step: 1, label: "mapclick", value:0, disabled:true})
+viewof BSclick = Inputs.number([0, 100], {step: 1, label: "bsclick", value:0, disabled:true})
+```
+
+```{ojs}
+debugline = "DEBUG: "
+debugline;
+current_birb[2];
 ```
 
 
